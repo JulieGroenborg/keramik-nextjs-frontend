@@ -33,13 +33,14 @@ module.exports = {
     'no-var': 'error', // forbyder brug af var
     'prefer-const': 'warn', // opfordrer til brug af const når muligt
     'no-duplicate-imports': 'error', // forbyder duplikerede imports
+    'no-console': 'warn', // advarer ved brug af console.log
+    'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }], // advarer ved ubrugte variabler
+    eqeqeq: ['error', 'always'], // kræver brug af === og !== istedet for == og !=
 
     'react/jsx-boolean-value': ['warn', 'never'], // undgå {true} i props
-    'react/jsx-curly-spacing': ['warn', { when: 'never', children: true }], // ingen mellemrum i {}
-    'react/jsx-indent': ['warn', 2], // 2 mellemrum indrykning i JSX
-    'react/jsx-indent-props': ['warn', 2], // 2 mellemrum indrykning for props i JSX
     'react/jsx-no-useless-fragment': 'warn', // undgå unødvendige fragments
     'react/self-closing-comp': 'warn', // brug selv-lukkende tags når muligt
+    'react/react-in-jsx-scope': 'off', // Next.js behøver ikke import React
 
     'react-hooks/rules-of-hooks': 'error', // sikrer korrekt brug af hooks
     'react-hooks/exhaustive-deps': 'warn', // sikrer dependency array i hooks
