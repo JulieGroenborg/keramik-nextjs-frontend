@@ -8,7 +8,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepush": "npm test -- --passWithNoTests",
+    "test": "jest"
   },
   "lint-staged": {
     "*.{js,jsx}": [
