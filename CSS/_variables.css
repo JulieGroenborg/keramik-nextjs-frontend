@@ -1,0 +1,178 @@
+/* Importer skrifttyper */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap");
+
+:root {
+    /* 1) Generelle værdier */
+    /* Skrifttyper */
+    --font-heading: "Montserrat", sans-serif;
+    --font-body: "Plus Jakarta Sans", sans-serif;
+    --font-button: "Plus Jakarta Sans", sans-serif;
+
+    /* Skrifttykkelse */
+    --weight-thin: 100;
+    --weight-light: 300;
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    /* Spacings / generelle px værdier*/
+    --size-4: 4px;
+    --size-8: 8px;
+    --size-10: 10px;
+    --size-12: 12px;
+    --size-14: 14px;
+    --size-16: 16px;
+    --size-18: 18px;
+    --size-20: 20px;
+    --size-22: 22px;
+    --size-24: 24px;
+    --size-28: 28px;
+    --size-32: 32px;
+    --size-35: 35px;
+    --size-36: 36px;
+    --size-50: 50px;
+    --size-60: 60px;
+    --size-70: 70px;
+    --size-80: 80px;
+    --size-120: 120px;
+
+
+    /* 2) Typografi */
+    /* Headings Montserrat */
+    /* Heading 1 */
+    --h1-thin-size: var(--size-80);
+    --h1-thin-weight: var(--weight-thin);
+
+    --h1-light-size: var(--size-36);
+    --h1-light-weight: var(--weight-light);
+
+    /* Heading 2 */
+    --h2-light-60-size: var(--size-60);
+    --h2-light-60-weight: var(--weight-light);
+
+    --h2-semibold-28-size: var(--size-28);
+    --h2-semibold-28-weight: var(--weight-semibold);
+
+    --h2-light-32-size: var(--size-32);
+    --h2-light-32-weight: var(--weight-light);
+
+    --h2-light-20-size: var(--size-20);
+    --h2-light-20-weight: var(--weight-light);
+
+
+    /* Body Plus Jakarta Sans */
+    --body-bold-22-size: var(--size-22);
+    --body-bold-22-weight: var(--weight-bold);
+
+    --body-bold-20-size: var(--size-20);
+    --body-bold-20-weight: var(--weight-bold);
+
+    --body-semibold-16-size: var(--size-16);
+    --body-semibold-16-weight: var(--weight-semibold);
+
+    --body-medium-32-size: var(--size-32);
+    --body-medium-32-weight: var(--weight-medium);
+
+    --body-medium-20-size: var(--size-20);
+    --body-medium-20-weight: var(--weight-medium);
+
+    --body-medium-10-size: var(--size-10);
+    --body-medium-10-weight: var(--weight-medium);
+
+    --body-regular-32-size: var(--size-32);
+    --body-regular-32-weight: var(--weight-regular);
+
+    --body-regular-28-size: var(--size-28);
+    --body-regular-28-weight: var(--weight-regular);
+
+    --body-regular-20-size: var(--size-20);
+    --body-regular-20-weight: var(--weight-regular);
+
+    --body-regular-18-size: var(--size-18);
+    --body-regular-18-weight: var(--weight-regular);
+
+    --body-regular-16-size: var(--size-16);
+    --body-regular-16-weight: var(--weight-regular);
+
+    --body-regular-14-size: var(--size-14);
+    --body-regular-14-weight: var(--weight-regular);
+
+    --body-regular-12-size: var(--size-12);
+    --body-regular-12-weight: var(--weight-regular);
+
+    --body-regular-10-size: var(--size-10);
+    --body-regular-10-weight: var(--weight-regular);
+
+    --body-light-12-size: var(--size-12);
+    --body-light-12-weight: var(--weight-light);
+
+
+    /* Knapper Plus Jakarta Sans */
+    --btn-bold-18-size: var(--size-18);
+    --btn-bold-18-weight: var(--weight-bold);
+
+    --btn-bold-16-size: var(--size-16);
+    --btn-bold-16-weight: var(--weight-bold);
+
+    --btn-bold-14-size: var(--size-14);
+    --btn-bold-14-weight: var(--weight-bold);
+
+    --btn-bold-12-size: var(--size-12);
+    --btn-bold-12-weight: var(--weight-bold);
+
+    --btn-semibold-24-size: var(--size-24);
+    --btn-semibold-24-weight: var(--weight-semibold);
+
+    --btn-semibold-20-size: var(--size-20);
+    --btn-semibold-20-weight: var(--weight-semibold);
+
+    --btn-semibold-16-size: var(--size-16);
+    --btn-semibold-16-weight: var(--weight-semibold);
+
+    --btn-semibold-14-size: var(--size-14);
+    --btn-semibold-14-weight: var(--weight-semibold);
+
+    --btn-regular-16-size: var(--size-16);
+    --btn-regular-16-weight: var(--weight-regular);
+
+
+    /* 3) FARVER                 */
+    /* Primære Farver */
+    --primary-100: #ffffff;
+    --primary-200: #ededed;
+    --primary-300: #c3c3c3;
+    --primary-400: #a7a7a7;
+    --primary-500: #8d8d8d;
+    
+    /* Tertiære Farver */
+    --tertiary-100: #fbf6f4;
+    --tertiary-200: #f6ede9;
+    --tertiary-300: #f6e8e3;
+    --tertiary-400: #f4dfd8;
+    --tertiary-500: #fbd4c7;
+    
+    /* Greyscale Farver */
+    --grey-50:  #ffffff;
+    --grey-100: #ededed;
+    --grey-200: #c3c3c3;
+    --grey-300: #a7a7a7;
+    --grey-400: #8d8d8d;
+    --grey-500: #7c7c7c;
+    --grey-600: #717171;
+    --grey-800: #585858;
+    --grey-900: #444444;
+    --grey-1000:#000204;
+
+
+    /* 4) Container */
+    /* Mobil */
+    --container-padding: var(--size-50) var(--size-35) var(--size-50) var(--size-35);
+    
+    /* Desktop */
+    --container-padding: var(--size-70) var(--size-120) var(--size-60) var(--size-120);
+
+    /* Breakpoints */
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1024px;
+}
