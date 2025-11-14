@@ -12,5 +12,5 @@ export default {
   clearMocks: true,
 
   // VIGTIGT: sørger for at Jest ikke fejler, selvom du ikke har tests endnu
-  passWithNoTests: false,
+  passWithNoTests: true,
 };
