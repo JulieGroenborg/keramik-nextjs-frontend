@@ -1,0 +1,6 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.configPath": "./prettier.config.cjs",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true
+}
