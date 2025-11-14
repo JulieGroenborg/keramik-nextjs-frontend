@@ -37,7 +37,7 @@ export default defineConfig([
     },
 
     rules: {
-      'prettier/prettier': 'warn', // Integrerer Prettier som en ESLint-regel
+      'prettier/prettier': ['warn', { endOfLine: 'auto' }], // Integrerer Prettier som en ESLint-regel
 
       'no-var': 'error', // tillader ikke var
       'prefer-const': 'warn', // bruger const fremfor let hvor muligt
