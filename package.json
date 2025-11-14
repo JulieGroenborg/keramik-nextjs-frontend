@@ -8,12 +8,15 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepush": "npm test -- --passWithNoTests",
+    "test": "jest"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix",
+    "*.{js,jsx,css,scss}": [
       "prettier --write"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix"
     ]
   },
   "keywords": [],
