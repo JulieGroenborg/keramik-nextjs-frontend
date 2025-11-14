@@ -168,11 +168,11 @@
     /* 4) Container */
     /* Mobil */
     --container-padding: var(--size-50) var(--size-35) var(--size-50) var(--size-35);
-}
+    
+    /* Desktop */
+    --container-padding: var(--size-70) var(--size-120) var(--size-60) var(--size-120);
 
-@media (min-width: 768px) {
-    :root {
-        /* Desktop */
-        --container-padding: var(--size-70) var(--size-120) var(--size-60) var(--size-120);
-    }
+    /* Breakpoints */
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1024px;
 }
