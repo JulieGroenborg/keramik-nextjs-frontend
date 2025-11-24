@@ -1,22 +1,25 @@
-import { getPage } from '@/app/api/umbraco/getPage'; //henter content fra Umbraco via API
-import PageLayout from '@/app/layouts/PageLayout'; //viser title, subtitle og blocks
+// src/app/[...slug]/page.js
+import { getPage } from '@/app/api/umbraco/getPage';
+import PageLayout from '@/app/layouts/PageLayout';
+import { notFound } from 'next/navigation';
 
-export default async function SlugPage({ params }) {
-  const slugPath = params.slug?.length ? '/' + params.slug.join('/') + '/' : '/';
+export default async function SlugPage(props) {
+  // unwrap params fra props
+  const params = await props.params; // <-- det nye i Next.js 16
 
+  // Sørg for, at slug altid er et array
+  const slugArray = Array.isArray(params?.slug) ? params.slug : [];
+  const slugPath = '/' + slugArray.join('/') + '/';
+
+  // Hent page fra Umbraco
   const page = await getPage(slugPath);
+
+  if (!page) {
+    notFound(); // sender til Next.js 404 side
+  }
 
   return <PageLayout page={page} />;
 }
-
-// export default async function Page({ params }) {
-//   const slugPath = '/' + (params.slug?.join('/') || 'forside');
-//   const page = await getPage(slugPath);
-
-//   if (!page) return <p>Page not found</p>;
-
-//   return <PageLayout page={page} />;
-// }
 
 // export default async function Home() {
 //   // Test fetching your Umbraco content
