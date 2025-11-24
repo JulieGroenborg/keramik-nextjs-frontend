@@ -1,6 +1,6 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.configPath": "./prettier.config.cjs",
+  "prettier.prettierPath": "frontend/keramik-app/node_modules/prettier/index.cjs",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true
 }
