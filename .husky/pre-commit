@@ -1,3 +1,4 @@
 #!/usr/bin/env sh
 echo ">>> HUSKY PRE-COMMIT KØRER <<<"
+cd frontend/keramik-app
 npx lint-staged
