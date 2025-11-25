@@ -1,8 +1,7 @@
 export async function umbracoFetch(path) {
-  const apiRoot = '/umbraco/delivery/api/v1';
   const fixedPath = path.startsWith('/') ? path : `/${path}`;
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_UMBRACO_URL}${apiRoot}${fixedPath}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_UMBRACO_URL}${fixedPath}`, {
     cache: 'force-cache', // Denne linje gør den SSG, kan ændres til 'no-store' for SSR
   });
 
