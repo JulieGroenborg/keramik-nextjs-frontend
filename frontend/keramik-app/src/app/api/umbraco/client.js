@@ -3,7 +3,7 @@ export async function umbracoFetch(path) {
   const fixedPath = path.startsWith('/') ? path : `/${path}`;
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_UMBRACO_URL}${apiRoot}${fixedPath}`, {
-    cache: 'force-cache', // SSG: fetch once at build time
+    cache: 'force-cache', // Denne linje gør den SSG, kan ændres til 'no-store' for SSR
   });
 
   if (!res.ok) {

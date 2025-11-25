@@ -20,18 +20,3 @@ export default async function SlugPage(props) {
 
   return <PageLayout page={page} />;
 }
-
-// export default async function Home() {
-//   // Test fetching your Umbraco content
-//   const page = await getPage('/forside'); // <-- your test page path
-
-//   console.log(page); // will show in server logs
-
-//   return (
-//     <div className={styles.page}>
-//       <main className={styles.main}>
-//         {page?.properties?.title?.trim() ? <h1>{page.properties.title}</h1> : null}
-//       </main>
-//     </div>
-//   );
-// }
