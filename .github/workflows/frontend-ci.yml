@@ -24,11 +24,11 @@ jobs:
         run: npm ci
         working-directory: ./frontend/keramik-app
 
-      - name: Run ESLint
+      - name: Kør ESLint
         run: npm run lint
         working-directory: ./frontend/keramik-app
 
-      - name: Run Prettier (check only)
+      - name: Kør Prettier (bare et check)
         run: npm run format:check
         working-directory: ./frontend/keramik-app
 
@@ -49,6 +49,6 @@ jobs:
         run: npm ci
         working-directory: ./frontend/keramik-app
 
-      - name: Build Next.js project
+      - name: Build frontend
         run: npm run build
         working-directory: ./frontend/keramik-app
