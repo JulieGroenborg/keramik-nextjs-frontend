@@ -1,4 +1,3 @@
-// src/app/api/umbraco/getPage.js
 import { umbracoFetch } from './client';
 
 export async function getPage(slugPath) {
@@ -6,7 +5,7 @@ export async function getPage(slugPath) {
 
   try {
     const page = await umbracoFetch(`/content/item/${encodedPath}`);
-    return page; // en enkelt item
+    return page; // et enkelt item
   } catch (error) {
     if (error.status === 404) {
       return null;
