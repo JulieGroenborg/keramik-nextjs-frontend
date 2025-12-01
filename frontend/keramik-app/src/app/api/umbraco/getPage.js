@@ -1,11 +1,16 @@
+// src/app/api/umbraco/getPage.js
 import { umbracoFetch } from './client';
 
 export async function getPage(slugPath) {
-  const allContent = await umbracoFetch('/content');
-  const page = allContent.items.find((item) => item.route.path === slugPath);
+  const encodedPath = encodeURIComponent(slugPath);
 
-  // Bruges til fejlfinding under udvikling, skal ændres til nedenstående i efter udvikling
-  // return page ?? null;
-  if (!page) throw new Error(`Page not found: ${slugPath}`);
-  return page;
+  try {
+    const page = await umbracoFetch(`/content/item/${encodedPath}`);
+    return page; // en enkelt item
+  } catch (error) {
+    if (error.status === 404) {
+      return null;
+    }
+    throw error;
+  }
 }
