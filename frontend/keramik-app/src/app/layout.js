@@ -1,11 +1,5 @@
-import { Geist_Mono } from 'next/font/google';
 import './globals.css';
 import '../css/_variables.css';
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,7 +9,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistMono.variable}`}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

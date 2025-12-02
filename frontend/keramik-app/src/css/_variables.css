@@ -160,14 +160,14 @@
   --grey-900: #444444;
   --grey-1000: #000204;
 
+  /* Aligns */
+  --align-left: left;
+  --align-center: center;
+
   /* 4) Container */
   /* Mobil */
   --mobile-container-padding: var(--size-50) var(--size-35) var(--size-50) var(--size-35);
 
   /* Desktop */
   --desktop-container-padding: var(--size-70) var(--size-120) var(--size-60) var(--size-120);
-
-  /* Breakpoints */
-  --breakpoint-tablet: 768px;
-  --breakpoint-desktop: 1024px;
 }

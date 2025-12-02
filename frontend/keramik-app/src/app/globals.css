@@ -1,14 +1,38 @@
 @import '../css/_variables.css';
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
 body {
   background: pink;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-light);
+  font-size: var(--h1-light-size);
+  color: var(--grey-1000);
+  text-align: var(--align-center);
+}
+
+p {
+  font-family: var(--font-body);
 }
 
 .container {
   padding: var(--mobile-container-padding);
 }
 
-@media (min-width: var(--breakpoint-tablet)) {
+@media (min-width: 768px) {
+  h1 {
+    font-weight: var(--weight-thin);
+    font-size: var(--h1-thin-size);
+  }
+
   .container {
     padding: var(--desktop-container-padding);
   }

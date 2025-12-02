@@ -4,8 +4,22 @@
   background-repeat: no-repeat;
 }
 
+.p {
+  font-size: var(--body-regular-16-size);
+  font-weight: var(--body-regular-28-weight);
+  color: var(--grey-1000);
+  text-align: var(--align-center);
+}
+
 @media (min-width: var(--breakpoint-tablet)) {
   .hero {
     background-image: url('../../../public/hero_bg_desktop.webp');
+  }
+
+  .p {
+    font-size: var(--body-regular-28-size);
+    font-weight: var(--body-regular-28-weight);
+    color: var(--grey-1000);
+    text-align: var(--align-center);
   }
 }
