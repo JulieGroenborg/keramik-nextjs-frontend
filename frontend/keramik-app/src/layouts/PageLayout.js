@@ -1,5 +1,3 @@
-import HeroSektion from '../components/HeroSektion';
-
 export default function PageLayout({ page }) {
   if (!page) {
     return <div>siden kunne ikke findes</div>;
