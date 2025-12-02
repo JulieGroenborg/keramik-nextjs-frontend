@@ -1,4 +1,3 @@
-// src/app/[...slug]/page.js
 import { getPage } from '@/lib/umbraco/api-helpers/getPage';
 import PageLayout from '@/layouts/PageLayout';
 import { notFound } from 'next/navigation';
