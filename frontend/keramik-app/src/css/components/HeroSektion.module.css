@@ -1,5 +1,3 @@
-@import '../_variables.css';
-
 .hero {
   background-image: url('../../../public/hero_bg_mobile.webp');
   background-size: cover;
