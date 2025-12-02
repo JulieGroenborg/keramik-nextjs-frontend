@@ -1,7 +1,7 @@
 import styles from '../css/components/HeroSektion.module.css';
 
 export default function HeroSektion({ page }) {
-  const title = page?.properties?.title.trim();
+  const title = page?.properties?.title?.trim();
 
   return (
     <div className={styles.hero}>
