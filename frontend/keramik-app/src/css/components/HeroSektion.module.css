@@ -5,8 +5,8 @@
 }
 
 .p {
-  font-size: var(--body-regular-16-size);
-  font-weight: var(--body-regular-28-weight);
+  font-size: var(--body-regular-12-size);
+  font-weight: var(--body-regular-12-weight);
   color: var(--grey-1000);
   text-align: var(--align-center);
 }
@@ -19,7 +19,5 @@
   .p {
     font-size: var(--body-regular-28-size);
     font-weight: var(--body-regular-28-weight);
-    color: var(--grey-1000);
-    text-align: var(--align-center);
   }
 }
