@@ -1,0 +1,11 @@
+@import './_variables.css';
+
+.container {
+  padding: var(--mobile-container-padding);
+}
+
+@media (min-width: var(--breakpoint-tablet)) {
+  .container {
+    padding: var(--desktop-container-padding);
+  }
+}
