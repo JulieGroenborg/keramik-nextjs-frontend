@@ -2,7 +2,7 @@ import '../css/components/HeroSektion.css';
 import '../css/stylesheet.css';
 
 export default function HeroSektion({ page }) {
-  const title = page?.properties?.title.trim();
+  const title = page?.properties?.title?.trim();
 
   return (
     <div className="container">
