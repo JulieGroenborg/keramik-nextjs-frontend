@@ -1,18 +1,17 @@
-import '../css/components/HeroSektion.css';
-import '../css/stylesheet.css';
+import styles from '../css/components/HeroSektion.module.css';
 
 export default function HeroSektion({ page }) {
   const title = page?.properties?.title.trim();
 
   return (
-    <div className="container">
-      {title && <h1>{title}</h1>}
+    <div className={styles.hero}>
+      <div className="container">
+        {title && <h1>{title}</h1>}
 
-      {/* subtitle*/}
+        {/* subtitle*/}
 
-      {/* import reuseable knap */}
-
-      {/* billede */}
+        {/* import reuseable knap */}
+      </div>
     </div>
   );
 }
