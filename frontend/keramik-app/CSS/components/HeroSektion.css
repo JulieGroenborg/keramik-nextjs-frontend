@@ -1,0 +1,13 @@
+@import '../_variables.css';
+
+.hero {
+  background-image: url('../../public/hero_bg_mobile.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: var(--breakpoint-tablet)) {
+  .hero {
+    background-image: url('../../public/hero_bg_desktop.webp');
+  }
+}
