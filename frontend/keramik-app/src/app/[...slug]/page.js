@@ -1,6 +1,6 @@
 // src/app/[...slug]/page.js
-import { getPage } from '@/app/api/umbraco/getPage';
-import PageLayout from '@/app/layouts/PageLayout';
+import { getPage } from '@/lib/umbraco/api-helpers/getPage';
+import PageLayout from '@/layouts/PageLayout';
 import { notFound } from 'next/navigation';
 
 export default async function SlugPage(props) {
