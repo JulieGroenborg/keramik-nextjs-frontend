@@ -25,6 +25,7 @@ p {
 
 .container {
   padding: var(--mobile-container-padding);
+  text-align: var(--align-center);
 }
 
 @media (min-width: 768px) {
