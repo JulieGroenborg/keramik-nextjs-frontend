@@ -1,3 +1,4 @@
+import HeroSektion from '@/components/HeroSektion';
 export default function PageLayout({ page }) {
   if (!page) {
     return <div>siden kunne ikke findes</div>;
@@ -15,6 +16,7 @@ export default function PageLayout({ page }) {
     <div>
       {isFrontpage ? (
         <>
+          <HeroSektion page={page} />
           {properties.title && <h1>{properties.title}</h1>}
           {properties.subtitle && <h2>{properties.subtitle}</h2>}
         </>
