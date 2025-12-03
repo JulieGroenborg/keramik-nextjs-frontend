@@ -56,7 +56,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    gap: var(--size-50);
+    gap: var(--size-48);
   }
   .valueCard {
     flex: 1;
