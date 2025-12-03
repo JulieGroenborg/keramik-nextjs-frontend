@@ -7,14 +7,14 @@
 
 .inner {
   text-align: center;
-  padding: 3rem 1.5rem 0;
+  padding: var(--size-50) var(--size-24) 0;
 }
 
 .cups {
   display: block;
   width: 100%;
   height: auto;
-  margin-top: 1.5rem;
+  margin-top: var(--size-50);
 }
 
 .p {
