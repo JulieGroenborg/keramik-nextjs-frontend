@@ -1,3 +1,5 @@
+import OmMig from '@/components/OmMig';
+
 export default function PageLayout({ page }) {
   if (!page) {
     return <div>siden kunne ikke findes</div>;
@@ -38,6 +40,8 @@ function renderBlocks(blocks) {
             <p>Nyhedsbrev komponent placeholder</p>
           </div>
         );
+      case 'valueSection':
+        return <OmMig key={block.id} content={block.properties} />;
       default:
         return null;
     }
