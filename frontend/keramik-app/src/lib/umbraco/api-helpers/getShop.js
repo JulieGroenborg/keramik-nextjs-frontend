@@ -1,5 +1,4 @@
 // GET all products and categories in shop.
-// // https://localhost:51857/umbraco/delivery/api/v2/content?fetch=descendants:/shop
 export async function getShop() {
   // Fetch alle descendants under /shop.
   const res = await fetch(
