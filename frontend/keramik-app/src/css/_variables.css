@@ -160,6 +160,9 @@
   --grey-900: #444444;
   --grey-1000: #000204;
 
+  /* Ekstra Farver */
+  --ekstra-100: #fcfdf9;
+
   /* Aligns */
   --align-left: left;
   --align-center: center;
