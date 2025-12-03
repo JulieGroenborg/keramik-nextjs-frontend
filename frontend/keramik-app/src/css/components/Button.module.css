@@ -1,0 +1,18 @@
+.button {
+  display: inline-block;
+  padding: var(--size-12) var(--size-36);
+  margin: var(--size-50);
+  background-color: var(--grey-1000);
+  color: var(--primary-100);
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+
+  font-family: var(--font-button);
+  font-size: var(--btn-bold-16-size);
+  font-weight: var(--btn-bold-16-weight);
+}
+
+.button:hover {
+  opacity: 0.9;
+}

@@ -1,3 +1,4 @@
+import HeroSektion from '@/components/HeroSektion';
 import OmMig from '@/components/OmMig';
 
 export default function PageLayout({ page }) {
@@ -15,14 +16,7 @@ export default function PageLayout({ page }) {
 
   return (
     <div>
-      {isFrontpage ? (
-        <>
-          {properties.title && <h1>{properties.title}</h1>}
-          {properties.subtitle && <h2>{properties.subtitle}</h2>}
-        </>
-      ) : (
-        <h1>{pageTitle}</h1>
-      )}
+      {isFrontpage ? <HeroSektion page={page} /> : <h1>{pageTitle}</h1>}
       {renderBlocks(blocks)}
     </div>
   );
