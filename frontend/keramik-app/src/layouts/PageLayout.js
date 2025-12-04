@@ -1,5 +1,6 @@
 import HeroSektion from '@/components/HeroSektion';
 import OmMig from '@/components/OmMig';
+import Newsletter from '@/components/Newsletter';
 
 export default function PageLayout({ page }) {
   if (!page) {
@@ -28,12 +29,8 @@ function renderBlocks(blocks) {
   return blocks.map((item) => {
     const block = item.content;
     switch (block?.contentType) {
-      case 'newsletter': // skal matche contentType i komponent objektet
-        return (
-          <div key={block.id}>
-            <p>Nyhedsbrev komponent placeholder</p>
-          </div>
-        );
+      case 'newsletter':
+        return <Newsletter key={block.id} content={block.properties} />;
       case 'valueSection':
         return <OmMig key={block.id} content={block.properties} />;
       default:
