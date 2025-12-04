@@ -28,6 +28,7 @@
   --size-22: 1.375rem; /* 22px */
   --size-24: 1.5rem; /* 24px */
   --size-28: 1.75rem; /* 28px */
+  --size-30: 1.875rem; /* 30px */
   --size-32: 2rem; /* 32px */
   --size-35: 2.1875rem; /* 35px */
   --size-36: 2.25rem; /* 36px */
@@ -163,6 +164,7 @@
 
   /* Ekstra Farver */
   --ekstra-100: #fcfdf9;
+  --newsletter-bg: #f0f2e5;
 
   /* Aligns */
   --align-left: left;

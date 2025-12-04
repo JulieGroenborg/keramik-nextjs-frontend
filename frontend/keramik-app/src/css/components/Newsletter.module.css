@@ -1,0 +1,112 @@
+.background {
+  background-color: var(--newsletter-bg);
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.newsletterTag {
+  position: absolute;
+  left: -50px;
+  bottom: -200px;
+  width: 360px;
+  height: 360px;
+  background-image: url('/tag icon.webp');
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.newsletterTitle {
+  font-family: var(--font-heading);
+  font-size: var(--h2-light-20-size);
+  font-weight: var(--h2-light-20-weight);
+  color: var(--grey-1000);
+  padding-bottom: var(--size-12);
+}
+
+.newsletterSubtitle {
+  font-family: var(--font-body);
+  font-size: var(--body-regular-14-size);
+  font-weight: var(--body-regular-14-weight);
+  color: var(--grey-500);
+  text-align: center;
+  padding-left: var(--size-24);
+  padding-right: var(--size-24);
+  padding-bottom: var(--size-12);
+}
+
+.newsletterInput {
+  height: var(--size-30);
+  color: var(--grey-500);
+  border: none;
+  width: 100%;
+  max-width: 300px;
+  padding-left: var(--size-12);
+  align-items: center;
+  position: relative;
+  font-size: var(--body-medium-10-size);
+  font-weight: var(--body-medium-10-weight);
+  z-index: 3;
+}
+
+.newsletterButton {
+  margin-top: var(--size-20);
+  position: relative;
+  z-index: 3;
+}
+
+.field {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .newsletterTitle {
+    font-size: var(--h2-light-60-size);
+    font-weight: var(--h2-light-60-weight);
+    margin-bottom: var(--size-24);
+  }
+
+  .newsletterSubtitle {
+    font-size: var(--body-regular-20-size);
+    font-weight: var(--body-regular-20-weight);
+    margin-left: var(--size-120);
+    margin-right: var(--size-120);
+    margin-bottom: var(--size-24);
+  }
+
+  .newsletterInput {
+    width: 100%;
+    height: var(--size-80);
+    padding-right: var(--size-80);
+    padding-left: var(--size-20);
+    color: var(--grey-500);
+    font-size: var(--body-regular-20-size);
+    font-weight: var(--body-regular-20-weight);
+    max-width: 600px;
+  }
+
+  .newsletterButton {
+    position: absolute;
+    top: 50%;
+    right: 0.75rem;
+    transform: translateY(-50%);
+    margin-top: 0; /* no gap now */
+  }
+
+  .newsletterTag {
+    position: absolute;
+    left: -50px;
+    bottom: -50px;
+    width: 287px;
+    height: 300px;
+    background-image: url('/tag icon.webp');
+    background-repeat: no-repeat;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 2;
+  }
+}
