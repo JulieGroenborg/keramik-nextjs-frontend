@@ -10,6 +10,8 @@ export default async function SlugPage(props) {
   const slugArray = Array.isArray(params?.slug) ? params.slug : [];
   const slugPath = '/' + slugArray.join('/') + '/';
 
+  console.log('HER!!! SlugPage rendered with slugPath:', slugPath);
+
   // Hent page fra Umbraco
   const page = await getPage(slugPath);
 
