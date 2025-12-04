@@ -1,6 +1,7 @@
 import AddToBasket from '@/components/AddToBasket';
 import { getShop } from '@/lib/umbraco/api-helpers/getShop';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function ShopPage() {
   const { categories, products } = await getShop();
@@ -19,12 +20,12 @@ export default async function ShopPage() {
       {/* Products grid */}
       <div>
         {products.map((prod) => (
-          <div key={prod.id}>
-            <Image src={prod.properties.image?.[0]?.url} alt={prod.name} width={50} height={50} />
+          <Link key={prod.id} href={prod.route.path}>
+            {/* <Image src={prod.properties.image?.[0]?.url} alt={prod.name} width={50} height={50} /> */}
             <h2>{prod.name}</h2>
             <p>{prod.properties.price} kr.</p>
             <AddToBasket />
-          </div>
+          </Link>
         ))}
       </div>
     </div>
