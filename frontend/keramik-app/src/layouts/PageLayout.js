@@ -16,7 +16,7 @@ export default function PageLayout({ page }) {
 
   return (
     <div>
-      {isFrontpage ? <HeroSektion page={page} /> : <h1>Oli og seb: {pageTitle}</h1>}
+      {isFrontpage ? <HeroSektion page={page} /> : <h1>{pageTitle}</h1>}
       {renderBlocks(blocks)}
     </div>
   );
