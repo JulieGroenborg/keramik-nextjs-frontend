@@ -1,5 +1,6 @@
 import HeroSektion from '@/components/HeroSektion';
 import OmMig from '@/components/OmMig';
+import ImageTextCTA from '@/components/ImageTextCTA';
 
 export default function PageLayout({ page }) {
   if (!page) {
@@ -36,6 +37,9 @@ function renderBlocks(blocks) {
         );
       case 'valueSection':
         return <OmMig key={block.id} content={block.properties} />;
+      case 'imageTextCTA':
+        return <ImageTextCTA key={block.id} content={block.properties} />;
+
       default:
         return null;
     }
