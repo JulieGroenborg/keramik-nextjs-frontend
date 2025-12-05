@@ -56,7 +56,6 @@
   width: var(--card-width);
 }
 
-
 .quoteIcon {
   position: absolute;
   top: var(--size-12);
@@ -125,8 +124,7 @@
   text-align: var(--align-left);
 }
 
-/* navButton er pilene */
-.navButton {
+.arrowButton {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -165,7 +163,7 @@
     opacity: 1;
   }
 
-  .navButton {
+  .arrowButton {
     width: var(--size-40);
     height: var(--size-40);
   }

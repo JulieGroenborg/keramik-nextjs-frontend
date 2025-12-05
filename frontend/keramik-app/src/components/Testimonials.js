@@ -132,7 +132,7 @@ export default function TestimonialsSection({ title, testimonials }) {
           {/* venstre knap */}
           <button
             type="button"
-            className={`${styles.navButton} ${styles.prev}`}
+            className={`${styles.arrowButton} ${styles.prev}`}
             onClick={handlePrev}
           >
             <Image src="/Arrow-left.svg" alt="Previous" width={10} height={10} />
@@ -141,7 +141,7 @@ export default function TestimonialsSection({ title, testimonials }) {
           {/* højre knap */}
           <button
             type="button"
-            className={`${styles.navButton} ${styles.next}`}
+            className={`${styles.arrowButton} ${styles.next}`}
             onClick={handleNext}
           >
             <Image src="/Arrow-right.svg" alt="Next" width={10} height={10} />
