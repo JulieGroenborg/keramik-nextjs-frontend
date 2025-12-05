@@ -10,6 +10,10 @@
   padding: var(--size-50) var(--size-24) 0;
 }
 
+.button {
+  margin: var(--size-50);
+}
+
 .cups {
   display: block;
   width: 100%;
