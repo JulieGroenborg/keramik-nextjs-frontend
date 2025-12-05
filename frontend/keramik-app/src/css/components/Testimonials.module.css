@@ -79,7 +79,7 @@
   flex-direction: column;
   align-items: var(--align-center);
   gap: var(--size-8);
-  min-width: 80px;
+  min-width: var(--size-80);
 }
 
 .avatarWrapper {
