@@ -1,19 +1,43 @@
-export default function AddToBasket() {
-  return (
-    <div>
-      <button>
-        Kurv{' '}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          className="bi bi-cart2"
-          viewBox="0 0 16 16"
-        >
-          <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-        </svg>
-      </button>
-    </div>
-  );
+'use client'; // Client side fordi vi bruger useContext and onClick.
+import { useContext } from 'react';
+import { CartContext } from '@/lib/context/CartContext';
+
+export default function AddToBasket({ product, quantity }) {
+  // Henter den globale cart state og setCart funktionen fra CartContext:
+  const { cart, setCart } = useContext(CartContext);
+
+  // Funktionen der kaldes, når brugeren klikker på "Add to cart".
+  const handleAddToCart = () => {
+    // Tjekker om produktet allerede findes i kruven:
+    const existingItem = cart.items.find((item) => item.productId === product.id);
+
+    // Hvis produktet allerede er i kruven, øges quantity med det valgte antal:
+    if (existingItem) {
+      setCart({
+        items: cart.items.map(
+          (item) =>
+            item.productId === product.id
+              ? { ...item, quantity: item.quantity + quantity } // Opdater quantity.
+              : item // Beholder de andre items uændret.
+        ),
+      });
+    }
+    // Hvis produktet ikke er i kurven, tilføjes det som nyt item:
+    else {
+      setCart({
+        items: [
+          ...cart.items, // Bevarer eksisterende items
+          {
+            productId: product.id,
+            name: product.name,
+            price: product.properties.price,
+            quantity, // Antal valgt af brugeren
+            image: product.properties.image?.[0]?.url || '',
+          },
+        ],
+      });
+    }
+  };
+
+  return <button onClick={handleAddToCart}>Add to Cart</button>;
 }

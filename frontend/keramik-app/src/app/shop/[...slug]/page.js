@@ -1,20 +1,23 @@
-import AddToBasket from '@/components/AddToBasket';
-import { getProductBySlug } from '@/lib/umbraco/api-helpers/getProductBySlug';
+import { CartProvider } from '@/lib/context/CartContext';
+import { getProductBySlug } from '@/lib/shop/api-helpers/getProductBySlug';
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
+import ProductActions from '@/components/ProductActions';
 
-// The dynamic product page, next injects the URL segments into the params object.
 export default async function ProductPage({ params }) {
-  const { slug } = await params; // Extract URL segments
-  const productSlug = slug.at(-1); // Tager den sidste del af URL arrayets segment, hvilket er produktets slug, eksempelvis "datter-koppen".
+  const { slug } = await params;
 
-  const product = await getProductBySlug(productSlug); //fetch the product data from API using slug.
+  if (slug.length === 1) {
+    redirect('/shop');
+  }
 
+  const productSlug = slug.at(-1);
+  const product = await getProductBySlug(productSlug);
   if (!product) return <div>Produkt ikke fundet</div>;
 
   return (
     <main>
-      <h1>Produktet</h1>
-      <h2>{product.name}</h2>
+      <h1>{product.name}</h1>
       <p>{product.properties.description}</p>
       <p>Pris: {product.properties.price} kr</p>
       <Image
@@ -23,14 +26,9 @@ export default async function ProductPage({ params }) {
         width={500}
         height={300}
       />
-      <p>
-        Tags: {product.properties.material.toLowerCase()},{' '}
-        {product.properties.finishing.toLowerCase()}, {product.properties.color.toLowerCase()},{' '}
-        {product.properties.size.toLowerCase()}
-      </p>
-
-      <p>{product.properties.stockQuantity} på lager</p>
-      <AddToBasket />
+      <CartProvider>
+        <ProductActions product={product} />
+      </CartProvider>
     </main>
   );
 }
