@@ -2,7 +2,8 @@
 import { useContext } from 'react';
 import { CartContext } from '@/lib/context/CartContext';
 
-export default function AddToBasket({ product, quantity }) {
+export default function AddToBasket({ product, quantity = 1 }) {
+  // Vi sætter quantity til 1, den bliver overskrevet, hvis en bruger vælger flere produkter på produktsiden.
   // Henter den globale cart state og setCart funktionen fra CartContext:
   const { cart, setCart } = useContext(CartContext);
 
