@@ -167,4 +167,36 @@
     width: var(--size-40);
     height: var(--size-40);
   }
+
+  .heading {
+    font-size: var(--h2-light-60-size);
+    font-weight: var(--h2-light-60-weight);
+  }
+
+  .name {
+    font-size: var(--body-regular-20-size);
+    font-weight: var(--body-semibold-16-weight);
+  }
+
+  .location {
+    font-size: var(--body-regular-18-size);
+  }
+
+  .text {
+    font-size: var(--body-regular-20-size);
+  }
+
+  .avatarWrapper {
+    width: 98px;
+    height: 98px;
+  }
+
+  .quoteIcon {
+    width: var(--size-36);
+    height: var(--size-36);
+  }
+
+  .card {
+    padding: var(--size-32) var(--size-32) var(--size-32) var(--size-24);
+  }
 }
