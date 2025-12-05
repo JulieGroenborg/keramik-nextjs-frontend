@@ -1,5 +1,6 @@
 import HeroSektion from '@/components/HeroSektion';
 import OmMig from '@/components/OmMig';
+import ImageTextCTA from '@/components/ImageTextCTA';
 import TestimonialsSection from '@/components/Testimonials';
 import Newsletter from '@/components/Newsletter';
 
@@ -34,6 +35,9 @@ function renderBlocks(blocks) {
         return <Newsletter key={block.id} content={block.properties} />;
       case 'valueSection':
         return <OmMig key={block.id} content={block.properties} />;
+      case 'imageTextCTA':
+        return <ImageTextCTA key={block.id} content={block.properties} />;
+
       case 'testimonialSection':
         return (
           <TestimonialsSection
