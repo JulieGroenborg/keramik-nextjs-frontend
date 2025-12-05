@@ -2,6 +2,8 @@ import styles from '../css/components/ImageTextCTA.module.css';
 import Image from 'next/image';
 import Button from './Button';
 
+// regex til at fange statistik rækker, gis flag er for global og case insensitive.
+// den fanger h4 (nummer), p (tekst) og img tagget (ikon)
 const STATS_REGEX = /<h4>(.*?)<\/h4>\s*<p>(.*?)<\/p>\s*<p><img\s+([^>]+)><\/p>/gis;
 
 function parseStatsFromMarkup(markup) {
@@ -9,14 +11,15 @@ function parseStatsFromMarkup(markup) {
   let match;
 
   while ((match = STATS_REGEX.exec(markup)) !== null) {
-    const [, number, text, imgAttrs] = match;
+    const [, number, text, imgAttrs] = match; // de fangede grupper
 
+    // Funktion til at udtrække attributter fra img tag
     const getAttr = (name) => {
       const regex = new RegExp(name + '="([^"]*)"', 'i');
       const match = regex.exec(imgAttrs);
       return match?.[1] ?? '';
     };
-
+    // Tilføj række til array
     rows.push({
       number: number.trim(),
       text: text.trim(),
