@@ -1,0 +1,202 @@
+/* --- Variables --- */
+.testimonials {
+  background-color: var(--tertiary-100);
+
+  --card-width: 90vw; /* viewporten er 90viewport på mobil, så det skalere flot på tablet */
+  --card-gap: var(--size-32);
+  --button-offset: var(--size-8);
+}
+
+.inner {
+  padding: var(--size-50) 0;
+  text-align: var(--align-center);
+  width: 100%;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: var(--h2-light-32-size);
+  font-weight: var(--h2-light-32-weight);
+  color: var(--grey-1000);
+}
+
+.cardWrapper {
+  margin-top: var(--size-32);
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Så cards bliver cuttet af i siden af skærmen */
+  display: flex;
+  justify-content: var(--align-center);
+}
+
+.track {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--card-gap);
+  justify-content: var(--align-center);
+  transition: transform 0.3s ease-in-out;
+}
+
+.slideNext {
+  transform: translateX(calc(-1 * (var(--card-width) + var(--card-gap))));
+}
+.slidePrev {
+  transform: translateX(calc(var(--card-width) + var(--card-gap)));
+}
+
+.card {
+  position: relative;
+  border-radius: var(--size-8);
+  padding: var(--size-24);
+  box-shadow: 0 var(--size-10) var(--size-32) rgba(0, 0, 0, 0.04);
+  background-color: var(--primary-100);
+  box-sizing: border-box;
+
+  flex: 0 0 var(--card-width);
+  width: var(--card-width);
+}
+
+.quoteIcon {
+  position: absolute;
+  top: var(--size-12);
+  left: var(--size-12);
+  width: var(--size-24);
+  height: var(--size-24);
+  z-index: 2;
+}
+
+.cardContent {
+  display: grid;
+  grid-template-columns: auto 1px 1fr;
+  column-gap: var(--size-16);
+  align-items: start;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--align-center);
+  gap: var(--size-8);
+  min-width: var(--size-80);
+}
+
+.avatarWrapper {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.avatar {
+  object-fit: cover;
+}
+
+.person {
+  text-align: center;
+}
+
+.name {
+  font-family: var(--font-body);
+  font-size: var(--body-regular-14-size);
+  font-weight: var(--body-semibold-16-weight);
+  color: var(--grey-1000);
+  margin: 0;
+}
+
+.location {
+  font-size: var(--body-regular-10-size);
+  color: var(--grey-600);
+  margin: 0;
+}
+
+.divider {
+  width: 1px;
+  height: 100%;
+  border-left: 1px dashed var(--grey-300);
+}
+
+.text {
+  font-size: var(--body-regular-12-size);
+  color: var(--grey-800);
+  line-height: 1.5;
+  margin: 0;
+  text-align: var(--align-left);
+}
+
+.arrowButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--size-32);
+  height: var(--size-32);
+  border-radius: 50%;
+  border: 1px solid var(--grey-300);
+  background-color: var(--grey-50);
+  display: flex;
+  align-items: var(--align-center);
+  justify-content: var(--align-center);
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* prev er venstre pil, next er højre pil, og det er placeringen af dem */
+.prev {
+  left: var(--button-offset);
+}
+.next {
+  right: var(--button-offset);
+}
+
+@media (min-width: 768px) {
+  .testimonials {
+    --card-width: 650px;
+    --button-offset: calc(50% - (var(--card-width) / 2) - var(--size-60));
+  }
+
+  .card {
+    transition: opacity 0.3s;
+    opacity: 0.5;
+  }
+
+  .card:nth-child(2) {
+    opacity: 1;
+  }
+
+  .arrowButton {
+    width: var(--size-40);
+    height: var(--size-40);
+  }
+
+  .heading {
+    font-size: var(--h2-light-60-size);
+    font-weight: var(--h2-light-60-weight);
+  }
+
+  .name {
+    font-size: var(--body-regular-20-size);
+    font-weight: var(--body-semibold-16-weight);
+  }
+
+  .location {
+    font-size: var(--body-regular-18-size);
+  }
+
+  .text {
+    font-size: var(--body-regular-20-size);
+  }
+
+  .avatarWrapper {
+    width: 98px;
+    height: 98px;
+  }
+
+  .quoteIcon {
+    width: var(--size-36);
+    height: var(--size-36);
+  }
+
+  .card {
+    padding: var(--size-32) var(--size-32) var(--size-32) var(--size-24);
+  }
+}
