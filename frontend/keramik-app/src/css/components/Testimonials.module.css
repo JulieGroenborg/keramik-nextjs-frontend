@@ -1,13 +1,16 @@
+/* --- Variables --- */
 .testimonials {
   background-color: var(--tertiary-100);
+
+  --card-width: 90vw; /* viewporten er 90viewport på mobil, så det skalere flot på tablet */
+  --card-gap: var(--size-32);
+  --button-offset: var(--size-8);
 }
 
-/* like hero .inner */
 .inner {
-  padding: var(--size-50) var(--size-35);
-  text-align: center;
-  max-width: 60rem;
-  margin: 0 auto;
+  padding: var(--size-50) 0;
+  text-align: var(--align-center);
+  width: 100%;
 }
 
 .heading {
@@ -19,26 +22,51 @@
 
 .cardWrapper {
   margin-top: var(--size-32);
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* Så cards bliver cuttet af i siden af skærmen */
+  display: flex;
+  justify-content: var(--align-center);
 }
 
-/* the card itself */
+.track {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--card-gap);
+  justify-content: var(--align-center);
+  transition: transform 0.3s ease-in-out;
+}
+
+.slideNext {
+  transform: translateX(calc(-1 * (var(--card-width) + var(--card-gap))));
+}
+.slidePrev {
+  transform: translateX(calc(var(--card-width) + var(--card-gap)));
+}
+
 .card {
   position: relative;
-  border-radius: 1.5rem;
+  border-radius: var(--size-8);
   padding: var(--size-24);
-  text-align: left;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 var(--size-10) var(--size-32) rgba(0, 0, 0, 0.04);
+  background-color: var(--primary-100);
+  box-sizing: border-box;
+
+  flex: 0 0 var(--card-width);
+  width: var(--card-width);
 }
 
-/* quotation icon in top-left */
+/* --- Card content (unchanged) --- */
+
 .quoteIcon {
-  font-size: var(--body-medium-32-size);
-  line-height: 1;
-  display: inline-block;
-  margin-bottom: var(--size-16);
+  position: absolute;
+  top: var(--size-12);
+  left: var(--size-12);
+  width: var(--size-24);
+  height: var(--size-24);
+  z-index: 2;
 }
 
-/* layout inside the card */
 .cardContent {
   display: grid;
   grid-template-columns: auto 1px 1fr;
@@ -46,24 +74,23 @@
   align-items: start;
 }
 
-/* left: avatar + name */
 .left {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: var(--align-center);
   gap: var(--size-8);
+  min-width: 80px;
 }
 
 .avatarWrapper {
-  width: 4rem;
-  height: 4rem;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
   overflow: hidden;
+  position: relative;
 }
 
 .avatar {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
@@ -73,79 +100,74 @@
 
 .name {
   font-family: var(--font-body);
-  font-size: var(--body-semibold-16-size);
+  font-size: var(--body-regular-14-size);
   font-weight: var(--body-semibold-16-weight);
   color: var(--grey-1000);
+  margin: 0;
 }
 
 .location {
-  font-size: var(--body-regular-12-size);
-  font-weight: var(--body-regular-12-weight);
+  font-size: var(--body-regular-10-size);
   color: var(--grey-600);
+  margin: 0;
 }
 
-/* dotted divider */
 .divider {
   width: 1px;
   height: 100%;
   border-left: 1px dashed var(--grey-300);
 }
 
-/* testimonial text */
 .text {
-  font-size: var(--body-regular-14-size);
-  font-weight: var(--body-regular-14-weight);
+  font-size: var(--body-regular-12-size);
   color: var(--grey-800);
   line-height: 1.5;
+  margin: 0;
+  text-align: var(--align-left);
 }
 
-/* nav buttons over card sides (mobile) */
+/* navButton er pilene */
 .navButton {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 999px;
+  width: var(--size-32);
+  height: var(--size-32);
+  border-radius: 50%;
   border: 1px solid var(--grey-300);
   background-color: var(--grey-50);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: var(--align-center);
+  justify-content: var(--align-center);
   cursor: pointer;
-  font-size: var(--body-regular-14-size);
+  z-index: 10;
 }
 
+/* prev er venstre pil, next er højre pil, og det er placeringen af dem */
 .prev {
-  left: -1.25rem;
+  left: var(--button-offset);
 }
-
 .next {
-  right: -1.25rem;
+  right: var(--button-offset);
 }
-
-/* ---------- Desktop tweaks ---------- */
 
 @media (min-width: 768px) {
-  .inner {
-    padding: var(--desktop-container-padding);
-  }
-
-  .heading {
-    font-size: var(--h2-light-60-size);
-    font-weight: var(--h2-light-60-weight);
-  }
-
-  .cardWrapper {
-    margin-top: var(--size-50);
+  .testimonials {
+    --card-width: 650px;
+    --button-offset: calc(50% - (var(--card-width) / 2) - var(--size-60));
   }
 
   .card {
-    max-width: 48rem;
-    margin: 0 auto;
+    transition: opacity 0.3s;
+    opacity: 0.5;
   }
 
-  .text {
-    font-size: var(--body-regular-16-size);
+  .card:nth-child(2) {
+    opacity: 1;
+  }
+
+  .navButton {
+    width: var(--size-40);
+    height: var(--size-40);
   }
 }

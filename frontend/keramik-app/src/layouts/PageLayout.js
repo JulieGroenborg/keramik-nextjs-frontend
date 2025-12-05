@@ -1,5 +1,6 @@
 import HeroSektion from '@/components/HeroSektion';
-import TestimonialsSection from '@/components/testimonials';
+import OmMig from '@/components/OmMig';
+import TestimonialsSection from '@/components/Testimonials';
 
 export default function PageLayout({ page }) {
   if (!page) {
@@ -34,16 +35,15 @@ function renderBlocks(blocks) {
             <p>Nyhedsbrev komponent placeholder</p>
           </div>
         );
+      case 'valueSection':
+        return <OmMig key={block.id} content={block.properties} />;
       case 'testimonialSection':
         return (
-          console.log(blocks),
-          (
-            <TestimonialsSection
-              key={block.id}
-              title={block.properties.title}
-              testimonials={block.properties.list.items}
-            />
-          )
+          <TestimonialsSection
+            key={block.id}
+            title={block.properties.title}
+            testimonials={block.properties.list.items}
+          />
         );
       default:
         return null;

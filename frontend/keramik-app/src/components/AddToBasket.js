@@ -1,5 +1,5 @@
 // import '../css/components/HeroSektion.css';
-import '../css/stylesheet.css';
+import '../../src/app/globals.css';
 
 export default function AddToBasket() {
   return (
