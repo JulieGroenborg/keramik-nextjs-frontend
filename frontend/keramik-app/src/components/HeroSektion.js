@@ -12,7 +12,9 @@ export default function HeroSektion({ page }) {
       <div className={styles.inner}>
         {title && <h1>{title}</h1>}
         {subtitle && <p className={styles.p}>{subtitle}</p>}
-        <Button href="/shop">{buttonText}</Button>
+        <div className={styles.button}>
+          <Button href="/shop">{buttonText}</Button>
+        </div>
       </div>
 
       <Image
