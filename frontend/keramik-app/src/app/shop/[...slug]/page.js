@@ -20,7 +20,7 @@ export default async function ProductPage({ params }) {
 
   return (
     <main>
-      <h1>{product.name}</h1>
+      <h2>{product.name}</h2>
       <p>{product.properties.description}</p>
       <p>Pris: {product.properties.price} kr</p>
       <Image
