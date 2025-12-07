@@ -55,7 +55,7 @@
 
 @media (min-width: 768px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* laver 3 kolonner med lige stor bredde */
     gap: var(--size-32);
   }
 

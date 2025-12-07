@@ -20,7 +20,7 @@ export default function PageLayout({ page }) {
   return (
     <div>
       {isFrontpage ? <HeroSektion page={page} /> : <h1>{pageTitle}</h1>}
-      {renderBlocks(blocks, { isFrontpage })} {/* <- vigtig ændring */}
+      {renderBlocks(blocks, { isFrontpage })}
     </div>
   );
 }
