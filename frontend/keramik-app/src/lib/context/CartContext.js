@@ -28,26 +28,3 @@ export function CartProvider({ children }) {
 
   return <CartContext.Provider value={{ cart, setCart }}>{children}</CartContext.Provider>;
 }
-
-// 'use client';
-// import { createContext, useState, useEffect } from 'react';
-
-// export const CartContext = createContext();
-
-// export function CartProvider({ children }) {
-//   // Lazy initialization reads from localStorage only once on first client render
-//   const [cart, setCart] = useState(() => {
-//     if (typeof window !== 'undefined') {
-//       const stored = localStorage.getItem('cart');
-//       return stored ? JSON.parse(stored) : { items: [] };
-//     }
-//     return { items: [] }; // fallback for SSR
-//   });
-
-//   // Sync cart to localStorage whenever it changes
-//   useEffect(() => {
-//     localStorage.setItem('cart', JSON.stringify(cart));
-//   }, [cart]);
-
-//   return <CartContext.Provider value={{ cart, setCart }}>{children}</CartContext.Provider>;
-// }
