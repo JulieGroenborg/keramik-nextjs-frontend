@@ -33,8 +33,8 @@ function renderBlocks(blocks) {
     switch (block?.contentType) {
       case 'newsletter':
         return <Newsletter key={block.id} content={block.properties} />;
-      case 'valueSection':
-        return <OmMig key={block.id} content={block.properties} />;
+      // case 'valueSection':
+      //   return <OmMig key={block.id} content={block.properties} />;
       case 'imageTextCTA':
         return <ImageTextCTA key={block.id} content={block.properties} />;
 
