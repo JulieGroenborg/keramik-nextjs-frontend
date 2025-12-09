@@ -50,6 +50,7 @@
   .sectionTitle {
     font-weight: var(--weight-light);
     font-size: var(--h2-light-60-size);
+    margin-bottom: var(--size-50);
   }
 
   .valuesWrapper {
