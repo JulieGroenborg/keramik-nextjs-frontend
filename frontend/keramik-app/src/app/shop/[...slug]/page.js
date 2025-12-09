@@ -1,19 +1,25 @@
-import AddToBasket from '@/components/AddToBasket';
-import { getProductBySlug } from '@/lib/umbraco/api-helpers/getProductBySlug';
+import { CartProvider } from '@/lib/context/CartContext'; // Wraps components that needs access to the global cart state.
+import { getProductBySlug } from '@/lib/shop/api-helpers/getProductBySlug';
 import Image from 'next/image';
+import { redirect } from 'next/navigation';
+import ProductActions from '@/components/ProductActions'; //component containing the quantity selector/dropdown and AddToBasket
 
-// The dynamic product page, next injects the URL segments into the params object.
 export default async function ProductPage({ params }) {
-  const { slug } = await params; // Extract URL segments
-  const productSlug = slug.at(-1); // Tager den sidste del af URL arrayets segment, hvilket er produktets slug, eksempelvis "datter-koppen".
+  const { slug } = await params; // Extracts the slug array from params. Slug will be something like ['kopper', 'datter-koppen']
 
-  const product = await getProductBySlug(productSlug); //fetch the product data from API using slug.
+  // Håndterer hvis en bruger besøger kategory:
+  if (slug.length === 1) {
+    redirect('/shop');
+  }
+
+  const productSlug = slug.at(-1); // Tager den sidste del af URL'en, altså produktet.
+
+  const product = await getProductBySlug(productSlug); // Fetches produktet fra vores API by slug.
 
   if (!product) return <div>Produkt ikke fundet</div>;
 
   return (
     <main>
-      <h1>Produktet</h1>
       <h2>{product.name}</h2>
       <p>{product.properties.description}</p>
       <p>Pris: {product.properties.price} kr</p>
@@ -23,14 +29,9 @@ export default async function ProductPage({ params }) {
         width={500}
         height={300}
       />
-      <p>
-        Tags: {product.properties.material.toLowerCase()},{' '}
-        {product.properties.finishing.toLowerCase()}, {product.properties.color.toLowerCase()},{' '}
-        {product.properties.size.toLowerCase()}
-      </p>
-
-      <p>{product.properties.stockQuantity} på lager</p>
-      <AddToBasket />
+      <CartProvider>
+        <ProductActions product={product} />
+      </CartProvider>
     </main>
   );
 }
