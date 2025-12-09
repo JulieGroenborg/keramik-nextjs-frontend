@@ -26,8 +26,8 @@ function parseStatsFromMarkup(markup) {
       icon: {
         src: getAttr('src'),
         alt: getAttr('alt'),
-        width: Number(getAttr('width')) || 56,
-        height: Number(getAttr('height')) || 40,
+        width: 56,
+        height: 40,
       },
     });
   }
