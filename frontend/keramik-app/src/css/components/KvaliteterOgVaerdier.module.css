@@ -1,0 +1,80 @@
+.section {
+  background-color: var(--ekstra-100);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: var(--size-20);
+  color: var(--grey-1000);
+  font-family: var(--font-heading);
+  font-size: var(--h1-light-size);
+  font-weight: var(--h1-light-weight);
+}
+
+/* GRID WRAPPER */
+.grid {
+  display: grid;
+  gap: var(--size-12);
+}
+
+/* CARD */
+.card {
+  background-color: var(--grey-50);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid;
+  border-color: var(--grey-200);
+}
+
+.iconWrapper {
+  margin: var(--size-24) 0 0 var(--size-12);
+}
+
+.icon {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-size: var(--body-bold-22-size);
+  font-weight: var(--body-bold-22-weight);
+  font-family: var(--font-body);
+  margin-bottom: var(--size-12);
+}
+
+.description {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr); /* laver 3 kolonner med lige stor bredde */
+    gap: var(--size-32);
+  }
+
+  .title {
+    margin-bottom: var(--size-60);
+  }
+
+  .cardTitle {
+    text-align: left;
+    padding-left: var(--size-24);
+  }
+
+  .description {
+    display: block;
+    padding: 0 var(--size-28) var(--size-24) var(--size-28);
+    color: var(--grey-500);
+    text-align: left;
+    font-size: var(--body-regular-16-size);
+    font-weight: var(--body-regular-16-weight);
+    font-family: var(--font-body);
+  }
+}
