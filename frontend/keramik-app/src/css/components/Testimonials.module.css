@@ -51,7 +51,7 @@
   box-shadow: 0 var(--size-10) var(--size-32) rgba(0, 0, 0, 0.04);
   background-color: var(--primary-100);
   box-sizing: border-box;
-
+  height: 280px;
   flex: 0 0 var(--card-width);
   width: var(--card-width);
 }
@@ -198,5 +198,9 @@
 
   .card {
     padding: var(--size-32) var(--size-32) var(--size-32) var(--size-24);
+  }
+
+  .inner {
+    padding: var(--size-70) 0 var(--size-60) 0;
   }
 }
