@@ -26,5 +26,44 @@ export function CartProvider({ children }) {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  return <CartContext.Provider value={{ cart, setCart }}>{children}</CartContext.Provider>;
+  // Øger quantity
+  function increaseQuantity(productId) {
+    setCart((prev) => ({
+      items: prev.items.map((item) =>
+        item.productId === productId ? { ...item, quantity: item.quantity + 1 } : item
+      ),
+    }));
+  }
+
+  // Reducerer quantity
+  function decreaseQuantity(productId) {
+    setCart((prev) => ({
+      items: prev.items
+        .map((item) =>
+          item.productId === productId ? { ...item, quantity: item.quantity - 1 } : item
+        )
+        .filter((item) => item.quantity > 0), // remove if 0
+    }));
+  }
+
+  // Fjern item helt
+  function removeItem(productId) {
+    setCart((prev) => ({
+      items: prev.items.filter((item) => item.productId !== productId),
+    }));
+  }
+
+  return (
+    <CartContext.Provider
+      value={{
+        cart,
+        setCart,
+        increaseQuantity,
+        decreaseQuantity,
+        removeItem,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 }
