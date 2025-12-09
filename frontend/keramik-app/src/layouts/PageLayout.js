@@ -47,7 +47,6 @@ function renderBlocks(blocks, { isFrontpage } = {}) {
         // Om-mig-side version af valueSection
         return <KvaliteterOgVaerdier key={block.id} content={block.properties} />;
 
-        return <OmMig key={block.id} content={block.properties} />;
       case 'imageTextCTA':
         return <ImageTextCTA key={block.id} content={block.properties} />;
 
