@@ -34,6 +34,7 @@ export default function CartDisplayClient() {
         </div>
       ))}
       <p>I alt skal betales: {totalPrice} DKK</p>
+      <button>Checkout</button>
     </div>
   );
 }
