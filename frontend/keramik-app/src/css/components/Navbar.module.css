@@ -142,6 +142,9 @@
   .logo {
     width: 93px;
     height: 87px;
+  }
+
+  .leftSection {
     margin-left: var(--size-120);
   }
 
