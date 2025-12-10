@@ -94,6 +94,9 @@
   --body-regular-18-size: var(--size-18);
   --body-regular-18-weight: var(--weight-regular);
 
+  --body-bold-18-size: var(--size-18);
+  --body-bold-18-weight: var(--weight-bold);
+
   --body-regular-16-size: var(--size-16);
   --body-regular-16-weight: var(--weight-regular);
 
