@@ -61,8 +61,6 @@ function renderBlocks(blocks, { isFrontpage } = {}) {
         );
 
       case 'contactSection':
-        // Note: We pass 'block' to 'data' because the component expects { data }
-        // and uses data.properties inside.
         return <Contact key={block.id} data={block} />;
       default:
         return null;
