@@ -55,7 +55,7 @@
 
 @media (min-width: 768px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr); /* laver 3 kolonner med lige stor bredde */
+    grid-template-columns: repeat(2, 1fr); /* laver 3 kolonner med lige stor bredde */
     gap: var(--size-32);
   }
 
@@ -76,5 +76,11 @@
     font-size: var(--body-regular-16-size);
     font-weight: var(--body-regular-16-weight);
     font-family: var(--font-body);
+  }
+
+  @media (min-width: 868px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr); /* laver 4 kolonner med lige stor bredde */
+    }
   }
 }
