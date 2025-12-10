@@ -68,7 +68,7 @@
   transform: scaleX(0);
 }
 
-/* Nederste STREG: */
+/* Nederste streg: Roter, flyt og gør stregen kortere */
 .hamburger.active .bar:nth-child(3) {
   position: absolute;
   top: 50%;
@@ -76,7 +76,6 @@
   transform: rotate(-45deg) scaleX(0.75);
 }
 
-/* --- LINKS LISTE (Mobil Dropdown) --- */
 .navLinks {
   position: absolute;
   top: var(--size-80);
