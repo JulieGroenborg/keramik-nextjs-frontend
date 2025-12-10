@@ -3,7 +3,6 @@ import OmMig from '@/components/OmMig';
 import ImageTextCTA from '@/components/ImageTextCTA';
 import TestimonialsSection from '@/components/Testimonials';
 import Newsletter from '@/components/Newsletter';
-import Footer from '@/components/Footer';
 
 export default function PageLayout({ page }) {
   if (!page) {
@@ -47,9 +46,6 @@ function renderBlocks(blocks) {
             testimonials={block.properties.list.items}
           />
         );
-
-      case 'footer':
-        return <Footer key={block.id} content={block.properties} />;
 
       default:
         return null;

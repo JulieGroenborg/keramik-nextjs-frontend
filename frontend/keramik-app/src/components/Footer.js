@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../css/components/Footer.module.css';
 
@@ -35,9 +36,9 @@ export default function Footer() {
           <h3 className={styles.heading}>Kundeservice</h3>
           <nav className={styles.linkColumn}>
             {serviceLinks.map((link) => (
-              <a key={link.title} href={link.url} className={styles.link}>
+              <Link key={link.title} href={link.url} className={styles.link}>
                 {link.title}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>
@@ -46,9 +47,9 @@ export default function Footer() {
           <h3 className={styles.heading}>Om Mig</h3>
           <nav className={styles.linkColumn}>
             {aboutMeLinks.map((link) => (
-              <a key={link.title} href={link.url} className={styles.link}>
+              <Link key={link.title} href={link.url} className={styles.link}>
                 {link.title}
-              </a>
+              </Link>
             ))}
           </nav>
 
