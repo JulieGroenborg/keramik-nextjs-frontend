@@ -82,6 +82,7 @@
   flex-direction: column;
   align-items: center;
   list-style: none;
+  z-index: 10;
 }
 
 /* Vis menuen når åben */
