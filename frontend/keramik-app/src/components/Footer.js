@@ -18,7 +18,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.brandColumn}>
-          <Image src="/hvidt_logo.png" alt="Logo" width={80} height={50} className={styles.logo} />
+          <Image src="/hvidt_logo.webp" alt="Logo" width={80} height={50} className={styles.logo} />
           <p className={styles.brandParagraph}>
             Baseret på Earthware Figma-designet, brugt under CC BY 4.0-licensen.
           </p>
@@ -27,7 +27,7 @@ export default function Footer() {
           <h3 className={styles.socialHeading}>Følg mig</h3>
           <div className={styles.socialIcons}>
             <a href="#" className={styles.iconCircle} aria-label="Instagram">
-              <Image src="/instagram.png" alt="Instagram" width={18} height={18} />
+              <Image src="/instagram.webp" alt="Instagram" width={18} height={18} />
             </a>
           </div>
         </div>
