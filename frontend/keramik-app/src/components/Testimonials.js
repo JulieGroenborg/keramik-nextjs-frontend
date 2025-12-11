@@ -133,7 +133,7 @@ export default function TestimonialsSection({ title, testimonials }) {
           <button
             type="button"
             className={`${styles.arrowButton} ${styles.prev}`}
-            onClick={handlePrev}
+            onClick={handleNext}
           >
             <Image src="/Arrow-left.svg" alt="Previous" width={10} height={10} />
           </button>
@@ -142,7 +142,7 @@ export default function TestimonialsSection({ title, testimonials }) {
           <button
             type="button"
             className={`${styles.arrowButton} ${styles.next}`}
-            onClick={handleNext}
+            onClick={handlePrev}
           >
             <Image src="/Arrow-right.svg" alt="Next" width={10} height={10} />
           </button>

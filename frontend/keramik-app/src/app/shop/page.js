@@ -8,7 +8,7 @@ export default async function ShopPage() {
     <>
       <h1>Shop</h1>
       {/* Products grid */}
-      <ShopClient products={products} /> /
+      <ShopClient products={products} />
     </>
   );
 }

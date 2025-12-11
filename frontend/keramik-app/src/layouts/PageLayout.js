@@ -3,11 +3,13 @@ import OmMig from '@/components/OmMig';
 import ImageTextCTA from '@/components/ImageTextCTA';
 import TestimonialsSection from '@/components/Testimonials';
 import Newsletter from '@/components/Newsletter';
+import KvaliteterOgVaerdier from '@/components/KvaliteterOgVaerdier';
 
 export default function PageLayout({ page }) {
   if (!page) {
     return <div>siden kunne ikke findes</div>;
   }
+
   const { contentType, properties, route } = page;
 
   const isFrontpage = contentType === 'frontpage' || route?.path === '/';
@@ -20,21 +22,31 @@ export default function PageLayout({ page }) {
   return (
     <div>
       {isFrontpage ? <HeroSektion page={page} /> : <h1>{pageTitle}</h1>}
-      {renderBlocks(blocks)}
+      {renderBlocks(blocks, { isFrontpage })}
     </div>
   );
 }
 
 // her skal vi tilføje flere switch cases når vi får lavet komponenterne, som skal vises.
-function renderBlocks(blocks) {
+function renderBlocks(blocks, { isFrontpage } = {}) {
   if (!blocks || blocks.length === 0) return null;
+
   return blocks.map((item) => {
     const block = item.content;
-    switch (block?.contentType) {
+    if (!block) return null;
+
+    switch (block.contentType) {
       case 'newsletter':
         return <Newsletter key={block.id} content={block.properties} />;
+
       case 'valueSection':
-        return <OmMig key={block.id} content={block.properties} />;
+        if (isFrontpage) {
+          // Frontpage version af valueSection
+          return <OmMig key={block.id} content={block.properties} />;
+        }
+        // Om-mig-side version af valueSection
+        return <KvaliteterOgVaerdier key={block.id} content={block.properties} />;
+
       case 'imageTextCTA':
         return <ImageTextCTA key={block.id} content={block.properties} />;
 

@@ -2,7 +2,7 @@ import { CartProvider } from '@/lib/context/CartContext'; // Wraps components th
 import { getProductBySlug } from '@/lib/shop/api-helpers/getProductBySlug';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
-import ProductActions from '@/components/ProductActions'; //component containing the quantitiy selector/dropdown and AddToBasket
+import ProductActions from '@/components/ProductActions'; //component containing the quantity selector/dropdown and AddToBasket
 
 export default async function ProductPage({ params }) {
   const { slug } = await params; // Extracts the slug array from params. Slug will be something like ['kopper', 'datter-koppen']
