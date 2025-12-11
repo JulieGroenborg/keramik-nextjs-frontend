@@ -4,6 +4,7 @@ import ImageTextCTA from '@/components/ImageTextCTA';
 import TestimonialsSection from '@/components/Testimonials';
 import Newsletter from '@/components/Newsletter';
 import KvaliteterOgVaerdier from '@/components/KvaliteterOgVaerdier';
+import Contact from '@/components/Contact';
 
 export default function PageLayout({ page }) {
   if (!page) {
@@ -58,6 +59,9 @@ function renderBlocks(blocks, { isFrontpage } = {}) {
             testimonials={block.properties.list.items}
           />
         );
+
+      case 'contactSection':
+        return <Contact key={block.id} data={block} />;
 
       default:
         return null;
