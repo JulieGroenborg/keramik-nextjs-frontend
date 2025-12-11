@@ -58,6 +58,7 @@ function renderBlocks(blocks, { isFrontpage } = {}) {
             testimonials={block.properties.list.items}
           />
         );
+
       default:
         return null;
     }
