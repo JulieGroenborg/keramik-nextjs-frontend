@@ -62,7 +62,7 @@ function renderBlocks(blocks, { isFrontpage } = {}) {
 
       case 'contactSection':
         return <Contact key={block.id} data={block} />;
-        
+
       default:
         return null;
     }
