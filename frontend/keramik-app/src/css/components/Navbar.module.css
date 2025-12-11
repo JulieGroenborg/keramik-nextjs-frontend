@@ -21,10 +21,6 @@
   gap: var(--size-18);
 }
 
-.navbar.open .rightSection {
-  margin-top: auto; /* Sørger for at rightSection skubbes til bunden af navbaren når menuen er åben */
-}
-
 /*Cart ikonet*/
 .icon {
   text-decoration: none; /*Ikonet står inde i et Link*/
@@ -86,6 +82,7 @@
   flex-direction: column;
   align-items: center;
   list-style: none;
+  z-index: 10;
 }
 
 /* Vis menuen når åben */
@@ -142,6 +139,9 @@
   .logo {
     width: 93px;
     height: 87px;
+  }
+
+  .leftSection {
     margin-left: var(--size-120);
   }
 
@@ -179,10 +179,6 @@
 
   .active {
     color: var(--grey-1000);
-  }
-
-  .navbar.open .rightSection {
-    margin-top: 0; /* sørger for at kurven står i midten når man går til en bredere skræm med dropdown åben fra mobil view */
   }
 
   .icon {

@@ -17,9 +17,11 @@ export default function Navbar() {
   return (
     <nav className={`${styles.navbar} ${isMenuOpen ? styles.open : ''}`}>
       {/* Venstre: Logo */}
-      <Link href="/forside">
-        <Image src="/sort_logo.webp" alt="Logo" width={93} height={87} className={styles.logo} />
-      </Link>
+      <div className={styles.leftSection}>
+        <Link href="/forside">
+          <Image src="/sort_logo.webp" alt="Logo" width={93} height={87} className={styles.logo} />
+        </Link>
+      </div>
 
       {/* Center: Links (dropdown på mobilversion) */}
       <ul className={`${styles.navLinks} ${isMenuOpen ? styles.open : ''}`}>
