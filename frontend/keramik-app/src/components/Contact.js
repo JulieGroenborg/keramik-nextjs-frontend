@@ -37,13 +37,13 @@ export default function ContactSection({ data }) {
           {/* Skal være a tags til mail og telefon */}
           <a href={`mailto:${email}`} className={styles.contactLink}>
             <div className={styles.iconWrapper}>
-              <Image src="/Email.png" alt="Email" width={20} height={30} />
+              <Image src="/Email.webp" alt="Email" width={20} height={30} />
             </div>
             {email}
           </a>
           <a href={`tel:${phone}`} className={styles.contactLink}>
             <div className={styles.iconWrapper}>
-              <Image src="/Phone.png" alt="Phone" width={20} height={30} />
+              <Image src="/Phone.webp" alt="Phone" width={20} height={30} />
             </div>
             {`+45 ${phone}`}
           </a>
