@@ -1,0 +1,86 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--size-8);
+  font-family: var(--font-body);
+  border-radius: var(--size-4);
+  margin: auto auto; /* Centrerer kortet horisontalt inde i hvert fragment*/
+}
+
+.link {
+  text-decoration: none;
+}
+
+.imageContainer {
+  align-items: center;
+  width: 100%;
+  max-height: 350px;
+  padding: var(--size-24) 0 var(--size-24) 0;
+}
+
+.productImage {
+  object-fit: contain;
+  align-content: center;
+}
+
+.title {
+  margin-top: var(--size-10);
+  text-align: center;
+  font-weight: var(--body-bold-20-weight);
+  font-size: var(--body-bold-20-size);
+  color: var(--grey-1000);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.price {
+  text-align: center;
+  font-weight: var(--body-medium-20-weight);
+  font-size: var(--body-medium-20-size);
+  color: var(--grey-500);
+}
+.actions {
+  text-align: center;
+}
+
+.divider {
+  margin: var(--size-24) var(--size-60) 0 var(--size-60);
+}
+
+@media (min-width: 768px) {
+  .card {
+    max-width: 274px;
+  }
+
+  .imageContainer {
+    padding: 0;
+    height: 346px;
+  }
+
+  .productImage {
+    padding: var(--size-50) var(--size-16) var(--size-50) var(--size-16);
+  }
+
+  .title {
+    text-align: left;
+  }
+
+  .price {
+    text-align: left;
+  }
+
+  .actions {
+    text-align: left;
+  }
+
+  .imageContainer {
+    border: 1px solid var(--grey-100);
+    border-radius: var(--size-4);
+    background-color: var(--grey-50);
+  }
+
+  .divider {
+    display: none;
+  }
+}

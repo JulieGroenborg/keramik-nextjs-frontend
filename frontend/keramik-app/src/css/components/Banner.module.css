@@ -1,0 +1,25 @@
+.banner {
+  background-image: url('/bannerBackgroundMobile.webp');
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  width: 100%;
+  display: grid;
+}
+
+.title {
+  place-self: center;
+  font-family: var(--font-heading);
+  font-size: var(--h1-light-size);
+  font-weight: var(--h1-light-weight);
+}
+
+@media (min-width: 768px) {
+  .banner {
+    background-image: url('/bannerBackgroundDesktop.webp');
+  }
+  .title {
+    font-size: var(--h1-thin-size);
+    font-weight: var(--h1-thin-weight);
+  }
+}

@@ -32,6 +32,7 @@
   --size-32: 2rem; /* 32px */
   --size-35: 2.1875rem; /* 35px */
   --size-36: 2.25rem; /* 36px */
+  --size-37½: 2.34375rem; /* 37.5px */
   --size-40: 2.5rem; /* 40px */
   --size-48: 3rem; /* 48px */
   --size-50: 3.125rem; /* 50px */
@@ -40,6 +41,7 @@
   --size-70: 4.375rem; /* 70px */
   --size-80: 5rem; /* 80px */
   --size-120: 7.5rem; /* 120px */
+  --size-140: 8.75rem; /* 140px */
   --size-320: 20rem; /* 320px */
 
   /* 2) Typografi */

@@ -1,0 +1,37 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: center;
+  gap: var(--size-16);
+}
+
+.buttonContainer {
+  margin-top: var(--size-24);
+}
+
+.loadMoreButton {
+  border: 1px solid var(--grey-200);
+  width: auto;
+  padding: var(--size-12) var(--size-24) var(--size-12) var(--size-24);
+  background: none;
+  cursor: pointer;
+  font-size: var(--btn-regular-16-size);
+  font-weight: var(--btn-regular-16-weight);
+  color: var(--grey-500);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--size-60) var(--size-32);
+  }
+  .buttonContainer {
+    margin-top: var(--size-60);
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
