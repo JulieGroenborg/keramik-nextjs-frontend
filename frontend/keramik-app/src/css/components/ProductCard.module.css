@@ -4,7 +4,7 @@
   width: 100%;
   gap: var(--size-8);
   font-family: var(--font-body);
-  border-radius: 0.25rem;
+  border-radius: var(--size-4);
   margin: auto auto; /* Centrerer kortet horisontalt inde i hvert fragment*/
 }
 
@@ -76,7 +76,7 @@
 
   .imageContainer {
     border: 1px solid var(--grey-100);
-    border-radius: 0.25rem;
+    border-radius: var(--size-4);
     background-color: var(--grey-50);
   }
 
