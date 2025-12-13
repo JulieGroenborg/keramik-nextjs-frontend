@@ -1,4 +1,3 @@
-'use client';
 import { CartProvider } from '@/lib/context/CartContext';
 import { CartDisplay } from '@/components/CartDisplayWrapper';
 
@@ -7,7 +6,7 @@ export default function CartPage() {
     <CartProvider>
       <main>
         <h1>Din kurv</h1>
-        <CartDisplay />
+        <CartDisplay mode={'checkout'} />
       </main>
     </CartProvider>
   );

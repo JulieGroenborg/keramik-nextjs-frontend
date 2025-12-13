@@ -71,7 +71,10 @@ export default function Navbar() {
       {/* Højre: Kurvens sektion */}
       <div className={styles.rightSection}>
         {/* Kurv ikon */}
-        <Link href="/kurv" className={styles.icon}>
+        <Link
+          href="HER SKAL IKKE LINKES TIL kurv, men  laves en anden løsning (se teams)"
+          className={styles.icon}
+        >
           🛒
         </Link>
 
