@@ -2,7 +2,7 @@
 export async function getShop() {
   // Fetch alle descendants under /shop.
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_UMBRACO_URL}/content?fetch=descendants:/shop`,
+    `${process.env.NEXT_PUBLIC_UMBRACO_URL}/content?fetch=descendants:/shop&take=200`,
     { cache: 'no-store' } //no-store betyder, at next IKKE vil cache dette request, men at al data altid er friskt.
   );
 
