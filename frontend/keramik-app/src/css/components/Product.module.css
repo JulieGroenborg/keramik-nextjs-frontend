@@ -192,4 +192,9 @@
     margin: var(--size-60) auto 0;
     width: 100%;
   }
+
+  .title {
+    font-size: var(--h2-light-60-size);
+    font-weight: var(--h2-light-60-weight);
+  }
 }
