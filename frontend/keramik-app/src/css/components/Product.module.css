@@ -43,7 +43,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: var(--size-4);
+  gap: var(--size-12);
   align-items: center;
 }
 
@@ -66,6 +66,7 @@
 .priceWrapper {
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: var(--size-8);
   margin-top: var(--size-8);
   margin-bottom: var(--size-16);
@@ -123,6 +124,10 @@
   display: none;
 }
 
+.bottomSection {
+  width: 100%;
+}
+
 @media (min-width: 768px) {
   .productSection {
     padding: var(--desktop-container-padding);
@@ -130,7 +135,7 @@
 
   .inner {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: stretch; /* changed from flex-start to stretch */
     justify-content: center;
     gap: var(--size-60);
   }
@@ -150,6 +155,13 @@
     text-align: left;
     align-items: flex-start;
     padding-top: var(--size-24);
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-20);
+  }
+
+  .bottomSection {
+    margin-top: auto; /* this now works because column has extra height */
   }
 
   .description {
@@ -160,7 +172,8 @@
   .priceWrapper {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--size-4);
+    gap: var(--size-16);
+    margin-bottom: var(--size-24);
   }
 
   .priceLabel {
@@ -178,5 +191,10 @@
     max-width: 1200px;
     margin: var(--size-60) auto 0;
     width: 100%;
+  }
+
+  .title {
+    font-size: var(--h2-light-60-size);
+    font-weight: var(--h2-light-60-weight);
   }
 }

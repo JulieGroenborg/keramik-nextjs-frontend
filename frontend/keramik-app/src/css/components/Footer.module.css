@@ -147,7 +147,7 @@
 
 @media (min-width: 1024px) {
   .inner {
-    margin: 0 var(--size-120) 0 var(--size-120);
+    margin: 0 var(--size-80) 0 var(--size-80);
   }
 }
 

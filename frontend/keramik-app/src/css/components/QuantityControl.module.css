@@ -1,0 +1,38 @@
+.stepper {
+  display: flex;
+  width: var(--size-120);
+  height: var(--size-40);
+  border: none;
+}
+
+.stepperBtn,
+.quantityDisplay {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid var(--primary-200);
+  border-left: none;
+  font-family: var(--font-body);
+}
+
+.stepperBtn:first-of-type {
+  border-left: 1px solid var(--primary-200);
+}
+
+.quantityDisplay {
+  font-weight: var(--weight-regular);
+  font-size: var(--body-regular-16-size);
+  color: var(--grey-1000);
+}
+
+.stepperBtn {
+  font-size: var(--body-regular-18-size);
+  cursor: pointer;
+}
+
+.stepperBtn:disabled {
+  color: var(--grey-300);
+  cursor: not-allowed;
+}
