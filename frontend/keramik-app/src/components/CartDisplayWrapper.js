@@ -3,5 +3,5 @@ import dynamic from 'next/dynamic';
 
 export const CartDisplay = dynamic(
   () => import('./CartDrawer'),
-  { ssr: false } // <<< important: no server-side rendering
+  { ssr: false } // important: no server-side rendering
 );

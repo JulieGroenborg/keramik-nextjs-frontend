@@ -71,13 +71,10 @@ export default function Navbar() {
       {/* Højre: Kurvens sektion */}
       <div className={styles.rightSection}>
         {/* Kurv ikon */}
-        <Link
-          href="HER SKAL IKKE LINKES TIL kurv, men  laves en anden løsning (se teams)"
-          className={styles.icon}
-        >
+        {/* HER SKAL IKKE LINKES TIL kurv, men laves en anden løsning (se teams), hvor cartdrawer vises/gemmes med useState*/}
+        <Link href="" className={styles.icon}>
           🛒
         </Link>
-
         {/* Hamburger knap */}
         <button
           className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`}
