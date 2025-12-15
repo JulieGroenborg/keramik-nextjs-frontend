@@ -22,16 +22,11 @@
 
 @media (min-width: 768px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    /*Minimum 276px bred, max 1fr*/
+    grid-template-columns: repeat(auto-fill, minmax(276px, 1fr));
     gap: var(--size-60) var(--size-32);
   }
   .buttonContainer {
     margin-top: var(--size-60);
-  }
-}
-
-@media (min-width: 1280px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
   }
 }
