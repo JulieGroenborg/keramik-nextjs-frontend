@@ -2,14 +2,14 @@ import ProductCard from './ProductCard';
 import styles from '../css/components/RelatedProducts.module.css';
 
 export default function RelatedProducts({ currentProduct, productsList }) {
-  // Sikkerhedstjek: Hvis data mangler, så vis ingenting
+  // Hvis data mangler, så vis ingenting
   if (!currentProduct || !productsList || productsList.length === 0) {
     return null;
   }
 
   const relatedProducts = getRelatedProducts(currentProduct, productsList, 4);
 
-  // Hvis logikken ikke fandt nogen match overhovedet, vis intet
+  // Hvis der ikke blev fundet nogen match overhovedet, vis intet
   if (relatedProducts.length === 0) {
     return null;
   }
