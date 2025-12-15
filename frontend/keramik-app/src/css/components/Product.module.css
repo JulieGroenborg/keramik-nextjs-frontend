@@ -66,6 +66,7 @@
 .priceWrapper {
   display: flex;
   align-items: baseline;
+  justify-content: center;
   gap: var(--size-8);
   margin-top: var(--size-8);
   margin-bottom: var(--size-16);
