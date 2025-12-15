@@ -16,7 +16,6 @@
   align-items: center;
   width: 100%;
   max-height: 350px;
-  padding: var(--size-24) 0 var(--size-24) 0;
 }
 
 .productImage {
@@ -56,10 +55,6 @@
   .imageContainer {
     padding: 0;
     height: 346px;
-  }
-
-  .productImage {
-    padding: var(--size-50) var(--size-16) var(--size-50) var(--size-16);
   }
 
   .title {

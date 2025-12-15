@@ -5,10 +5,12 @@ import Link from 'next/link';
 import styles from '../css/components/Navbar.module.css';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import CartDrawer from './CartDrawer';
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -71,10 +73,13 @@ export default function Navbar() {
       {/* Højre: Kurvens sektion */}
       <div className={styles.rightSection}>
         {/* Kurv ikon */}
-        {/* HER SKAL IKKE LINKES TIL kurv, men laves en anden løsning (se teams), hvor cartdrawer vises/gemmes med useState*/}
-        <Link href="" className={styles.icon}>
-          🛒
-        </Link>
+        <div className={styles.cart}>
+          <button className={styles.icon} onClick={() => setIsOpen(!isOpen)}>
+            🛒
+          </button>
+          {isOpen && <CartDrawer onClose={() => setIsOpen(false)} />}
+        </div>
+
         {/* Hamburger knap */}
         <button
           className={`${styles.hamburger} ${isMenuOpen ? styles.active : ''}`}
