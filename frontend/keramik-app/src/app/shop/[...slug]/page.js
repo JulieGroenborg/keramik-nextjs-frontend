@@ -1,6 +1,7 @@
 import { getProductBySlug } from '@/lib/shop/api-helpers/getProductBySlug';
 import { redirect } from 'next/navigation';
 import Product from '@/components/Product';
+import Banner from '@/components/Banner';
 
 export default async function ProductPage({ params }) {
   const { slug } = await params; // Extracts the slug array from params. Slug will be something like ['kopper', 'datter-koppen']
@@ -16,5 +17,10 @@ export default async function ProductPage({ params }) {
 
   if (!product) return <div>Produkt ikke fundet</div>;
 
-  return <Product product={product} />;
+  return (
+    <>
+      <Banner title="Produktet" />
+      <Product product={product} />
+    </>
+  );
 }
