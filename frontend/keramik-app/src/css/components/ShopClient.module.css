@@ -1,7 +1,6 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  align-content: center;
   gap: var(--size-16);
 }
 
@@ -23,8 +22,9 @@
 @media (min-width: 768px) {
   .grid {
     /*Minimum 276px bred, max 1fr*/
-    grid-template-columns: repeat(auto-fill, minmax(276px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(276px, 276px));
     gap: var(--size-60) var(--size-32);
+    justify-content: center;
   }
   .buttonContainer {
     margin-top: var(--size-60);
