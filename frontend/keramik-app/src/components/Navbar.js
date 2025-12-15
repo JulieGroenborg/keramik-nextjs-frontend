@@ -40,6 +40,16 @@ export default function Navbar() {
         </li>
         <li>
           <Link
+            href="/shop"
+            className={pathname === '/shop' ? styles.active : styles.link}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <hr className={styles.divider} />
+            Shop
+          </Link>
+        </li>
+        <li>
+          <Link
             href="/om-mig"
             className={pathname === '/om-mig' ? styles.active : styles.link}
             onClick={() => setIsMenuOpen(false)}
@@ -56,16 +66,6 @@ export default function Navbar() {
           >
             <hr className={styles.divider} />
             Kontakt
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/shop"
-            className={pathname === '/shop' ? styles.active : styles.link}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <hr className={styles.divider} />
-            Shop
           </Link>
         </li>
       </ul>
