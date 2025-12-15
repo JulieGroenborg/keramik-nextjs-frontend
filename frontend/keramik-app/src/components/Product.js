@@ -41,14 +41,16 @@ export default function ProductContent({ product }) {
             Potter, Blank, Grøn, Mønster
           </p>
 
-          <div className={styles.priceWrapper}>
-            <span className={styles.priceLabel}>Pris </span>
-            <span className={styles.priceValue}>{product.properties.price} DKK</span>
-          </div>
+          <div className={styles.bottomSection}>
+            <div className={styles.priceWrapper}>
+              <span className={styles.priceLabel}>Pris </span>
+              <span className={styles.priceValue}>{product.properties.price} DKK</span>
+            </div>
 
-          <CartProvider>
-            <ProductActions product={product} />
-          </CartProvider>
+            <CartProvider>
+              <ProductActions product={product} />
+            </CartProvider>
+          </div>
         </div>
       </div>
 
