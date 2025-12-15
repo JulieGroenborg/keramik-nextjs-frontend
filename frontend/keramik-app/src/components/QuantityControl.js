@@ -1,26 +1,25 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../css/components/QuantityControl.module.css';
 
-export default function QuantityStepper({ stock, initial = 1, onChange }) {
+export default function QuantityControl({ stock, initial = 1, onChange }) {
   const [quantity, setQuantity] = useState(initial);
+
+  // hver gang quantity ændrer sig, giver vi besked til parent
+  useEffect(() => {
+    if (onChange) {
+      onChange(quantity);
+    }
+  }, [quantity, onChange]);
 
   // sænker antal (går aldrig under 1)
   const handleDecrement = () => {
-    setQuantity((prev) => {
-      const next = prev > 1 ? prev - 1 : 1;
-      if (onChange) onChange(next);
-      return next;
-    });
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
   };
 
   // øger antal (går aldrig over stock)
   const handleIncrement = () => {
-    setQuantity((prev) => {
-      const next = prev < stock ? prev + 1 : prev;
-      if (onChange) onChange(next);
-      return next;
-    });
+    setQuantity((prev) => (prev < stock ? prev + 1 : prev));
   };
 
   return (
