@@ -5,7 +5,7 @@ import Button from './Button';
 export default function ProductSection({
   title,
   products,
-  variant = 'standard', // Default værdi
+  variant,
   buttonText,
   buttonLink,
 }) {
@@ -14,7 +14,6 @@ export default function ProductSection({
   const containerClass = `${styles.section} ${styles[variant]}`;
 
   return (
-    // Vi bruger className i stedet for style
     <section className={containerClass}>
       <div className={`container ${styles.container}`}>
         <div className={styles.header}>
