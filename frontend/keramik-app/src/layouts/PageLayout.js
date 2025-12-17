@@ -44,8 +44,10 @@ function renderBlocks(blocks, { isFrontpage, products = [] } = {}) {
 
       case 'valueSection':
         if (isFrontpage) {
+          // Frontpage version af valueSection
           return <OmMig key={block.id} content={block.properties} />;
         }
+        // Om-mig-side version af valueSection
         return <KvaliteterOgVaerdier key={block.id} content={block.properties} />;
 
       case 'imageTextCTA':
@@ -71,10 +73,8 @@ function renderBlocks(blocks, { isFrontpage, products = [] } = {}) {
         const btnText = button?.[0]?.title;
         const btnLink = button?.[0]?.route?.path || button?.[0]?.url;
 
-        // 1. Hvis der i fremtiden bliver lavet nye komponenter i Umbraco (fx udsalg), så vil de have lidt styling.
-        let variant = 'standard';
-
-        // 2. Tjek filterTypen (matcher præcis din JSON)
+        // Tjek filterTypen og sæt varianten
+        let variant = '';
         if (filterType === 'Nyeste') {
           variant = 'variantNyeste';
         } else if (filterType === 'De Grønne') {
@@ -86,7 +86,7 @@ function renderBlocks(blocks, { isFrontpage, products = [] } = {}) {
             key={block.id}
             title={title}
             products={filteredProducts}
-            variant={variant} // <--- Vi sender variant i stedet for backgroundColor
+            variant={variant}
             buttonText={btnText}
             buttonLink={btnLink}
           />

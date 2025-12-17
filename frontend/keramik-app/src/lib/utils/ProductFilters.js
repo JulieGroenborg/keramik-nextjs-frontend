@@ -1,8 +1,7 @@
 export function getFilteredProducts(products, filterType) {
-  // Sikkerhedsnet
   if (!products) return [];
 
-  // Kun produkter (ikke kategorier osv.)
+  // Sørger for, at vi kun arbejder med produkter
   const cleanProducts = products.filter((p) => p.contentType === 'product');
 
   switch (filterType) {
