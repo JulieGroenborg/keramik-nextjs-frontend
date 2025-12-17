@@ -29,7 +29,7 @@ export default async function SlugPage(props) {
 
   if (page.contentType === 'frontpage') {
     try {
-      // Hent data fra din eksisterende getShop funktion
+      // Hent data fra getShop funktionen
       const shopData = await getShop();
       // getShop returnerer { categories, products }, vi skal bruge products
       products = shopData.products || [];

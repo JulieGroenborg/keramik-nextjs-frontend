@@ -23,7 +23,9 @@ export default function ProductSection({
           {buttonText && buttonLink && (
             <div className={styles.buttonWrapper}>
               {/* Vi sender href og children ind i din komponent */}
-              <Button href={buttonLink}>{buttonText}</Button>
+              <Button href={buttonLink} className={styles.button}>
+                {buttonText}
+              </Button>
             </div>
           )}
         </div>
