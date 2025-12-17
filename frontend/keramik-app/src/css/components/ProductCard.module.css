@@ -49,6 +49,7 @@
 
 .divider {
   margin: var(--size-24) var(--size-60) 0 var(--size-60);
+  display: var(--divider-display, block);
 }
 
 @media (min-width: 768px) {

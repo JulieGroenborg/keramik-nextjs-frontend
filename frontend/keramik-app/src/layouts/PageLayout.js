@@ -5,8 +5,10 @@ import TestimonialsSection from '@/components/Testimonials';
 import Newsletter from '@/components/Newsletter';
 import KvaliteterOgVaerdier from '@/components/KvaliteterOgVaerdier';
 import Contact from '@/components/Contact';
+import ProductSection from '@/components/ProductSection';
+import { getFilteredProducts } from '@/lib/utils/ProductFilters';
 
-export default function PageLayout({ page }) {
+export default function PageLayout({ page, products }) {
   if (!page) {
     return <div>siden kunne ikke findes</div>;
   }
@@ -23,13 +25,13 @@ export default function PageLayout({ page }) {
   return (
     <div>
       {isFrontpage ? <HeroSektion page={page} /> : <h1>{pageTitle}</h1>}
-      {renderBlocks(blocks, { isFrontpage })}
+      {renderBlocks(blocks, { isFrontpage, products })}
     </div>
   );
 }
 
 // her skal vi tilføje flere switch cases når vi får lavet komponenterne, som skal vises.
-function renderBlocks(blocks, { isFrontpage } = {}) {
+function renderBlocks(blocks, { isFrontpage, products = [] } = {}) {
   if (!blocks || blocks.length === 0) return null;
 
   return blocks.map((item) => {
@@ -42,10 +44,8 @@ function renderBlocks(blocks, { isFrontpage } = {}) {
 
       case 'valueSection':
         if (isFrontpage) {
-          // Frontpage version af valueSection
           return <OmMig key={block.id} content={block.properties} />;
         }
-        // Om-mig-side version af valueSection
         return <KvaliteterOgVaerdier key={block.id} content={block.properties} />;
 
       case 'imageTextCTA':
@@ -62,6 +62,36 @@ function renderBlocks(blocks, { isFrontpage } = {}) {
 
       case 'contactSection':
         return <Contact key={block.id} data={block} />;
+
+      case 'productSection': {
+        const { title, filterType, button } = block.properties;
+
+        const filteredProducts = getFilteredProducts(products, filterType);
+
+        const btnText = button?.[0]?.title;
+        const btnLink = button?.[0]?.route?.path || button?.[0]?.url;
+
+        // 1. Hvis der i fremtiden bliver lavet nye komponenter i Umbraco (fx udsalg), så vil de have lidt styling.
+        let variant = 'standard';
+
+        // 2. Tjek filterTypen (matcher præcis din JSON)
+        if (filterType === 'Nyeste') {
+          variant = 'variantNyeste';
+        } else if (filterType === 'De Grønne') {
+          variant = 'variantGreen';
+        }
+
+        return (
+          <ProductSection
+            key={block.id}
+            title={title}
+            products={filteredProducts}
+            variant={variant} // <--- Vi sender variant i stedet for backgroundColor
+            buttonText={btnText}
+            buttonLink={btnLink}
+          />
+        );
+      }
 
       default:
         return null;
