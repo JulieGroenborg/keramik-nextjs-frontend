@@ -1,3 +1,5 @@
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
   reactCompiler: true,
 
@@ -9,9 +11,14 @@ const nextConfig = {
         port: '51857',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'jgebackend-h3bdb9g0hraufsgv.swedencentral-01.azurewebsites.net',
+        pathname: '/media/**',
+      },
     ],
-    // ⚠️ Dev-only: allow optimizing images from localhost
-    dangerouslyAllowLocalIP: true,
+    // Kun true hvis vi er i dev
+    dangerouslyAllowLocalIP: !isProd,
   },
 };
 
