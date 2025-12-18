@@ -19,6 +19,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  background-color: var(--primary-100);
 }
 
 .productImage {
@@ -49,6 +51,7 @@
 
 .divider {
   margin: var(--size-24) var(--size-60) 0 var(--size-60);
+  display: var(--divider-display, block);
 }
 
 @media (min-width: 768px) {
