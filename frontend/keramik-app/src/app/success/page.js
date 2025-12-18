@@ -8,7 +8,7 @@ export default function SuccessPage() {
     /* Suspense boundary er nødvendig her, fordi SuccessContent bruger useSearchParams().
        Det fortæller Next.js, at denne del af siden først kan renderes færdig på klienten.
     */
-    <Suspense fallback={<p>Indlæser betalingsstatus...</p>}>
+    <Suspense fallback={<p>Vent venligst...</p>}>
       <SuccessContent />
     </Suspense>
   );
