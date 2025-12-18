@@ -3,50 +3,72 @@ import Image from 'next/image';
 
 const MEDIA_BASE_URL = process.env.NEXT_PUBLIC_UMBRACO_MEDIA_URL ?? '';
 
-export default function ContactSection({ data }) {
-  const { title, manchet, email, phone, image } = data.properties;
+const PARAGRAPH_REGEX = /<p>(.*?)<\/p>/gis;
 
-  const relativeUrl = image?.[0]?.url || '';
-  const imageUrl = relativeUrl ? `${MEDIA_BASE_URL}${relativeUrl}` : null;
-  const imageAlt = image?.[0]?.name || 'Kontakt billede';
+function parseParagraphsFromMarkup(markup) {
+  const rows = [];
+  let match;
+
+  while ((match = PARAGRAPH_REGEX.exec(markup)) !== null) {
+    rows.push(
+      match[1]
+        .replace(/<br\s*\/?>/gi, '\n')
+        .replace(/<[^>]+>/g, '')
+        .trim()
+    );
+  }
+
+  return rows;
+}
+
+export default function ContactSection({ data }) {
+  const content = data?.properties ?? data;
+
+  if (!content) return null;
+
+  const img = content.image?.[0];
+  const imageUrl = img?.url ? `${MEDIA_BASE_URL}${img.url}` : null;
+
+  const markup = content.manchet?.markup || '';
+  const paragraphs = parseParagraphsFromMarkup(markup);
 
   return (
     <section className={styles.contactSection}>
       <div className={styles.inner}>
-        {/* 1. Titel */}
-        <h2 className={styles.heading}>{title}</h2>
+        {content.title && <h2 className={styles.heading}>{content.title}</h2>}
 
-        {/* 2. Tekst */}
-        <p className={styles.text}>{manchet}</p>
+        {paragraphs.length > 0 && (
+          <div className={styles.text}>
+            {paragraphs.map((text, i) => (
+              <p key={i}>{text}</p>
+            ))}
+          </div>
+        )}
 
-        {/* 3. Billede */}
-        <div className={styles.imageWrapper}>
-          {imageUrl && (
+        {imageUrl && (
+          <div className={styles.imageWrapper}>
             <Image
               src={imageUrl}
-              alt={imageAlt}
+              alt={img?.name || content.title || 'Kontakt billede'}
               fill
               className={styles.image}
               sizes="(max-width: 768px) 100vw, 33vw"
             />
-          )}
-        </div>
+          </div>
+        )}
 
-        {/* Kontakt info */}
         <div className={styles.contactInfo}>
-          {/* Skal være a tags til mail og telefon */}
-          <a href={`mailto:${email}`} className={styles.contactLink}>
-            <div className={styles.iconWrapper}>
-              <Image src="/Email.webp" alt="Email" width={20} height={30} />
-            </div>
-            {email}
-          </a>
-          <a href={`tel:${phone}`} className={styles.contactLink}>
-            <div className={styles.iconWrapper}>
-              <Image src="/Phone.webp" alt="Phone" width={20} height={30} />
-            </div>
-            {`+45 ${phone}`}
-          </a>
+          {content.email && (
+            <a href={`mailto:${content.email}`} className={styles.contactLink}>
+              {content.email}
+            </a>
+          )}
+
+          {content.phone && (
+            <a href={`tel:${content.phone}`} className={styles.contactLink}>
+              {`+45 ${content.phone}`}
+            </a>
+          )}
         </div>
       </div>
     </section>

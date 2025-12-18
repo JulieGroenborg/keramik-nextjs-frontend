@@ -107,7 +107,7 @@
   }
 
   .text {
-    max-width: 500px;
+    max-width: 600px;
     font-size: var(--body-regular-28-size);
     font-weight: var(--body-regular-28-weight);
     line-height: 1.6;
