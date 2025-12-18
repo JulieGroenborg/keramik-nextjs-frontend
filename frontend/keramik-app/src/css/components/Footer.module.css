@@ -102,10 +102,6 @@
 }
 
 @media (min-width: 768px) {
-  .footer {
-    padding: var(--size-60) var(--size-40);
-  }
-
   .inner {
     flex-direction: row;
     justify-content: space-between;
@@ -144,15 +140,10 @@
     align-items: flex-start;
   }
 }
-
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   .inner {
-    margin: 0 var(--size-80) 0 var(--size-80);
-  }
-}
-
-@media (min-width: 1420px) {
-  .inner {
-    margin: 0 var(--size-320) 0 var(--size-320);
+    justify-content: center;
+    gap: var(--size-140);
+    margin: 0 auto;
   }
 }
