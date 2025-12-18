@@ -8,7 +8,6 @@
   justify-content: center;
   align-items: center;
   line-height: 1; /* Sikrer at tekst og ikon flugter */
-  align-self: center;
 }
 
 .large {
@@ -33,6 +32,7 @@
   width: auto;
   font-size: var(--btn-semibold-16-size);
   font-weight: var(--btn-semibold-16-weight);
+  margin-inline: auto;
 }
 
 .small:hover {
@@ -52,5 +52,6 @@
 
   .small {
     font-size: var(--btn-semibold-14-size);
+    margin-inline: 0;
   }
 }
