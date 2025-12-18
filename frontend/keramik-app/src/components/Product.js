@@ -36,10 +36,10 @@ export default function ProductContent({ product, allProducts }) {
             <p>{product.properties.description}</p>
           </div>
 
-          {/* Hardcoded tags for nu så jeg kunne style, skal bare replaces */}
           <p className={styles.tags}>
             <span className={styles.tagLabel}>Tags: </span>
-            Potter, Blank, Grøn, Mønster
+            {product.properties.material}, {product.properties.finishing},{' '}
+            {product.properties.color}, {product.properties.size}
           </p>
 
           <div className={styles.bottomSection}>
