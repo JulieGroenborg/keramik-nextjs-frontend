@@ -17,9 +17,7 @@ export default function SuccessPage() {
     if (!sessionId) return; // If Stripe ikke returnerer et session_id, så kan vi ikke verify noget
 
     // Kald backenden for at verify at Stripe Payment er completed
-    fetch(
-      `https://jgebackend-h3bdb9g0hraufsgv.swedencentral-01.azurewebsites.net/stripe-api/verify-session?sessionId=${sessionId}`
-    )
+    fetch(`http://localhost:51857/stripe-api/verify-session?sessionId=${sessionId}`)
       .then((res) => {
         // If backend responderer med noget andet end 200 ok, behandler vi the payment som ikke completed
         if (!res.ok) throw new Error('Payment not completed');
