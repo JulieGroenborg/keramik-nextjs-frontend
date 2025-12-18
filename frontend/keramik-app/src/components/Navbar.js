@@ -5,10 +5,12 @@ import Link from 'next/link';
 import styles from '../css/components/Navbar.module.css';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import CartDrawer from './CartDrawer';
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -38,6 +40,16 @@ export default function Navbar() {
         </li>
         <li>
           <Link
+            href="/shop"
+            className={pathname === '/shop' ? styles.active : styles.link}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <hr className={styles.divider} />
+            Shop
+          </Link>
+        </li>
+        <li>
+          <Link
             href="/om-mig"
             className={pathname === '/om-mig' ? styles.active : styles.link}
             onClick={() => setIsMenuOpen(false)}
@@ -56,24 +68,17 @@ export default function Navbar() {
             Kontakt
           </Link>
         </li>
-        <li>
-          <Link
-            href="/shop"
-            className={pathname === '/shop' ? styles.active : styles.link}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <hr className={styles.divider} />
-            Shop
-          </Link>
-        </li>
       </ul>
 
       {/* Højre: Kurvens sektion */}
       <div className={styles.rightSection}>
         {/* Kurv ikon */}
-        <Link href="/kurv" className={styles.icon}>
-          🛒
-        </Link>
+        <div className={styles.cart}>
+          <button className={styles.icon} onClick={() => setIsOpen(!isOpen)}>
+            🛒
+          </button>
+          {isOpen && <CartDrawer onClose={() => setIsOpen(false)} />}
+        </div>
 
         {/* Hamburger knap */}
         <button

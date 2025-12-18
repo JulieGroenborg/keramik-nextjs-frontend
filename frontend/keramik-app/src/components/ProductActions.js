@@ -1,26 +1,27 @@
 'use client';
 import { useState } from 'react';
 import AddToBasket from './AddToBasket';
+import QuantityControl from './QuantityControl';
+import styles from '../css/components/ProductActions.module.css';
 
 export default function ProductActions({ product }) {
-  // State til at holde styr på hvor mange af produktet brugeren vil tilføje til kurven:
-  const [quantity, setQuantity] = useState(1); // Starter med 1 som default.
+  // parent skal vide antal for at kunne sende det til AddToBasket
+  const [quantity, setQuantity] = useState(1);
 
-  // Opretter array med tal fra 1 op til produktets stockQuantity; dropdown:
-  const options = Array.from({ length: product.properties.stockQuantity }, (_, i) => i + 1);
+  // hvor mange er der på lager
+  const stock = product.properties.stockQuantity;
 
   return (
-    <div>
-      <p>Vælg antal:</p>
-      <select value={quantity} onChange={(e) => setQuantity(Number(e.target.value))}>
-        {options.map((num) => (
-          <option key={num} value={num}>
-            {num}
-          </option>
-        ))}
-      </select>
-      <p>{product.properties.stockQuantity} på lager</p>
-      <AddToBasket product={product} quantity={quantity} />
+    <div className={styles.container}>
+      <div className={styles.stepperWrapper}>
+        <QuantityControl stock={stock} initial={1} onChange={setQuantity} />
+
+        <p className={styles.stockText}>{stock} på lager</p>
+      </div>
+
+      <div className={styles.buttonWrapper}>
+        <AddToBasket product={product} quantity={quantity} />
+      </div>
     </div>
   );
 }

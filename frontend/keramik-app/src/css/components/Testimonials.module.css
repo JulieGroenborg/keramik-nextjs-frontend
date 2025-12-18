@@ -1,4 +1,3 @@
-/* --- Variables --- */
 .testimonials {
   background-color: var(--tertiary-100);
 
@@ -21,7 +20,7 @@
 }
 
 .cardWrapper {
-  margin-top: var(--size-32);
+  margin-top: var(--size-48);
   position: relative;
   width: 100%;
   overflow: hidden; /* Så cards bliver cuttet af i siden af skærmen */
