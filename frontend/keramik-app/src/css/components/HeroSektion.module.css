@@ -35,6 +35,9 @@
   .p {
     font-size: var(--body-regular-28-size);
     font-weight: var(--body-light-28-weight);
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .cups {

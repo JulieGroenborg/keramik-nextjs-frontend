@@ -34,7 +34,7 @@ export default function ProductCard({ product }) {
 
       {/* AddToBasket placeres i bunden */}
       <div className={styles.actions}>
-        <AddToBasket product={product} />
+        <AddToBasket product={product} variant="small" />
         <hr className={styles.divider} />
       </div>
     </div>
