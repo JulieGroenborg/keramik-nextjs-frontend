@@ -28,6 +28,13 @@
   display: flex;
 }
 
+.cart {
+  position: relative; /* VIGTIGT: Gør at draweren placeres i forhold til dette ikon */
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
 .hamburger {
   display: flex;
   flex-direction: column;

@@ -73,10 +73,15 @@ export default function Navbar() {
       {/* Højre: Kurvens sektion */}
       <div className={styles.rightSection}>
         {/* Kurv ikon */}
-        <div className={styles.cart}>
-          <button className={styles.icon} onClick={() => setIsOpen(!isOpen)}>
+        <div className={styles.cart} style={{ position: 'relative' }}>
+          <button
+            className={styles.icon}
+            onClick={() => setIsOpen(!isOpen)}
+            style={{ visibility: isOpen ? 'hidden' : 'visible' }}
+          >
             🛒
           </button>
+
           {isOpen && <CartDrawer onClose={() => setIsOpen(false)} />}
         </div>
 

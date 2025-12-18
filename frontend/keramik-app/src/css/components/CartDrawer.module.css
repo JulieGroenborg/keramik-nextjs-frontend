@@ -1,0 +1,229 @@
+/* CartDrawer.module.css */
+
+/* =========================================
+   1. BASE STYLES (MOBILE FIRST)
+   ========================================= */
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: var(--size-80);
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - var(--size-80));
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  animation: fadeIn 0.2s ease-out;
+  cursor: pointer;
+}
+
+/* Selve Draweren */
+.drawer {
+  position: fixed;
+  top: var(--size-80);
+  right: 0;
+  width: 100%;
+  height: calc(100vh - var(--size-80));
+  background-color: var(--grey-50);
+  border-left: 1px solid var(--grey-200);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: var(--size-20);
+  transform: translateX(0);
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-body);
+}
+
+.emptyMessage {
+  text-align: center;
+  padding: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--size-20);
+  border-bottom: 1px solid var(--grey-100);
+  padding-bottom: var(--size-10);
+}
+
+.header h2 {
+  font-family: var(--font-heading);
+  font-size: var(--body-bold-18-size);
+  font-weight: var(--weight-bold);
+  margin: 0;
+  color: var(--grey-1000);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: var(--size-24);
+  cursor: pointer;
+  line-height: 1;
+  color: var(--grey-500);
+  transition: color 0.2s;
+  padding: var(--size-4);
+}
+
+.closeButton:hover {
+  color: var(--grey-1000);
+}
+
+/* Liste af produkter */
+.itemsList {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-20);
+  padding-right: var(--size-4);
+}
+
+/* Enkelt vare container */
+.item {
+  display: flex;
+  gap: var(--size-16);
+  padding-bottom: var(--size-20);
+  border-bottom: 1px solid var(--grey-100);
+  position: relative;
+}
+
+/* Billede styling */
+.imageWrapper {
+  flex-shrink: 0;
+  background-color: var(--tertiary-100);
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Detaljer (Tekst og Quantity) */
+.itemDetails {
+  flex-grow: 1;
+  display: flex;
+
+  /* HER ER ÆNDRINGEN: Vi bruger row allerede fra mobil af */
+  flex-direction: row;
+  align-items: center; /* Centrer vertikalt */
+  justify-content: space-between; /* Skubber navn til venstre, quantity til højre */
+
+  padding-right: var(--size-30); /* Plads til skraldespanden */
+}
+
+/* Container til teksten (Navn + Pris) */
+/* OBS: Sørg for at den div der holder navn/pris i JS ikke har width: 100% */
+.productName {
+  font-size: var(--body-regular-14-size);
+  font-weight: var(--weight-semibold);
+  margin: 0 0 var(--size-4) 0;
+  color: var(--grey-1000);
+  /* Sikrer at teksten ikke maser quantity vælgeren */
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.price {
+  font-size: var(--body-regular-14-size);
+  color: var(--grey-500);
+  margin: 0;
+}
+
+/* Slet knap - Centreret vertikalt */
+.removeButton {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--grey-400);
+  padding: var(--size-4);
+}
+
+.removeButton:hover {
+  color: var(--grey-800);
+}
+
+/* Footer (Totaler) */
+.footer {
+  margin-top: auto;
+  border-top: 2px solid var(--grey-100);
+  padding-top: var(--size-16);
+  background-color: var(--grey-50);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--size-8);
+  font-size: var(--body-regular-14-size);
+  color: var(--grey-500);
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--size-16);
+  margin-bottom: var(--size-20);
+  font-size: var(--size-16);
+  font-weight: var(--weight-bold);
+  color: var(--grey-1000);
+}
+
+.checkoutContainer {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .overlay {
+    top: 0;
+    height: 100vh;
+  }
+
+  .drawer {
+    top: 0;
+    height: 100vh;
+    width: 500px;
+  }
+
+  .imageWrapper {
+    width: 120px;
+    height: 120px;
+  }
+
+  .itemDetails {
+    padding-right: var(--size-40); /* Lidt mere luft på desktop */
+  }
+
+  .productName {
+    max-width: 200px; /* Mere plads til tekst på desktop */
+  }
+}
