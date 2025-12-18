@@ -2,10 +2,11 @@ import { CartProvider } from '@/lib/context/CartContext';
 import ProductActions from '@/components/ProductActions';
 import Image from 'next/image';
 import styles from '../css/components/Product.module.css';
+import RelatedProducts from './RelatedProducts';
 
 const MEDIA_BASE_URL = process.env.NEXT_PUBLIC_UMBRACO_MEDIA_URL ?? '';
 
-export default function ProductContent({ product }) {
+export default function ProductContent({ product, allProducts }) {
   const relativeUrl = product.properties.image?.[0]?.url;
   const imageUrl = relativeUrl ? `${MEDIA_BASE_URL}${relativeUrl}` : null;
   const imageAlt = product.properties.image?.[0]?.name || product.name;
@@ -35,10 +36,10 @@ export default function ProductContent({ product }) {
             <p>{product.properties.description}</p>
           </div>
 
-          {/* Hardcoded tags for nu så jeg kunne style, skal bare replaces */}
           <p className={styles.tags}>
             <span className={styles.tagLabel}>Tags: </span>
-            Potter, Blank, Grøn, Mønster
+            {product.properties.material}, {product.properties.finishing},{' '}
+            {product.properties.color}, {product.properties.size}
           </p>
 
           <div className={styles.bottomSection}>
@@ -57,6 +58,7 @@ export default function ProductContent({ product }) {
       <div className={styles.relatedHeaderWrapper}>
         <h2 className={styles.relatedHeader}>Lignende Produkter</h2>
         <hr className={styles.divider} />
+        <RelatedProducts currentProduct={product} productsList={allProducts} />
       </div>
     </section>
   );
