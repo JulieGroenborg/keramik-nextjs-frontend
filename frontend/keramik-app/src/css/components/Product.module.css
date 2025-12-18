@@ -125,7 +125,7 @@
 }
 
 .bottomSection {
-  width: 100%;
+  margin: 0 auto;
 }
 
 @media (min-width: 768px) {
@@ -162,6 +162,7 @@
 
   .bottomSection {
     margin-top: auto; /* this now works because column has extra height */
+    width: 100%;
   }
 
   .description {

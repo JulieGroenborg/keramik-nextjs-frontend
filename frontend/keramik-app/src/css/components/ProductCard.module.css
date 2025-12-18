@@ -21,6 +21,7 @@
   align-items: center;
   margin: 0 auto;
   background-color: var(--primary-100);
+  aspect-ratio: 1 / 1;
 }
 
 .productImage {
@@ -45,18 +46,24 @@
   font-size: var(--body-medium-20-size);
   color: var(--grey-500);
 }
+
 .actions {
   text-align: center;
 }
 
 .divider {
-  margin: var(--size-24) var(--size-60) 0 var(--size-60);
+  max-width: 276px;
+  margin: var(--size-24) auto;
   display: var(--divider-display, block);
 }
 
 @media (min-width: 768px) {
+  .card {
+    max-width: 276px;
+  }
+
   .imageContainer {
-    height: 346px;
+    max-height: 346px;
   }
 
   .title {
@@ -76,7 +83,8 @@
     border-radius: var(--size-4);
     background-color: var(--grey-50);
   }
-
+}
+@media (min-width: 824px) {
   .divider {
     display: none;
   }

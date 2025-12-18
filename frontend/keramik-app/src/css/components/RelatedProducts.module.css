@@ -10,6 +10,7 @@
     margin-top: var(--size-32);
     margin-left: auto;
     margin-right: auto;
+    --divider-display: none;
   }
 }
 
