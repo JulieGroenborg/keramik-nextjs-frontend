@@ -17,7 +17,6 @@ export default function SuccessPage() {
     fetch(`http://localhost:51857/stripe-api/verify-session?sessionId=${sessionId}`)
       .then((res) => {
         if (!res.ok) throw new Error('Payment not completed');
-        return res.json();
       })
       .then((data) => {
         setPaymentInfo(data);
