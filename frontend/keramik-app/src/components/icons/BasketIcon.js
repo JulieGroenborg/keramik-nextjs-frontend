@@ -8,7 +8,6 @@ export default function CartIcon({ className }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Jeg har ændret stroke="#3C4245" til stroke="currentColor" på alle paths */}
       <path
         fillRule="evenodd"
         clipRule="evenodd"
