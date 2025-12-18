@@ -1,8 +1,10 @@
 'use client'; // Client side fordi vi bruger useContext and onClick.
 import { useContext } from 'react';
 import { CartContext } from '@/lib/context/CartContext';
+import BasketIcon from '@/components/icons/BasketIcon';
+import styles from '../css/components/AddToBasket.module.css';
 
-export default function AddToBasket({ product, quantity = 1 }) {
+export default function AddToBasket({ product, quantity = 1, variant = 'large' }) {
   // Vi sætter quantity til 1, den bliver overskrevet, hvis en bruger vælger flere produkter på produktsiden.
   // Henter den globale cart state og setCart funktionen fra CartContext:
   const { cart, setCart } = useContext(CartContext);
@@ -40,5 +42,20 @@ export default function AddToBasket({ product, quantity = 1 }) {
     }
   };
 
-  return <button onClick={handleAddToCart}>Add to Cart</button>;
+  // --- Variant 1: Lille knap (List view) ---
+  if (variant === 'small') {
+    return (
+      <button onClick={handleAddToCart} className={`${styles.buttonBase} ${styles.small}`}>
+        <BasketIcon />
+        Kurv
+      </button>
+    );
+  }
+
+  // --- Variant 2: Stor knap (Product view) ---
+  return (
+    <button onClick={handleAddToCart} className={`${styles.buttonBase} ${styles.large}`}>
+      Tilføj til kurv
+    </button>
+  );
 }
