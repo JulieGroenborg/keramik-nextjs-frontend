@@ -34,7 +34,7 @@ export default async function SlugPage(props) {
       // getShop returnerer { categories, products }, vi skal bruge products
       products = shopData.products || [];
     } catch (error) {
-      console.error('Kunne ikke hente produkter til forsiden:', error);
+      error;
       // Vi lader products være [], så siden ikke crasher
     }
   }
