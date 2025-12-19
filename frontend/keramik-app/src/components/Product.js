@@ -1,4 +1,3 @@
-import { CartProvider } from '@/lib/context/CartContext';
 import ProductActions from '@/components/ProductActions';
 import Image from 'next/image';
 import styles from '../css/components/Product.module.css';
@@ -48,9 +47,7 @@ export default function ProductContent({ product, allProducts }) {
               <span className={styles.priceValue}>{product.properties.price} DKK</span>
             </div>
 
-            <CartProvider>
-              <ProductActions product={product} />
-            </CartProvider>
+            <ProductActions product={product} />
           </div>
         </div>
       </div>

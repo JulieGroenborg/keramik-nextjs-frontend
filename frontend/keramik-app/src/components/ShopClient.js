@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { CartProvider } from '@/lib/context/CartContext';
 import ProductCard from './ProductCard';
 import styles from '../css/components/ShopClient.module.css'; // Vi importerer styles
 
@@ -30,24 +29,22 @@ export default function ShopClient({ products }) {
   const hasMore = visibleCount < products.length;
 
   return (
-    <CartProvider>
-      <div className="container">
-        {/* Grid Container */}
-        <div className={styles.grid}>
-          {visibleProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-
-        {/* Vis flere knap */}
-        {hasMore && (
-          <div className={styles.buttonContainer}>
-            <button onClick={handleShowMore} className={styles.loadMoreButton}>
-              Vis flere
-            </button>
-          </div>
-        )}
+    <div className="container">
+      {/* Grid Container */}
+      <div className={styles.grid}>
+        {visibleProducts.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
-    </CartProvider>
+
+      {/* Vis flere knap */}
+      {hasMore && (
+        <div className={styles.buttonContainer}>
+          <button onClick={handleShowMore} className={styles.loadMoreButton}>
+            Vis flere
+          </button>
+        </div>
+      )}
+    </div>
   );
 }
