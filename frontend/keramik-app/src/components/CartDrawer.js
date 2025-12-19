@@ -8,6 +8,7 @@ import styles from '../css/components/CartDrawer.module.css';
 
 export default function CartDrawer({ mode, onClose }) {
   const { cart, increaseQuantity, decreaseQuantity, removeItem } = useContext(CartContext);
+  console.log('🛒 Drawer Rendered. Items:', cart.items);
 
   // Scroll-lock når drawer er åben
   useEffect(() => {
@@ -68,9 +69,9 @@ export default function CartDrawer({ mode, onClose }) {
                   <div style={{ marginTop: '10px' }}>
                     <QuantityControl
                       initial={item.quantity}
-                      stock={item.stock || 99} // Fallback hvis stock mangler
+                      stock={item.stock || 'Lagerbeholdning ikke tilgængelig'}
                       onChange={(newQty) => {
-                        // Sammenlign nyt tal med nuværende for at se om vi skal øge eller sænke
+                        // Sørger for at opdatere mængden i reel tid
                         if (newQty > item.quantity) {
                           increaseQuantity(item.productId);
                         } else if (newQty < item.quantity) {
