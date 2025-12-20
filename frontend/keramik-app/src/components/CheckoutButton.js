@@ -20,8 +20,7 @@ export default function CheckoutButton(props) {
       body: JSON.stringify(
         cart.items.map((item) => {
           const payload = {
-            name: item.name,
-            price: item.price,
+            id: item.productId, // Changed from item.id to item.productId
             quantity: item.quantity,
           };
           // Kun inkluder description hvis den eksisterer, for at undgå Stripe erros grundet tomme strings
