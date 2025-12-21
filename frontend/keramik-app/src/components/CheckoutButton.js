@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { CartContext } from '../lib/context/CartContext';
+import styles from '../css/components/CheckoutButton.module.css';
 
 export default function CheckoutButton(props) {
   const { cart } = useContext(CartContext);
@@ -40,7 +41,12 @@ export default function CheckoutButton(props) {
   };
 
   return (
-    <button onClick={handleClick} disabled={cart.items.length === 0}>
+    <button
+      // Her vælger vi klasse baseret på 'mode'
+      className={`${styles.actionButton} ${props.mode === 'drawer' ? styles.btnDrawer : styles.btnCheckout}`}
+      onClick={handleClick}
+      disabled={cart.items.length === 0}
+    >
       {props.mode === 'drawer' ? 'Gå til kurv' : 'Gå til betaling'}
     </button>
   );
