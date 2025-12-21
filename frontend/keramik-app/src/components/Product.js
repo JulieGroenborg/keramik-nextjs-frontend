@@ -50,7 +50,7 @@ export default function ProductContent({ product, allProducts }) {
               <span className={styles.priceLabel}>Pris </span>
               <span className={styles.priceValue}>{product.properties.price} DKK</span>
             </div>
-              <ProductActions product={product} liveStock={liveStock} />
+            <ProductActions product={product} liveStock={liveStock} />
           </div>
         </div>
       </div>
