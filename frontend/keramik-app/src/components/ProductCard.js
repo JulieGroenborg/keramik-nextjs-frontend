@@ -6,7 +6,7 @@ import styles from '../css/components/ProductCard.module.css'; // Import af CSS 
 export default function ProductCard({ product }) {
   // Sikrer korrekt billede URL (håndterer hvis billedet mangler)
   const imageUrl = product.properties.image?.[0]?.url
-    ? `${process.env.NEXT_PUBLIC_UMBRACO_MEDIA_URL}${product.properties.image[0].url}`
+    ? `${process.env.NEXT_PUBLIC_UMBRACO_BASE_URL}${product.properties.image[0].url}`
     : null;
 
   return (

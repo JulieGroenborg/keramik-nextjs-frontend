@@ -3,6 +3,7 @@ import '../css/_variables.css';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import { CartProvider } from '@/lib/context/CartContext';
+import LiveStockListener from '@/components/LiveStockListener';
 
 export const metadata = {
   title: 'Create Next App',
@@ -14,6 +15,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <CartProvider>
+          <LiveStockListener />
+
           <Navbar />
           {children}
           <Footer />

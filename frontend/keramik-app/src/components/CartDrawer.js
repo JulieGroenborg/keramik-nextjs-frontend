@@ -21,6 +21,21 @@ export default function CartDrawer({ mode, onClose }) {
     <>
       {/* Overlay bag drawer */}
       <div className={styles.overlay} onClick={onClose}></div>
+    <div>
+      <h2>Din kurv:</h2>
+      {cart.items.map((item) => (
+        <div key={item.productId}>
+          <article>
+            <p>Produktnavn: {item.name}</p>
+            <Image
+              src={`${process.env.NEXT_PUBLIC_UMBRACO_BASE_URL}${item.image}`}
+              alt={item.name}
+              width={200}
+              height={100}
+            />
+            {/* Quantity controls */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <button onClick={() => decreaseQuantity(item.productId)}>-</button>
 
       <div className={styles.drawer}>
         {/* Header */}

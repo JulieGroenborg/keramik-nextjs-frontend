@@ -4,7 +4,7 @@ import styles from '../css/components/Testimonials.module.css';
 import { useState } from 'react';
 import Image from 'next/image';
 
-const MEDIA_BASE_URL = process.env.NEXT_PUBLIC_UMBRACO_MEDIA_URL ?? '';
+const MEDIA_BASE_URL = process.env.NEXT_PUBLIC_UMBRACO_BASE_URL ?? '';
 
 export default function TestimonialsSection({ title, testimonials }) {
   // Mapper Umbraco-data om til et simpelt objekt

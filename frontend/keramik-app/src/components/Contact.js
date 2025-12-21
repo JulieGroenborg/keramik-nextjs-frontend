@@ -1,7 +1,7 @@
 import styles from '../css/components/Contact.module.css';
 import Image from 'next/image';
 
-const MEDIA_BASE_URL = process.env.NEXT_PUBLIC_UMBRACO_MEDIA_URL ?? '';
+const MEDIA_BASE_URL = process.env.NEXT_PUBLIC_UMBRACO_BASE_URL ?? '';
 
 const PARAGRAPH_REGEX = /<p>(.*?)<\/p>/gis;
 
