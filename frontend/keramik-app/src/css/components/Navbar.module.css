@@ -28,6 +28,13 @@
   display: flex;
 }
 
+.cart {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
 .hamburger {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,97 @@
+.summaryRow {
+  font-family: var(--font-body);
+  font-size: var(--body-bold-20-size);
+  font-weight: var(--body-bold-20-weight);
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--size-24);
+  margin-bottom: var(--size-8);
+  color: var(--grey-1000);
+  padding-left: var(--size-32);
+}
+
+.totalRow {
+  font-family: var(--font-body);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  width: 100%;
+  row-gap: var(--size-8);
+  align-items: center;
+  padding-left: var(--size-32);
+  padding-right: var(--size-32);
+}
+
+/* Venstre kolonne (Tekst: "Varer", "Moms") */
+.totalRow > span:nth-of-type(odd) {
+  text-align: left;
+  font-size: var(--body-regular-18-size);
+  color: var(--grey-500);
+}
+
+/* Højre kolonne (Priser: "300 DKK", "40 DKK") */
+.totalRow > span:nth-of-type(even) {
+  text-align: right;
+  font-size: var(--body-regular-14-size);
+  font-weight: var(--body-regular-14-weight);
+  color: var(--grey-1000);
+}
+
+/* Skillelinjen */
+.totalDivider {
+  grid-column: 1 / -1;
+  height: 1px;
+  background-color: var(--grey-200);
+  margin-bottom: var(--size-12);
+}
+
+/* Total linjen (Samlet beløb) */
+.totalLabel {
+  font-size: var(--body-bold-18-size) !important;
+  font-weight: var(--body-bold-18-weight) !important;
+  color: var(--grey-1000) !important;
+}
+
+.totalPrice {
+  font-size: var(--body-bold-18-size) !important;
+  font-weight: var(--body-bold-18-weight) !important;
+  text-align: right;
+}
+
+.checkoutContainer {
+  margin-top: var(--size-16);
+  padding-right: var(--size-32);
+  padding-left: var(--size-32);
+}
+
+@media (min-width: 900px) {
+  .summaryRow {
+    margin-top: var(--size-32);
+    margin-bottom: var(--size-16);
+  }
+  /* Venstre kolonne (Tekst: "Varer", "Moms") */
+  .totalRow > span:nth-of-type(odd) {
+    font-size: var(--body-regular-20-size);
+    font-weight: var(--body-regular-20-weight);
+    line-height: 1.5;
+  }
+
+  /* Højre kolonne (Priser: "300 DKK", "40 DKK") */
+  .totalRow > span:nth-of-type(even) {
+    font-size: var(--body-regular-18-size);
+    font-weight: var(--body-regular-18-weight);
+    line-height: 1.5;
+  }
+  .totalLabel {
+    font-size: var(--body-bold-22-size) !important;
+    font-weight: var(--body-bold-22-weight) !important;
+  }
+
+  .totalPrice {
+    font-size: var(--body-bold-18-size) !important;
+    font-weight: var(--body-bold-18-weight) !important;
+  }
+
+  .totalDivider {
+    margin-top: var(--size-75);
+  }
+}
