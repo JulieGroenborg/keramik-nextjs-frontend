@@ -22,7 +22,7 @@ export default function CartDrawer({ mode }) {
           <article>
             <p>Produktnavn: {item.name}</p>
             <Image
-              src={`${process.env.NEXT_PUBLIC_UMBRACO_MEDIA_URL}${item.image}`}
+              src={`${process.env.NEXT_PUBLIC_UMBRACO_BASE_URL}${item.image}`}
               alt={item.name}
               width={200}
               height={100}

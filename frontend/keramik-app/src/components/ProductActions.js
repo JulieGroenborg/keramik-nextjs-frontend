@@ -4,23 +4,28 @@ import AddToBasket from './AddToBasket';
 import QuantityControl from './QuantityControl';
 import styles from '../css/components/ProductActions.module.css';
 
-export default function ProductActions({ product }) {
+export default function ProductActions({ product, liveStock }) {
   // parent skal vide antal for at kunne sende det til AddToBasket
   const [quantity, setQuantity] = useState(1);
 
-  // hvor mange er der på lager
-  const stock = product.properties.stockQuantity;
+  // Vi bruger liveStock fra props. Hvis den ikke findes (fallback), bruger vi den oprindelige værdi.
+  const currentStock = liveStock !== undefined ? liveStock : product.properties.stockQuantity;
 
   return (
     <div className={styles.container}>
       <div className={styles.stepperWrapper}>
-        <QuantityControl stock={stock} initial={1} onChange={setQuantity} />
+        {/* Vi sender det levende lagertal til QuantityControl så man ikke kan vælge for mange */}
+        <QuantityControl stock={currentStock} initial={1} onChange={setQuantity} />
 
-        <p className={styles.stockText}>{stock} på lager</p>
+        {/* Her opdateres teksten nu live */}
+        <p className={styles.stockText}>
+          {currentStock > 0 ? `${currentStock} på lager` : 'Udsolgt'}
+        </p>
       </div>
 
       <div className={styles.buttonWrapper}>
-        <AddToBasket product={product} quantity={quantity} />
+        {/* Vi deaktiverer knappen via CSS eller props i AddToBasket hvis lageret er 0 */}
+        <AddToBasket product={product} quantity={quantity} disabled={currentStock <= 0} />
       </div>
     </div>
   );

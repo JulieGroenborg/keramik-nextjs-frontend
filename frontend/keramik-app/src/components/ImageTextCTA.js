@@ -39,7 +39,7 @@ export default function ImageTextCTA({ content }) {
   const img = content?.image?.[0];
   const cta = content?.cta?.[0];
 
-  const mediaBaseUrl = process.env.NEXT_PUBLIC_UMBRACO_MEDIA_URL || '';
+  const mediaBaseUrl = process.env.NEXT_PUBLIC_UMBRACO_BASE_URL || '';
   const mainImageUrl = img?.url ? `${mediaBaseUrl}${img.url}` : null;
 
   const href = cta?.route?.path ?? cta?.url ?? '#';
