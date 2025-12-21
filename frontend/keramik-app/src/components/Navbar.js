@@ -82,7 +82,7 @@ export default function Navbar() {
             🛒
           </button>
 
-          {isOpen && <CartDrawer onClose={() => setIsOpen(false)} />}
+          {isOpen && <CartDrawer mode={'drawer'} onClose={() => setIsOpen(false)} />}
         </div>
 
         {/* Hamburger knap */}
