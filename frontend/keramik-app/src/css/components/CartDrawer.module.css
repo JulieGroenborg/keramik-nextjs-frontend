@@ -1,16 +1,3 @@
-/* Baggrundsoverlay */
-.overlay {
-  position: fixed;
-  top: var(--size-80);
-  left: 0;
-  width: 100vw;
-  height: calc(100vh - var(--size-80));
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  animation: fadeIn 0.2s ease-out;
-  cursor: pointer;
-}
-
 /* Selve Draweren */
 .drawer {
   position: fixed;
@@ -31,7 +18,7 @@
 
 .emptyMessage {
   text-align: center;
-  padding: 20px;
+  padding: var(--size-20);
 }
 
 .header {
@@ -107,5 +94,17 @@
     top: 0;
     height: 100vh;
     width: 500px;
+  }
+  /* Baggrundsoverlay */
+  .overlay {
+    position: fixed;
+    top: var(--size-80);
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - var(--size-80));
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    animation: fadeIn 0.2s ease-out;
+    cursor: pointer;
   }
 }

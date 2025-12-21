@@ -29,7 +29,7 @@
 }
 
 .cart {
-  position: relative; /* VIGTIGT: Gør at draweren placeres i forhold til dette ikon */
+  position: relative;
   display: flex;
   align-items: center;
   height: 100%;
