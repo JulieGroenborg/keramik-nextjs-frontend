@@ -13,7 +13,7 @@ export default function CartItem({ item }) {
       {/* Billede */}
       <div className={styles.imageWrapper}>
         <Image
-          src={`${process.env.NEXT_PUBLIC_UMBRACO_MEDIA_URL}${item.image}`}
+          src={`${process.env.NEXT_PUBLIC_UMBRACO_BASE_URL}${item.image}`}
           alt={item.name}
           width={120}
           height={120}
