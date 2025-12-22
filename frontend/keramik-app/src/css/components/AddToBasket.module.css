@@ -1,7 +1,3 @@
-/* .disabled {
-  background-color: hotpink;
-} */
-
 /* Grundlæggende styles der gælder for begge knapper */
 .buttonBase {
   font-family: var(--font-button);
@@ -58,4 +54,8 @@
     font-size: var(--btn-semibold-14-size);
     margin-inline: 0;
   }
+}
+
+.disabled:hover {
+  pointer-events: none;
 }
