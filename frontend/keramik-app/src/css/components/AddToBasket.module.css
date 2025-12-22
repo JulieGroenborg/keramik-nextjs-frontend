@@ -1,3 +1,7 @@
+/* .disabled {
+  background-color: hotpink;
+} */
+
 /* Grundlæggende styles der gælder for begge knapper */
 .buttonBase {
   font-family: var(--font-button);
