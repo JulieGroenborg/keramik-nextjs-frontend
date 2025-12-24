@@ -5,6 +5,11 @@ import styles from '../css/components/QuantityControl.module.css';
 export default function QuantityControl({ stock, initial = 1, onChange }) {
   const [quantity, setQuantity] = useState(initial);
 
+  // Hvis lageret er 0, returnerer vi null. Det svarer til "display: none", men fjerner elementet helt fra siden.
+  if (stock <= 0) {
+    return null;
+  }
+
   const handleDecrement = () => {
     if (quantity > 1) {
       const newQuantity = quantity - 1;
