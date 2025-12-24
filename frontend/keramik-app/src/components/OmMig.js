@@ -14,7 +14,7 @@ export default function OmMig({ content }) {
           const valueBlock = item.content;
           const props = valueBlock.properties;
           const icon = props.icon?.[0]; // ikonet for hver value
-          const mediaBaseUrl = process.env.NEXT_PUBLIC_UMBRACO_MEDIA_URL || '';
+          const mediaBaseUrl = process.env.NEXT_PUBLIC_UMBRACO_BASE_URL || '';
           const imageUrl = icon?.url ? `${mediaBaseUrl}${icon.url}` : null;
 
           return (

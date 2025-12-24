@@ -1,0 +1,104 @@
+/* Enkelt vare container */
+.item {
+  display: flex;
+  gap: var(--size-12);
+  padding-bottom: var(--size-20);
+  border-bottom: 1px solid var(--grey-100);
+  position: relative;
+}
+
+/* Billede styling */
+.imageWrapper {
+  background-color: var(--tertiary-100);
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Detaljer (Tekst og Quantity) */
+.itemDetails {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 75px 1fr; /* billed */
+  align-items: center;
+  padding-right: var(--size-32); /* Plads til delete-knappen */
+}
+
+/* Wrapper til teksten (Navn + Pris) */
+.textContainer {
+  min-width: 100px;
+}
+
+.productName {
+  font-size: var(--body-medium-20-size);
+  font-weight: var(--body-medium-20-weight);
+  color: var(--grey-1000);
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Laver "..." hvis teksten er for lang */
+}
+
+.price {
+  font-size: var(--body-regular-14-size);
+  color: var(--grey-500);
+  margin: 0;
+}
+
+.quantityControl {
+  display: flex;
+  margin-left: var(--size-12);
+  padding-left: var(--size-24);
+  justify-content: left;
+  width: 100%;
+}
+
+/* Slet knap */
+.removeButton {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-70%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--grey-400);
+  padding: var(--size-4);
+}
+
+.removeButton:hover {
+  color: var(--grey-800);
+}
+
+@media (min-width: 768px) {
+  .imageWrapper {
+    width: 212px;
+    height: 193px;
+  }
+
+  .itemDetails {
+    padding-right: var(--size-60);
+    grid-template-columns: 150px 1fr;
+  }
+
+  .productName {
+    max-width: 200px;
+    margin-left: var(--size-32);
+  }
+
+  .price {
+    margin-left: var(--size-32);
+  }
+
+  .removeButton {
+    margin-right: var(--size-24);
+  }
+
+  .quantityControl {
+    margin-left: var(--size-32);
+    height: 40px;
+    width: 115px;
+  }
+}

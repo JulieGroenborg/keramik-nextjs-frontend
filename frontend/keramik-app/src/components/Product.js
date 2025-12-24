@@ -1,12 +1,15 @@
-import { CartProvider } from '@/lib/context/CartContext';
+'use client';
 import ProductActions from '@/components/ProductActions';
 import Image from 'next/image';
 import styles from '../css/components/Product.module.css';
 import RelatedProducts from './RelatedProducts';
+import { useLiveStock } from '@/lib/hooks/useLiveStock';
 
-const MEDIA_BASE_URL = process.env.NEXT_PUBLIC_UMBRACO_MEDIA_URL ?? '';
+const MEDIA_BASE_URL = process.env.NEXT_PUBLIC_UMBRACO_BASE_URL ?? '';
 
 export default function ProductContent({ product, allProducts }) {
+  const liveStock = useLiveStock(product.properties.stockQuantity, product.id);
+
   const relativeUrl = product.properties.image?.[0]?.url;
   const imageUrl = relativeUrl ? `${MEDIA_BASE_URL}${relativeUrl}` : null;
   const imageAlt = product.properties.image?.[0]?.name || product.name;
@@ -47,10 +50,7 @@ export default function ProductContent({ product, allProducts }) {
               <span className={styles.priceLabel}>Pris </span>
               <span className={styles.priceValue}>{product.properties.price} DKK</span>
             </div>
-
-            <CartProvider>
-              <ProductActions product={product} />
-            </CartProvider>
+            <ProductActions product={product} liveStock={liveStock} />
           </div>
         </div>
       </div>

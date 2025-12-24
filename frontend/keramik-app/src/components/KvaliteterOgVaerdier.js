@@ -8,7 +8,7 @@ export default function KvaliteterOgVaerdier({ content }) {
   const values = content.list?.items ?? [];
 
   // Bygger media-base-url ud fra din Umbraco API-url
-  const mediaBaseUrl = process.env.NEXT_PUBLIC_UMBRACO_MEDIA_URL || '';
+  const mediaBaseUrl = process.env.NEXT_PUBLIC_UMBRACO_BASE_URL || '';
 
   return (
     <section className={`container ${styles.section}`}>

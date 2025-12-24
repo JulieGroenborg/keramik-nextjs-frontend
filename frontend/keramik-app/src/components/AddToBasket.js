@@ -45,6 +45,7 @@ export default function AddToBasket({ product, quantity = 1, variant = 'large' }
             price: product.properties.price,
             quantity,
             image: product.properties.image?.[0]?.url || '',
+            stock: product.properties.stockQuantity || 0,
           },
         ],
       });
