@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react'; // Husk at importere useEffect
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import styles from '../css/components/Navbar.module.css';
 import Image from 'next/image';
@@ -38,13 +38,13 @@ export default function Navbar() {
   }, []); // Tomt array betyder, at funktionen aldrig ændrer sig
 
   useEffect(() => {
-    // 1. Vi bruger setTimeout til at skubbe opdateringen til næste "event loop"
+    // Vi bruger setTimeout til at skubbe opdateringen til næste "event loop"
     // Dette fjerner fejlen, fordi React får lov at tegne færdig først.
     const timer = setTimeout(() => {
       updateCartCount();
     }, 0);
 
-    // 2. Lyt efter ændringer i localStorage (f.eks. fra andre faner)
+    // Lytter efter ændringer i localStorage (f.eks. fra tilføjelse eller fjernelse af varer)
     window.addEventListener('cart-updated', updateCartCount);
     window.addEventListener('storage', updateCartCount); // Opdaterer hvis man har flere faner åbne
 
