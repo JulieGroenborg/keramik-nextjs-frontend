@@ -116,7 +116,7 @@ export default function Navbar() {
             style={{ visibility: isOpen ? 'hidden' : 'visible' }}
           >
             🛒
-            {/* HER ER BADGET */}
+            {/* Badget */}
             {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
           </button>
 
