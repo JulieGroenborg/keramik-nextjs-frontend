@@ -24,6 +24,7 @@ export function CartProvider({ children }) {
   // Save cart to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
+    window.dispatchEvent(new Event('cart-updated')); // sørger for at andre komponenter kan lytte på ændringer
   }, [cart]);
 
   // Øger quantity
