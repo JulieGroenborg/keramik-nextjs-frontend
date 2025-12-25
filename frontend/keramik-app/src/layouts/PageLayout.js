@@ -7,6 +7,7 @@ import KvaliteterOgVaerdier from '@/components/KvaliteterOgVaerdier';
 import Contact from '@/components/Contact';
 import ProductSection from '@/components/ProductSection';
 import { getFilteredProducts } from '@/lib/utils/ProductFilters';
+import Banner from '@/components/Banner';
 
 export default function PageLayout({ page, products }) {
   if (!page) {
@@ -20,11 +21,10 @@ export default function PageLayout({ page, products }) {
   const blocks = isFrontpage ? properties.frontpageComponents?.items : properties.components?.items;
 
   // fallback til page name hvis der ikke er sat en title
-  const pageTitle = properties.title ?? page.name;
 
   return (
     <div>
-      {isFrontpage ? <HeroSektion page={page} /> : <h1>{pageTitle}</h1>}
+      {isFrontpage && <HeroSektion page={page} />}
       {renderBlocks(blocks, { isFrontpage, products })}
     </div>
   );
@@ -52,6 +52,9 @@ function renderBlocks(blocks, { isFrontpage, products = [] } = {}) {
 
       case 'imageTextCTA':
         return <ImageTextCTA key={block.id} content={block.properties} />;
+
+      case 'banner':
+        return <Banner key={block.id} title={block.properties.title} />;
 
       case 'testimonialSection':
         return (
