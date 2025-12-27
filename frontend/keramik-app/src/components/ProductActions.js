@@ -18,9 +18,8 @@ export default function ProductActions({ product, liveStock }) {
         <QuantityControl stock={currentStock} initial={1} onChange={setQuantity} />
 
         {/* Her opdateres teksten nu live */}
-        <p className={styles.stockText}>
-          {currentStock > 0 ? `${currentStock} på lager` : 'Udsolgt'}
-        </p>
+        {/* Hele <p> tagget renderes kun, hvis currentStock er højere end 0 */}
+        {currentStock > 0 && <p className={styles.stockText}>{currentStock} på lager</p>}
       </div>
 
       <div className={styles.buttonWrapper}>

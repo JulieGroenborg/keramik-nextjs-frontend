@@ -55,3 +55,7 @@
     margin-inline: 0;
   }
 }
+
+.disabled:hover {
+  pointer-events: none;
+}
