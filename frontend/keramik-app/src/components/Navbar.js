@@ -1,16 +1,22 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Link from 'next/link';
 import styles from '../css/components/Navbar.module.css';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import CartDrawer from './CartDrawer';
+import { CartContext } from '../lib/context/CartContext';
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  // Hent cart direkte fra Context.
+  const { cart } = useContext(CartContext);
+
+  // Beregn antallet direkte baseret på context-data.
+  const cartCount = cart.items.reduce((total, item) => total + item.quantity, 0);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -25,11 +31,9 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {/* Center: Links (dropdown på mobilversion) */}
+      {/* Center: Links */}
       <ul className={`${styles.navLinks} ${isMenuOpen ? styles.open : ''}`}>
         <li>
-          <hr className={styles.divider} />
-
           <Link
             href="/forside"
             className={pathname === '/forside' ? styles.active : styles.link}
@@ -80,6 +84,8 @@ export default function Navbar() {
             style={{ visibility: isOpen ? 'hidden' : 'visible' }}
           >
             🛒
+            {/* Badget */}
+            {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
           </button>
 
           {isOpen && <CartDrawer mode={'drawer'} onClose={() => setIsOpen(false)} />}
