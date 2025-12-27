@@ -1,6 +1,4 @@
 'use client';
-
-import { CartProvider } from '@/lib/context/CartContext';
 import ProductActions from '@/components/ProductActions';
 import Image from 'next/image';
 import styles from '../css/components/Product.module.css';
@@ -52,10 +50,7 @@ export default function ProductContent({ product, allProducts }) {
               <span className={styles.priceLabel}>Pris </span>
               <span className={styles.priceValue}>{product.properties.price} DKK</span>
             </div>
-
-            <CartProvider>
-              <ProductActions product={product} liveStock={liveStock} />
-            </CartProvider>
+            <ProductActions product={product} liveStock={liveStock} />
           </div>
         </div>
       </div>

@@ -39,6 +39,7 @@
   --size-60: 3.75rem; /* 60px */
   --size-65: 4rem; /* 65px */
   --size-70: 4.375rem; /* 70px */
+  --size-75: 4.6875rem; /* 75px */
   --size-80: 5rem; /* 80px */
   --size-120: 7.5rem; /* 120px */
   --size-140: 8.75rem; /* 140px */
@@ -72,6 +73,9 @@
 
   --body-bold-20-size: var(--size-20);
   --body-bold-20-weight: var(--weight-bold);
+
+  --body-bold-32-size: var(--size-32);
+  --body-bold-32-weight: var(--weight-bold);
 
   --body-semibold-16-size: var(--size-16);
   --body-semibold-16-weight: var(--weight-semibold);

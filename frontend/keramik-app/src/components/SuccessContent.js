@@ -1,52 +1,104 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { CartContext } from '@/lib/context/CartContext';
 
 export default function SuccessContent() {
-  // Læs query parameter fra URL. Stripe redirects tilbge med ?session_id=...
-  // useSearchParams kræver en Suspense boundary for at virke under build
+  // --- Tilstandshåndtering og URL-parametre ---
+  // Vi henter sessionId fra URL'en og gør klar til at opdatere kurven og sidens status.
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('session_id');
+  const { setCart } = useContext(CartContext);
 
-  const [paymentInfo, setPaymentInfo] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [status, setStatus] = useState('loading');
 
-  // Kører når pagen loader eller når sessionId ændres
+  // --- Ordre-verificering mod backenden ---
+  // Denne effekt kører ved indlæsning og spørger vores C# API om ordrens endelige status.
   useEffect(() => {
-    if (!sessionId) return; // If Stripe ikke returnerer et session_id, så kan vi ikke verify noget
+    if (!sessionId) return;
 
-    // Kald backenden for at verify at Stripe Payment er completed
-    // BEMÆRK: localhost vil fejle på Vercel - bør ændres til en miljøvariabel senere
-    fetch(`http://localhost:51857/stripe-api/verify-session?sessionId=${sessionId}`)
-      .then((res) => {
-        // If backend responderer med noget andet end 200 ok, behandler vi the payment som ikke completed
-        if (!res.ok) throw new Error('Payment not completed');
-        return res.json();
-      })
-      .then((data) => {
-        // Optional: store returned data (currently unused)
-        setPaymentInfo(data);
-      })
-      .catch((err) => setError(err.message)) // Store error message to show feedback to the user
-      .finally(() => setLoading(false));
-  }, [sessionId]);
+    const verifyOrder = async () => {
+      try {
+        const res = await fetch(
+          `http://localhost:51857/stripe-api/verify-session?sessionId=${sessionId}`
+        );
 
-  // If Stripe redirect ikke include a session ID
-  if (!sessionId) return <p>Session ID missing</p>;
+        if (!res.ok) throw new Error('Kunne ikke verificere ordren');
 
-  // Imens man venter på backend verification
-  if (loading) return <p>Loading...</p>;
+        const data = await res.json();
 
-  // If payment verfication fejler
-  if (error) return <p>{error}</p>;
+        // Håndtering af de tre primære scenarier: Succes, Refundering (oversalg) eller Afventer.
+        if (data.status === 'success') {
+          setStatus('success');
+          setCart({ items: [] });
+        } else if (data.status === 'refunded') {
+          setStatus('refunded');
+          setCart({ items: [] });
+        } else {
+          setStatus('pending');
+        }
+      } catch (err) {
+        console.error('Verification error:', err);
+        setStatus('error');
+      }
+    };
 
-  // Payment verified successfully
+    // Timeout sikrer, at Webhook'en har tid til at færdiggøre lager-tjek og refundering før vi spørger.
+    const timer = setTimeout(verifyOrder, 2500);
+    return () => clearTimeout(timer);
+  }, [sessionId, setCart]);
+
+  // --- Visning for fejlende eller manglende data ---
+  if (!sessionId) {
+    // Hvis brugeren ikke har et sessionId, sender vi dem til shoppen
+    window.location.href = '/shop';
+    return null;
+  }
+
+  // --- Visning under indlæsning (Loading state) ---
+  if (status === 'loading' || status === 'pending') {
+    return (
+      <section>
+        <h1>Verificerer din bestilling...</h1>
+        <p>Vi sikrer os lige, at alt er på lager. Vent venligst et øjeblik.</p>
+      </section>
+    );
+  }
+
+  // --- Visning ved oversalg (Refunded state) ---
+  if (status === 'refunded') {
+    return (
+      <section>
+        <h1>Beklager! Varen er desværre udsolgt 😔</h1>
+        <p>En anden kunde nåede at købe den sidste vare lige før dig.</p>
+        <p>
+          <strong>Pengene er refunderet:</strong> da vi ikke kan levere varen, er beløbet sendt
+          retur til dit kort.
+        </p>
+      </section>
+    );
+  }
+
+  // --- Visning ved tekniske fejl ---
+  if (status === 'error') {
+    return (
+      <section>
+        <h1>Der skete en fejl</h1>
+        <p>
+          Vi kunne ikke bekræfte din ordrestatus automatisk. Tjek venligst din email for
+          bekræftelse.
+        </p>
+      </section>
+    );
+  }
+
+  // --- Visning ved gennemført køb (Success state) ---
   return (
-    <div>
+    <section>
       <h1>Tak for din bestilling 🎉</h1>
-      <p>Tjek venligst din email</p>
-    </div>
+      <p>Vi har modtaget din betaling. En bekræftelse er sendt til din mail.</p>
+      <p>Vi går i gang med at pakke din ordre med det samme!</p>
+    </section>
   );
 }

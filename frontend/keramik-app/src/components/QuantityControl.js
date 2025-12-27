@@ -1,25 +1,29 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from '../css/components/QuantityControl.module.css';
 
 export default function QuantityControl({ stock, initial = 1, onChange }) {
   const [quantity, setQuantity] = useState(initial);
 
-  // hver gang quantity ændrer sig, giver vi besked til parent
-  useEffect(() => {
-    if (onChange) {
-      onChange(quantity);
-    }
-  }, [quantity, onChange]);
+  // Hvis lageret er mindre eller lig 0, returnerer vi null. Det svarer til "display: none", men fjerner elementet helt fra siden.
+  if (stock <= 0) {
+    return null;
+  }
 
-  // sænker antal (går aldrig under 1)
   const handleDecrement = () => {
-    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+    if (quantity > 1) {
+      const newQuantity = quantity - 1;
+      setQuantity(newQuantity);
+      if (onChange) onChange(newQuantity);
+    }
   };
 
-  // øger antal (går aldrig over stock)
   const handleIncrement = () => {
-    setQuantity((prev) => (prev < stock ? prev + 1 : prev));
+    if (quantity < stock) {
+      const newQuantity = quantity + 1;
+      setQuantity(newQuantity);
+      if (onChange) onChange(newQuantity);
+    }
   };
 
   return (

@@ -1,0 +1,127 @@
+/* Enkelt vare container */
+.item {
+  display: flex;
+  gap: var(--size-12);
+  padding-bottom: var(--size-20);
+  border-bottom: 1px solid var(--grey-100);
+  position: relative;
+  align-items: center;
+}
+
+/* Billede styling */
+.imageWrapper {
+  background-color: var(--tertiary-100);
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Detaljer (Tekst og Quantity) */
+.itemDetails {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-right: var(--size-32);
+  min-width: 0;
+}
+
+/* Wrapper til teksten */
+.textContainer {
+  width: 100%;
+  min-width: 0;
+}
+
+.productName {
+  font-size: var(--body-medium-14-size);
+  font-weight: var(--weight-bold);
+  color: var(--grey-1000);
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price {
+  font-size: var(--body-regular-14-size);
+  padding-top: var(--size-8);
+  color: var(--grey-500);
+  margin: 0;
+}
+
+.quantityControl {
+  display: flex;
+  justify-content: left;
+  width: 100%;
+}
+
+/* Slet knap */
+.removeButton {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-80%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--grey-400);
+  padding: var(--size-4);
+}
+
+.removeButton:hover {
+  color: var(--grey-800);
+}
+
+@media (min-width: 768px) {
+  .item {
+    padding-left: var(--size-12);
+  }
+
+  .imageWrapper {
+    width: var(--size-120);
+    height: var(--size-120);
+  }
+
+  /* Containeren der holder Tekst, Quantity og Slet-knap */
+  .itemDetails {
+    align-items: center;
+    width: auto;
+    padding-right: 0;
+    flex-grow: 1;
+  }
+
+  .textContainer {
+    flex-shrink: 1; /* Tillader boksen at krympe hvis pladsen bliver smal */
+    min-width: 0;
+  }
+
+  .productName {
+    font-size: var(--body-bold-20-size);
+    font-weight: var(--weight-medium);
+    max-width: 150px;
+    margin-left: 0;
+  }
+
+  .price {
+    font-size: var(--body-regular-18-size);
+  }
+
+  .quantityControl {
+    height: 40px;
+    width: 115px;
+    padding-left: 0;
+    margin-top: 0;
+    margin-left: var(--size-12);
+  }
+
+  .removeButton {
+    position: static;
+    margin-right: 0;
+    margin-left: var(--size-36);
+    transform: translateY(20%);
+  }
+}
