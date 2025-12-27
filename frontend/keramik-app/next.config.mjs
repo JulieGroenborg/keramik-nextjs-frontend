@@ -26,7 +26,7 @@ const nextConfig = {
       {
         source: '/',
         destination: '/forside',
-        permanent: true, // Sætter HTTP 308. Brug false for HTTP 307 (midlertidig), hvis du tester.
+        permanent: true, // permanent true gør at browsere cacher redirecten, så den vil ikke prøve at gå til '/' igen.
       },
     ];
   },
