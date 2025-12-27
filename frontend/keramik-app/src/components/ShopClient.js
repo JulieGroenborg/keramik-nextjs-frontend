@@ -93,7 +93,6 @@ function FilterControls({ activeFilters, handleFilterChange, categories, getOpti
 // Det primære komponent
 // står for visning af produkter med sortering og filtrering
 export default function ShopClient({ products, categories }) {
-  // state til antal viste produkter, sortering og de aktive filtre
   const [visibleCount, setVisibleCount] = useState(4);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [sortBy, setSortBy] = useState('newest');
@@ -105,6 +104,9 @@ export default function ShopClient({ products, categories }) {
     size: 'all',
   });
 
+  // Next giver en advarsel, da vi i linje 10 siger at der skal renders 4, men kort efter siger at den skal rende 8 på desktop.
+  // For at komme uden om advarslen, så wrapper vi det i et setTimeout.
+  // Det flytter opdateringen til "næste tick" i browseren.
   useEffect(() => {
     const timer = setTimeout(() => {
       if (window.innerWidth >= 768) {
