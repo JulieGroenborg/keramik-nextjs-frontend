@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { CartProvider } from '@/lib/context/CartContext';
 import ProductCard from './ProductCard';
 import styles from '../css/components/ShopClient.module.css';
 
@@ -171,7 +170,7 @@ export default function ShopClient({ products, categories }) {
   const hasMore = visibleCount < filteredProducts.length;
 
   return (
-    <CartProvider>
+    <div>
       <div className="container">
         {/* Sortering og Filter-knapper */}
         <div className={styles.filterBar}>
@@ -272,6 +271,6 @@ export default function ShopClient({ products, categories }) {
           </button>
         </div>
       )}
-    </CartProvider>
+    </div>
   );
 }
