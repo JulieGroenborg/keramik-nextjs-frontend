@@ -20,6 +20,16 @@ const nextConfig = {
     // Kun true hvis vi er i dev
     dangerouslyAllowLocalIP: !isProd,
   },
+
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/forside',
+        permanent: true, // permanent true gør at browsere cacher redirecten, så den vil ikke prøve at gå til '/' igen.
+      },
+    ];
+  },
 };
 
 export default nextConfig;
