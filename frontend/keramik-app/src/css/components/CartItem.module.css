@@ -6,7 +6,6 @@
   border-bottom: 1px solid var(--grey-100);
   position: relative;
   align-items: center;
-  padding-left: var(--size-12);
 }
 
 /* Billede styling */
@@ -25,7 +24,7 @@
 .itemDetails {
   flex-grow: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   padding-right: var(--size-32);
   min-width: 0;
@@ -38,8 +37,8 @@
 }
 
 .productName {
-  font-size: var(--body-medium-20-size);
-  font-weight: var(--body-medium-20-weight);
+  font-size: var(--body-medium-14-size);
+  font-weight: var(--weight-bold);
   color: var(--grey-1000);
   width: 100%;
   white-space: nowrap;
@@ -49,13 +48,13 @@
 
 .price {
   font-size: var(--body-regular-14-size);
+  padding-top: var(--size-8);
   color: var(--grey-500);
   margin: 0;
 }
 
 .quantityControl {
   display: flex;
-  margin-top: var(--size-8);
   justify-content: left;
   width: 100%;
 }
@@ -65,7 +64,7 @@
   position: absolute;
   right: 0;
   top: 50%;
-  transform: translateY(-70%);
+  transform: translateY(-80%);
   background: none;
   border: none;
   cursor: pointer;
@@ -78,6 +77,10 @@
 }
 
 @media (min-width: 768px) {
+  .item {
+    padding-left: var(--size-12);
+  }
+
   .imageWrapper {
     width: var(--size-120);
     height: var(--size-120);
@@ -85,7 +88,6 @@
 
   /* Containeren der holder Tekst, Quantity og Slet-knap */
   .itemDetails {
-    flex-direction: row;
     align-items: center;
     width: auto;
     padding-right: 0;
@@ -98,8 +100,14 @@
   }
 
   .productName {
+    font-size: var(--body-bold-20-size);
+    font-weight: var(--weight-medium);
     max-width: 150px;
     margin-left: 0;
+  }
+
+  .price {
+    font-size: var(--body-regular-18-size);
   }
 
   .quantityControl {
@@ -112,8 +120,8 @@
 
   .removeButton {
     position: static;
-    transform: none;
     margin-right: 0;
     margin-left: var(--size-36);
+    transform: translateY(20%);
   }
 }
