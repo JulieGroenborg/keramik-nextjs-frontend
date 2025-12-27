@@ -3,12 +3,15 @@
 import { useState, useEffect, useMemo } from 'react';
 import { CartProvider } from '@/lib/context/CartContext';
 import ProductCard from './ProductCard';
-import styles from '../css/components/ShopClient.module.css'; // Vi importerer styles
+import styles from '../css/components/ShopClient.module.css';
 
+// Hjælpe-komponent til at vise dropdowns).
 // Flyttet udenfor ShopClient for at løse "Components created during render" fejlen
+
 function FilterControls({ activeFilters, handleFilterChange, categories, getOptions, styles }) {
   return (
     <>
+      {/* Dropdown til Kategorier */}
       <select
         className={styles.filterBox}
         value={activeFilters.category}
@@ -22,6 +25,8 @@ function FilterControls({ activeFilters, handleFilterChange, categories, getOpti
         ))}
       </select>
 
+      {/* Dropdowns til resten (Materiale, Finishing, Farve, Størrelse) */}
+      {/* getOptions bruges til at finde alle de unikke værdier automatisk */}
       <select
         className={styles.filterBox}
         value={activeFilters.material}
@@ -85,13 +90,13 @@ function FilterControls({ activeFilters, handleFilterChange, categories, getOpti
   );
 }
 
+// Det primære komponent
+// står for visning af produkter med sortering og filtrering
 export default function ShopClient({ products, categories }) {
-  // Vi starter med 4 for at matche serverens HTML (Mobile first)
+  // state til antal viste produkter, sortering og de aktive filtre
   const [visibleCount, setVisibleCount] = useState(4);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // States til styring af filtre og sortering
-  const [sortBy, setSortBy] = useState('newest'); // Sat til 'newest' som standard
+  const [sortBy, setSortBy] = useState('newest');
   const [activeFilters, setActiveFilters] = useState({
     category: 'all',
     material: 'all',
@@ -109,12 +114,16 @@ export default function ShopClient({ products, categories }) {
     return () => clearTimeout(timer);
   }, []);
 
+  // Funktion der finder alle unikke værdier som alle farver for eksemepel
   const getOptions = (alias) => {
     const values = products.map((p) => p.properties[alias]).filter(Boolean);
     return ['all', ...new Set(values)];
   };
 
+  // Hver gang noget ændres fx en bruger åbner en menu, vil react køre alt koden i komponenten igen
+  // useMemo husker resultatet af en funktion indtil en af de ting der er defineret i arrayet nedenfor ændres
   const filteredProducts = useMemo(() => {
+    // selve filtreringen
     const result = products.filter((p) => {
       const props = p.properties;
       const path = p.route.path;
@@ -130,11 +139,10 @@ export default function ShopClient({ products, categories }) {
       );
     });
 
-    // Sorteringslogik
+    // sorteringen
     if (sortBy === 'priceLow') result.sort((a, b) => a.properties.price - b.properties.price);
     if (sortBy === 'priceHigh') result.sort((a, b) => b.properties.price - a.properties.price);
 
-    // Sortering efter dato (nyeste/ældste først)
     if (sortBy === 'newest') {
       result.sort((a, b) => new Date(b.createDate) - new Date(a.createDate));
     }
@@ -145,6 +153,7 @@ export default function ShopClient({ products, categories }) {
     return result;
   }, [activeFilters, sortBy, products]);
 
+  // opdaterer staten når et filter ændres
   const handleFilterChange = (key, val) => {
     setActiveFilters((prev) => ({ ...prev, [key]: val }));
     setVisibleCount(window.innerWidth >= 768 ? 8 : 4);
@@ -155,12 +164,14 @@ export default function ShopClient({ products, categories }) {
     setVisibleCount((prev) => prev + increment);
   };
 
+  // De produkter der rent faktisk skal vises på skærmen lige nu
   const visibleProducts = filteredProducts.slice(0, visibleCount);
   const hasMore = visibleCount < filteredProducts.length;
 
   return (
     <CartProvider>
       <div className="container">
+        {/* Sortering og Filter-knapper */}
         <div className={styles.filterBar}>
           <select
             className={styles.sortBox}
@@ -176,6 +187,7 @@ export default function ShopClient({ products, categories }) {
             <option value="priceHigh">Pris: Høj til Lav</option>
           </select>
 
+          {/* Mobil filter-knap (viser burger-menu) */}
           <button className={styles.mobileFilterBtn} onClick={() => setIsMenuOpen(true)}>
             Filtrer
             <svg
@@ -198,6 +210,7 @@ export default function ShopClient({ products, categories }) {
             </svg>
           </button>
 
+          {/* Desktop filter-menu */}
           <div className={styles.desktopFilters}>
             <FilterControls
               activeFilters={activeFilters}
@@ -209,6 +222,7 @@ export default function ShopClient({ products, categories }) {
           </div>
         </div>
 
+        {/* Mobil Filter Menu (Overlay) */}
         {isMenuOpen && (
           <div className={styles.mobileOverlay}>
             <div className={styles.mobileMenuContent}>
@@ -232,12 +246,14 @@ export default function ShopClient({ products, categories }) {
           </div>
         )}
 
+        {/* Visning af selve produkterne i et grid */}
         <div className={styles.grid}>
           {visibleProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
+        {/* "Vis flere"-knap, hvis der er flere produkter at vise */}
         {hasMore && (
           <div className={styles.buttonContainer}>
             <button onClick={handleShowMore} className={styles.loadMoreButton}>
