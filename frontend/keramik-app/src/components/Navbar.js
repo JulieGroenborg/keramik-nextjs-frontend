@@ -1,58 +1,26 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useContext } from 'react';
 import Link from 'next/link';
 import styles from '../css/components/Navbar.module.css';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import CartDrawer from './CartDrawer';
+import { CartContext } from '../lib/context/CartContext';
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
+  // 1. Hent cart direkte fra Context.
+  const { cart } = useContext(CartContext);
+
+  // 2. Beregn antallet direkte baseret på context-data.
+  const cartCount = cart.items.reduce((total, item) => total + item.quantity, 0);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  // Funktion til at beregne antal
-  // useCallback bruges for at undgå unødvendige re-renders ved at den husker funktionen
-  const updateCartCount = useCallback(() => {
-    if (typeof window !== 'undefined') {
-      const storedCart = localStorage.getItem('cart');
-      if (storedCart) {
-        try {
-          const parsedCart = JSON.parse(storedCart);
-          const count = parsedCart.items.reduce((total, item) => total + item.quantity, 0);
-          setCartCount(count);
-        } catch (error) {
-          console.error('Fejl ved parsing af kurv:', error);
-          setCartCount(0);
-        }
-      } else {
-        setCartCount(0);
-      }
-    }
-  }, []); // Tomt array betyder, at funktionen aldrig ændrer sig
-
-  useEffect(() => {
-    // Vi bruger setTimeout til at skubbe opdateringen til næste "event loop"
-    // Dette fjerner fejlen, fordi React får lov at tegne færdig først.
-    setTimeout(() => {
-      updateCartCount();
-    }, 0);
-
-    // Lytter efter ændringer i localStorage (f.eks. fra tilføjelse eller fjernelse af varer)
-    window.addEventListener('cart-updated', updateCartCount);
-    window.addEventListener('storage', updateCartCount); // Opdaterer hvis man har flere faner åbne
-
-    return () => {
-      window.removeEventListener('cart-updated', updateCartCount);
-      window.removeEventListener('storage', updateCartCount);
-    };
-  }, []);
 
   return (
     <nav className={`${styles.navbar} ${isMenuOpen ? styles.open : ''}`}>

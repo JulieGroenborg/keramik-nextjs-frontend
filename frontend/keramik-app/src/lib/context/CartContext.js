@@ -1,31 +1,39 @@
 'use client';
 import { createContext, useState, useEffect } from 'react';
 
-// createContext() creates a global container for our cart state.
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  // Initialiserer cart state fra localStorage, eller start med en tom kurv, hvis der ikke er noget gemt.
-  // Bruger en funktion i useState, så dette kun køres én gang, når komponenten mountes.
-  const [cart, setCart] = useState(() => {
-    // Tjekker om vi er i browseren (window eksisterer), fordi localStorage ikke findes på serveren.
-    if (typeof window !== 'undefined') {
-      // Forsøg at læse den gemte kurv fra localStorage
-      const storedCart = localStorage.getItem('cart');
+  // Start med tom kurv for at undgå hydration fejl
+  const [cart, setCart] = useState({ items: [] });
+  const [isLoaded, setIsLoaded] = useState(false);
 
-      // Hvis der findes en kurv i localStorage, parse den til et objekt; ellers start med en tom kurv
-      return storedCart ? JSON.parse(storedCart) : { items: [] };
-    }
-
-    // Fallback for server-side rendering: start med en tom kurv
-    return { items: [] };
-  });
-
-  // Save cart to localStorage whenever it changes
+  // 1. Hent data
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-    window.dispatchEvent(new Event('cart-updated')); // sørger for at andre komponenter kan lytte på ændringer
-  }, [cart]);
+    if (typeof window !== 'undefined') {
+      const storedCart = localStorage.getItem('cart');
+      if (storedCart) {
+        try {
+          const parsedCart = JSON.parse(storedCart);
+          // Vi beder linteren ignorere advarslen her, da vi ved, vi kun kører dette ved mount
+          // eslint-disable-next-line
+          setCart(parsedCart);
+        } catch (error) {
+          console.error('Fejl ved parsing af kurv:', error);
+        }
+      }
+      // Vi er færdige med at loade
+      setIsLoaded(true);
+    }
+  }, []); // Vi ignorerer dependency array advarslen her
+
+  // 2. Gem data
+  useEffect(() => {
+    // Gem kun hvis vi er færdige med at indlæse
+    if (isLoaded) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+  }, [cart, isLoaded]);
 
   // Øger quantity
   function increaseQuantity(productId) {
@@ -43,7 +51,7 @@ export function CartProvider({ children }) {
         .map((item) =>
           item.productId === productId ? { ...item, quantity: item.quantity - 1 } : item
         )
-        .filter((item) => item.quantity > 0), // remove if 0
+        .filter((item) => item.quantity > 0),
     }));
   }
 
