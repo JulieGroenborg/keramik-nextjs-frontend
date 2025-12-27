@@ -91,7 +91,7 @@ export default function ShopClient({ products, categories }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // States til styring af filtre og sortering
-  const [sortBy, setSortBy] = useState('default');
+  const [sortBy, setSortBy] = useState('newest'); // Sat til 'newest' som standard
   const [activeFilters, setActiveFilters] = useState({
     category: 'all',
     material: 'all',
@@ -101,7 +101,6 @@ export default function ShopClient({ products, categories }) {
   });
 
   useEffect(() => {
-    // Next giver en advarsel, da vi i linje 10 siger at der skal renders 4, men kort efter siger at den skal rende 8 på desktop.
     const timer = setTimeout(() => {
       if (window.innerWidth >= 768) {
         setVisibleCount(8);
@@ -131,8 +130,17 @@ export default function ShopClient({ products, categories }) {
       );
     });
 
+    // Sorteringslogik
     if (sortBy === 'priceLow') result.sort((a, b) => a.properties.price - b.properties.price);
     if (sortBy === 'priceHigh') result.sort((a, b) => b.properties.price - a.properties.price);
+
+    // Sortering efter dato (nyeste/ældste først)
+    if (sortBy === 'newest') {
+      result.sort((a, b) => new Date(b.createDate) - new Date(a.createDate));
+    }
+    if (sortBy === 'oldest') {
+      result.sort((a, b) => new Date(a.createDate) - new Date(b.createDate));
+    }
 
     return result;
   }, [activeFilters, sortBy, products]);
@@ -154,8 +162,16 @@ export default function ShopClient({ products, categories }) {
     <CartProvider>
       <div className="container">
         <div className={styles.filterBar}>
-          <select className={styles.sortBox} onChange={(e) => setSortBy(e.target.value)}>
-            <option value="default">Sortér efter</option>
+          <select
+            className={styles.sortBox}
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+          >
+            <option value="default" disabled>
+              Sortér efter
+            </option>
+            <option value="newest">Nyeste først</option>
+            <option value="oldest">Ældste først</option>
             <option value="priceLow">Pris: Lav til Høj</option>
             <option value="priceHigh">Pris: Høj til Lav</option>
           </select>
