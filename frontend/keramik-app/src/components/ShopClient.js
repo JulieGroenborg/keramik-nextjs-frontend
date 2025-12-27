@@ -246,14 +246,12 @@ export default function ShopClient({ products, categories }) {
           </div>
         )}
 
-        {/* Visning af selve produkterne i et grid */}
         <div className={styles.grid}>
           {visibleProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
-        {/* "Vis flere"-knap, hvis der er flere produkter at vise */}
         {hasMore && (
           <div className={styles.buttonContainer}>
             <button onClick={handleShowMore} className={styles.loadMoreButton}>
