@@ -115,7 +115,7 @@ export default function ShopClient({ products, categories }) {
   };
 
   const filteredProducts = useMemo(() => {
-    let result = products.filter((p) => {
+    const result = products.filter((p) => {
       const props = p.properties;
       const path = p.route.path;
       const matchesCategory =
