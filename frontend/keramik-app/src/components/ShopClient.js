@@ -93,7 +93,6 @@ function FilterControls({ activeFilters, handleFilterChange, categories, getOpti
 // Det primære komponent
 // står for visning af produkter med sortering og filtrering
 export default function ShopClient({ products, categories }) {
-  // state til antal viste produkter, sortering og de aktive filtre
   const [visibleCount, setVisibleCount] = useState(4);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [sortBy, setSortBy] = useState('newest');
