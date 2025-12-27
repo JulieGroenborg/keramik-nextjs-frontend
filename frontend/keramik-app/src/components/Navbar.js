@@ -12,10 +12,10 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  // 1. Hent cart direkte fra Context.
+  // Hent cart direkte fra Context.
   const { cart } = useContext(CartContext);
 
-  // 2. Beregn antallet direkte baseret på context-data.
+  // Beregn antallet direkte baseret på context-data.
   const cartCount = cart.items.reduce((total, item) => total + item.quantity, 0);
 
   const toggleMenu = () => {
