@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky",
+    "prepare": "cd ../.. && git config core.hooksPath .husky",
     "prepush": "npm test -- --passWithNoTests",
     "test": "jest"
   },
