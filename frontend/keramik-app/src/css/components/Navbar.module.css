@@ -2,10 +2,13 @@
   height: var(--size-80);
   padding: var(--size-20) var(--size-30) var(--size-8) var(--size-30);
   background-color: var(--grey-50);
+  border-bottom: 1px solid var(--grey-100);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+  top: 0;
+  position: sticky;
+  z-index: 10;
 }
 
 .logo {
