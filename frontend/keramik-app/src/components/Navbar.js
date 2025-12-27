@@ -40,7 +40,7 @@ export default function Navbar() {
   useEffect(() => {
     // Vi bruger setTimeout til at skubbe opdateringen til næste "event loop"
     // Dette fjerner fejlen, fordi React får lov at tegne færdig først.
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       updateCartCount();
     }, 0);
 
