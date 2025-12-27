@@ -254,7 +254,7 @@ export default function ShopClient({ products, categories }) {
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
-
+        {/* Vis flere knap */}
         {hasMore && (
           <div className={styles.buttonContainer}>
             <button onClick={handleShowMore} className={styles.loadMoreButton}>
