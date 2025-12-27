@@ -116,7 +116,7 @@ export default function ShopClient({ products, categories }) {
     return () => clearTimeout(timer); // oprydning af timer ved unmount
   }, []);
 
-  // Funktion der finder alle unikke værdier som alle farver for eksemepel
+  // Funktion der finder alle unikke værdier så som alle farver baseret på, hvad der ligger i CMS
   const getOptions = (alias) => {
     const values = products.map((p) => p.properties[alias]).filter(Boolean);
     return ['all', ...new Set(values)];
