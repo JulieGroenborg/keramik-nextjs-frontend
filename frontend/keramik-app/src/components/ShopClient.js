@@ -240,6 +240,7 @@ export default function ShopClient({ products, categories }) {
                 />
               </div>
               <button className={styles.applyBtn} onClick={() => setIsMenuOpen(false)}>
+                {/* viser antal resultater i parentes */}
                 Vis resultater ({filteredProducts.length})
               </button>
             </div>
