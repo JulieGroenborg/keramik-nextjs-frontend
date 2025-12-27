@@ -272,6 +272,6 @@ export default function ShopClient({ products, categories }) {
           </button>
         </div>
       )}
-    </div>
+    </CartProvider>
   );
 }
