@@ -20,6 +20,16 @@ const nextConfig = {
     // Kun true hvis vi er i dev
     dangerouslyAllowLocalIP: !isProd,
   },
+
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/forside',
+        permanent: true, // Sætter HTTP 308. Brug false for HTTP 307 (midlertidig), hvis du tester.
+      },
+    ];
+  },
 };
 
 export default nextConfig;
