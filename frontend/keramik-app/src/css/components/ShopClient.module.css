@@ -24,6 +24,8 @@
   .grid {
     /*Minimum 276px bred, max 1fr*/
     grid-template-columns: repeat(auto-fill, minmax(276px, 1fr));
+    max-width: 1440px;
+    margin: 0 auto;
   }
   .buttonContainer {
     margin-top: var(--size-60);
