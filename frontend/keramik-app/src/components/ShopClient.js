@@ -104,6 +104,9 @@ export default function ShopClient({ products, categories }) {
     size: 'all',
   });
 
+  // Next giver en advarsel, da vi i linje 10 siger at der skal renders 4, men kort efter siger at den skal rende 8 på desktop.
+  // For at komme uden om advarslen, så wrapper vi det i et setTimeout.
+  // Det flytter opdateringen til "næste tick" i browseren.
   useEffect(() => {
     const timer = setTimeout(() => {
       if (window.innerWidth >= 768) {
