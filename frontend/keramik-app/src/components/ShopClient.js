@@ -113,7 +113,7 @@ export default function ShopClient({ products, categories }) {
         setVisibleCount(8);
       }
     }, 0);
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timer); // oprydning af timer ved unmount
   }, []);
 
   // Funktion der finder alle unikke værdier som alle farver for eksemepel
