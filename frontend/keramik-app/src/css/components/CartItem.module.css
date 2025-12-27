@@ -5,6 +5,8 @@
   padding-bottom: var(--size-20);
   border-bottom: 1px solid var(--grey-100);
   position: relative;
+  align-items: center;
+  padding-left: var(--size-12);
 }
 
 /* Billede styling */
@@ -15,20 +17,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 /* Detaljer (Tekst og Quantity) */
 .itemDetails {
   flex-grow: 1;
-  display: grid;
-  grid-template-columns: 75px 1fr; /* billed */
-  align-items: center;
-  padding-right: var(--size-32); /* Plads til delete-knappen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: var(--size-32);
+  min-width: 0;
 }
 
-/* Wrapper til teksten (Navn + Pris) */
+/* Wrapper til teksten */
 .textContainer {
-  min-width: 100px;
+  width: 100%;
+  min-width: 0;
 }
 
 .productName {
@@ -38,7 +44,7 @@
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* Laver "..." hvis teksten er for lang */
+  text-overflow: ellipsis;
 }
 
 .price {
@@ -49,8 +55,7 @@
 
 .quantityControl {
   display: flex;
-  margin-left: var(--size-12);
-  padding-left: var(--size-24);
+  margin-top: var(--size-8);
   justify-content: left;
   width: 100%;
 }
@@ -74,31 +79,41 @@
 
 @media (min-width: 768px) {
   .imageWrapper {
-    width: 212px;
-    height: 193px;
+    width: var(--size-120);
+    height: var(--size-120);
   }
 
+  /* Containeren der holder Tekst, Quantity og Slet-knap */
   .itemDetails {
-    padding-right: var(--size-60);
-    grid-template-columns: 150px 1fr;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    padding-right: 0;
+    flex-grow: 1;
+  }
+
+  .textContainer {
+    flex-shrink: 1; /* Tillader boksen at krympe hvis pladsen bliver smal */
+    min-width: 0;
   }
 
   .productName {
-    max-width: 200px;
-    margin-left: var(--size-32);
-  }
-
-  .price {
-    margin-left: var(--size-32);
-  }
-
-  .removeButton {
-    margin-right: var(--size-24);
+    max-width: 150px;
+    margin-left: 0;
   }
 
   .quantityControl {
-    margin-left: var(--size-32);
     height: 40px;
     width: 115px;
+    padding-left: 0;
+    margin-top: 0;
+    margin-left: var(--size-12);
+  }
+
+  .removeButton {
+    position: static;
+    transform: none;
+    margin-right: 0;
+    margin-left: var(--size-36);
   }
 }
