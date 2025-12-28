@@ -76,7 +76,7 @@ export default function AddToBasket({
   const buttonText = isOutOfStock
     ? 'Udsolgt'
     : isMaxInCart
-      ? 'Ikke nok på lager' // Mere generisk tekst som requested
+      ? 'Ikke nok på lager'
       : variant === 'small'
         ? 'Kurv'
         : 'Tilføj til kurv';
