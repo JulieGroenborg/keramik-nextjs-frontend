@@ -26,7 +26,6 @@ export function CartProvider({ children }) {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  // NY FUNKTION: Opdaterer lageret live for en vare i kurven
   function updateItemStock(productId, newStock) {
     setCart((prev) => ({
       items: prev.items.map((item) =>
