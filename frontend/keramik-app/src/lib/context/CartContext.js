@@ -35,6 +35,14 @@ export function CartProvider({ children }) {
     }
   }, [cart, isLoaded]);
 
+  function updateItemStock(productId, newStock) {
+    setCart((prev) => ({
+      items: prev.items.map((item) =>
+        item.productId === productId ? { ...item, stock: newStock } : item
+      ),
+    }));
+  }
+
   // Øger quantity
   function increaseQuantity(productId) {
     setCart((prev) => ({
@@ -70,6 +78,7 @@ export function CartProvider({ children }) {
         increaseQuantity,
         decreaseQuantity,
         removeItem,
+        updateItemStock,
       }}
     >
       {children}

@@ -32,7 +32,7 @@ export default function CartItem({ item }) {
         {/* Quantity Control */}
         <div className={styles.quantityControl}>
           <QuantityControl
-            initial={item.quantity}
+            value={item.quantity}
             stock={item.stock}
             onChange={(newQty) => {
               if (newQty > item.quantity) increaseQuantity(item.productId);

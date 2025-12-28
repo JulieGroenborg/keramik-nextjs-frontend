@@ -1,16 +1,31 @@
 'use client'; // Client side fordi vi bruger useContext and onClick.
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { CartContext } from '@/lib/context/CartContext';
 import BasketIcon from '@/components/icons/BasketIcon';
 import styles from '../css/components/AddToBasket.module.css';
 
-export default function AddToBasket({ product, quantity = 1, variant = 'large' }) {
+export default function AddToBasket({
   // Vi sætter quantity til 1, den bliver overskrevet, hvis en bruger vælger flere produkter på produktsiden.
-  // Henter den globale cart state og setCart funktionen fra CartContext:
-  const { cart, setCart } = useContext(CartContext);
+  product,
+  quantity = 1,
+  variant = 'large',
+  onAdd,
+  currentStock,
+}) {
+  // Henter den globale cart state, setCart og updateItemStock fra CartContext:
+  const { cart, setCart, updateItemStock } = useContext(CartContext);
 
-  // Henter lagerstatus fra produktets properties (Umbraco data)
-  const stockQuantity = product.properties.stockQuantity ?? 0;
+  // Vi sikrer os at vi altid bruger det nyeste lager tal
+  const stockQuantity =
+    currentStock !== undefined ? currentStock : (product.properties.stockQuantity ?? 0);
+
+  // Dette bruges til at synkronisere lagertallet i kurven med det levende lager tal, så man ikke fx kan overskride lageret i kurven
+  // Hver gang currentStock (SSE) ændrer sig, opdaterer vi også lagertallet for varen inde i kurven.
+  useEffect(() => {
+    if (currentStock !== undefined && updateItemStock) {
+      updateItemStock(product.id, currentStock);
+    }
+  }, [currentStock, product.id, updateItemStock]);
 
   // Find ud af hvor mange af denne vare der allerede er i kurven
   const existingItem = cart.items.find((item) => item.productId === product.id);
@@ -19,13 +34,14 @@ export default function AddToBasket({ product, quantity = 1, variant = 'large' }
   // Er varen helt udsolgt?
   const isOutOfStock = stockQuantity <= 0;
 
-  // Har brugeren allerede lagt alt det tilgængelige lager i kurven?
-  const isMaxInCart = currentInCart + quantity > stockQuantity;
+  // Vi tjekker om (antal i kurv + det valgte antal) overstiger det "levende" lager.
+  // Vi bruger '>' i stedet for '>=' så man rent faktisk kan købe den sidste vare på lager.
+  const isMaxInCart = Number(currentInCart) + Number(quantity) > stockQuantity;
 
   const handleAddToCart = () => {
     // Ekstra sikkerhedstjek: Stop hvis der ikke er nok på lager
     if (isMaxInCart) {
-      alert(`Beklager, der er kun ${stockQuantity} stk. på lager af denne vare.`);
+      alert(`Beklager, der er kun ${stockQuantity} stk. på lager.`);
       return;
     }
 
@@ -45,11 +61,14 @@ export default function AddToBasket({ product, quantity = 1, variant = 'large' }
             price: product.properties.price,
             quantity,
             image: product.properties.image?.[0]?.url || '',
-            stock: product.properties.stockQuantity || 0,
+            stock: stockQuantity, // Gemmer det nyeste SSE-lagertal i kurven
           },
         ],
       });
     }
+
+    // Nulstiller QuantityControl i ProductActions efter tilføjelse
+    if (onAdd) onAdd();
   };
 
   // Hjælpevariabel til knap-tekst og tilstand
@@ -57,7 +76,7 @@ export default function AddToBasket({ product, quantity = 1, variant = 'large' }
   const buttonText = isOutOfStock
     ? 'Udsolgt'
     : isMaxInCart
-      ? 'Alt på lager er i kurv'
+      ? 'Ikke nok på lager'
       : variant === 'small'
         ? 'Kurv'
         : 'Tilføj til kurv';
