@@ -26,6 +26,15 @@ export function CartProvider({ children }) {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
+  // NY FUNKTION: Opdaterer lageret live for en vare i kurven
+  function updateItemStock(productId, newStock) {
+    setCart((prev) => ({
+      items: prev.items.map((item) =>
+        item.productId === productId ? { ...item, stock: newStock } : item
+      ),
+    }));
+  }
+
   // Øger quantity
   function increaseQuantity(productId) {
     setCart((prev) => ({
@@ -61,6 +70,7 @@ export function CartProvider({ children }) {
         increaseQuantity,
         decreaseQuantity,
         removeItem,
+        updateItemStock,
       }}
     >
       {children}
