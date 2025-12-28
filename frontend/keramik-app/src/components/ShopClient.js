@@ -262,15 +262,6 @@ export default function ShopClient({ products, categories }) {
           </div>
         )}
       </div>
-
-      {/* Vis flere knap */}
-      {hasMore && (
-        <div className={styles.buttonContainer}>
-          <button onClick={handleShowMore} className={styles.loadMoreButton}>
-            Vis flere
-          </button>
-        </div>
-      )}
     </div>
   );
 }
