@@ -9,6 +9,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Funktion til at sende nyhedsbrev tilmeldelsens bekræftelses email
 export const sendNewsletterEmail = async (toEmail) => {
   try {
     await transporter.sendMail({
