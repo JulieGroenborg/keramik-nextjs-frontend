@@ -2,11 +2,13 @@ import { NextResponse } from 'next/server';
 import sql from 'mssql';
 import { sendNewsletterEmail } from '../../../lib/services/mail';
 
+// her defineres konfigurationen til at forbinde til SQL Server databasen
 const sqlConfig = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   server: process.env.DB_SERVER,
+  // pool definerer forbindelses pool, max 10, min 0 forbindelser.
   pool: {
     max: 10,
     min: 0,
@@ -18,9 +20,11 @@ const sqlConfig = {
   },
 };
 
+// her håndteres POST requests til /api/newsletter
 export async function POST(request) {
   let transaction;
 
+  // her begynder vi at behandle tilmeldingen
   try {
     const { email } = await request.json();
 
@@ -35,6 +39,7 @@ export async function POST(request) {
     transaction = new sql.Transaction(pool);
     await transaction.begin();
 
+    // Opret Request bundet til transaktionen
     const dbRequest = new sql.Request(transaction);
 
     // Database Insert
@@ -53,10 +58,13 @@ export async function POST(request) {
       INSERT INTO NewsletterSubscribers (Email) VALUES (@emailParam)
     `;
 
+    // Brug parameterized query for at undgå SQL Injection
     await dbRequest.input('emailParam', sql.NVarChar, email).query(query);
 
+    // Send bekræftelsesmail
     const mailResult = await sendNewsletterEmail(email);
 
+    // Tjek om mail blev sendt korrekt
     if (!mailResult.success) {
       throw new Error(`Kunne ikke sende mail: ${mailResult.error}`);
     }
@@ -79,10 +87,12 @@ export async function POST(request) {
     // eslint-disable-next-line no-console
     console.error('Fejl under tilmelding:', error);
 
+    // hvis email allerede findes (fejlkode 2627),
     if (error.number === 2627) {
       return NextResponse.json({ error: 'Du er allerede tilmeldt!' }, { status: 409 });
     }
 
+    // generel fejl
     return NextResponse.json(
       { error: 'Kunne ikke gennemføre tilmelding (Email eller DB fejlede)' },
       { status: 500 }
