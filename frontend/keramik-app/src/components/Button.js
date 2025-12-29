@@ -1,3 +1,4 @@
+'use client';
 import Styles from '../css/components/Button.module.css';
 
 export default function Button({ href, children, type, onClick, disabled }) {
