@@ -156,6 +156,10 @@
   color: var(--grey-500);
 }
 
+.navLinks li:first-child {
+  margin-top: var(--size-8);
+}
+
 .navLinks li:last-child {
   margin-bottom: var(--size-12);
 }

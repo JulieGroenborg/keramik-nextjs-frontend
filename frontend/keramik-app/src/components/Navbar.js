@@ -19,6 +19,9 @@ export default function Navbar() {
   const cartCount = cart.items.reduce((total, item) => total + item.quantity, 0);
 
   const toggleMenu = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
     setIsMenuOpen(!isMenuOpen);
   };
 
@@ -80,7 +83,12 @@ export default function Navbar() {
         <div className={styles.cart} style={{ position: 'relative' }}>
           <button
             className={styles.icon}
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => {
+              if (isMenuOpen) {
+                setIsMenuOpen(false);
+              }
+              setIsOpen(!isOpen);
+            }}
             style={{ visibility: isOpen ? 'hidden' : 'visible' }}
           >
             🛒
