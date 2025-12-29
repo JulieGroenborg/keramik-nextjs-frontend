@@ -44,7 +44,7 @@ export async function POST(request) {
       IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='NewsletterSubscribers' AND xtype='U')
       BEGIN
           CREATE TABLE NewsletterSubscribers (
-              Id UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(), -- Nu UUID
+              Id INT IDENTITY(1,1) PRIMARY KEY,
               Email NVARCHAR(255) NOT NULL UNIQUE,
               CreatedAt DATETIME DEFAULT GETDATE()
           )
@@ -70,6 +70,7 @@ export async function POST(request) {
     if (transaction) {
       try {
         await transaction.rollback();
+        // eslint-disable-next-line no-unused-vars
       } catch (rollbackError) {
         // Ignorer rollback fejl, det kan ske fx hvis transaktionen aldrig blev startet
       }
