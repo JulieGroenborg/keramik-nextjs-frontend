@@ -22,7 +22,7 @@ export default function LiveStockListener() {
     };
 
     eventSource.onerror = (error) => {
-      console.error('SSE Forbindelsesfejl:', error);
+      // console.error('SSE Forbindelsesfejl:', error);
       eventSource.close();
     };
 
