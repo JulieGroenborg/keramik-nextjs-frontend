@@ -43,8 +43,7 @@ export async function POST(request) {
     const dbRequest = new sql.Request(transaction);
 
     // Database Insert
-    // xtype='U' betyder "user table", da sysobjects også indeholder views, procs osv. så specificerer vi at det er en user table
-    // som vi prøver at arbejde med.
+    // xtype='U' betyder "user table", da sysobjects også indeholder views, procs osv. så specificerer vi at det er et user table, vi vil arbejde med
     const query = `
       IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='NewsletterSubscribers' AND xtype='U')
       BEGIN
