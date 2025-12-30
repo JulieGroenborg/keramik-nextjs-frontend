@@ -215,6 +215,10 @@
     font-size: var(--body-18-regular-size);
   }
 
+  .navLinks li:first-child {
+    margin-top: 0;
+  }
+
   .navLinks li:last-child {
     margin-bottom: 0;
   }
