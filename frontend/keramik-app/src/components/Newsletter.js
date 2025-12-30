@@ -31,6 +31,7 @@ export default function Newsletter({ content }) {
     }
     try {
       // denne api route bliver oprettet af Next selv, når vi laver en fil i /app/api/newsletter/route.js
+      // den poster tilmeldingsdata til vores backend (route.js)
       const response = await fetch('/api/newsletter', {
         method: 'POST',
         headers: {

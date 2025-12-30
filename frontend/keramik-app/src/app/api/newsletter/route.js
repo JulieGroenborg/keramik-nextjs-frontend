@@ -21,6 +21,7 @@ const sqlConfig = {
 };
 
 // her håndteres POST requests til /api/newsletter
+// Denne post sender tilmeldingsdata til databasen
 export async function POST(request) {
   let transaction;
 
