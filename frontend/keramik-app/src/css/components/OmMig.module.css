@@ -42,7 +42,6 @@
 .valueDescription {
   font-family: var(--font-body);
   font-weight: var(--body-regular-18-weight);
-  font-size: var(--body-regular-18-size);
   color: var(--grey-600);
 }
 

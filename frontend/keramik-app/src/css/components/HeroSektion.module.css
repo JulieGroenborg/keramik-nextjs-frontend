@@ -7,24 +7,27 @@
 
 .inner {
   text-align: center;
-  padding: var(--size-80) var(--size-24) 0;
+  padding: var(--size-80) var(--size-24);
 }
 
 .button {
-  margin: var(--size-50);
+  margin: var(--size-24);
 }
 
 .cups {
   display: block;
-  width: 100%;
+  max-width: 80%;
   height: auto;
   margin-top: var(--size-50);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .p {
   font-size: var(--body-regular-12-size);
   font-weight: var(--body-light-12-weight);
   color: var(--grey-500);
+  padding-top: var(--size-8);
 }
 
 @media (min-width: 768px) {
@@ -38,12 +41,14 @@
     max-width: 680px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 40px;
+  }
+
+  .button {
+    margin: var(--size-50);
   }
 
   .cups {
-    width: 100%;
-    max-width: 768px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 40%;
   }
 }

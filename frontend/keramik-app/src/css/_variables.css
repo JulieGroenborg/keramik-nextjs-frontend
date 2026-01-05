@@ -48,14 +48,14 @@
   /* 2) Typografi */
   /* Headings Montserrat */
   /* Heading 1 */
-  --h1-thin-size: var(--size-80);
+  --h1-thin-size: var(--size-70);
   --h1-thin-weight: var(--weight-thin);
 
   --h1-light-size: var(--size-36);
   --h1-light-weight: var(--weight-light);
 
   /* Heading 2 */
-  --h2-light-60-size: var(--size-60);
+  --h2-light-60-size: var(--size-50);
   --h2-light-60-weight: var(--weight-light);
 
   --h2-semibold-28-size: var(--size-28);

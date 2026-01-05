@@ -15,15 +15,14 @@ export default function HeroSektion({ page }) {
         <div className={styles.button}>
           <Button href="/shop">{buttonText}</Button>
         </div>
+        <Image
+          src="/desktop_cups.webp"
+          alt="Billede af keramik kopper"
+          width={600}
+          height={400}
+          className={styles.cups}
+        />
       </div>
-
-      <Image
-        src="/desktop_cups.webp"
-        alt="Billede af keramik kopper"
-        width={600}
-        height={400}
-        className={styles.cups}
-      />
     </div>
   );
 }
