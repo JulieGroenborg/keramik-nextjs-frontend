@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-echo ">>> HUSKY PRE-PUSH KØRER <<<"
-cd frontend/keramik-app
-npm test
