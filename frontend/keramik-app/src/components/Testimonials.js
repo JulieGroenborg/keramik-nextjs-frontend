@@ -51,7 +51,7 @@ export default function TestimonialsSection({ title, testimonials }) {
       setIndex((i) => (i + 1) % total); // Gå ét frem
       setAnimating(false); // Lås op igen
       setDirection(0); // Nulstil retning (snap tilbage)
-    }, 300); // Matcher CSS-animationen
+    }, 0); // Matcher CSS-animationen
   }
 
   function handlePrev() {
@@ -63,7 +63,7 @@ export default function TestimonialsSection({ title, testimonials }) {
       setIndex((i) => (i - 1 + total) % total); // Gå ét tilbage
       setAnimating(false); // Lås op igen
       setDirection(0); // Reset
-    }, 300); // Matcher CSS-animation
+    }, 0); // Matcher CSS-animation
   }
 
   return (
