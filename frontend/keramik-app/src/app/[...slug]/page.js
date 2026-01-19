@@ -12,11 +12,11 @@ export default async function SlugPage(props) {
   const slugPath = '/' + slugArray.join('/') + '/';
 
   // Tjekker at URL'en starter med en af de godkendte prefixes, så vi undgår at fetche fra CMS med invalide URL'er.
-  const exsitingPagesInUmbraco = ['/forside', '/om-mig/', '/kontakt/']; // Add all valid CMS prefixes
+  // const exsitingPagesInUmbraco = ['/forside', '/om-mig/', '/kontakt/']; // Add all valid CMS prefixes
 
-  if (!exsitingPagesInUmbraco.some((prefix) => slugPath.startsWith(prefix))) {
-    notFound(); // or just return null
-  }
+  // if (!exsitingPagesInUmbraco.some((prefix) => slugPath.startsWith(prefix))) {
+  //   notFound(); // or just return null
+  // }
 
   // Hent page fra Umbraco
   const page = await getPage(slugPath);
