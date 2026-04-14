@@ -4,18 +4,18 @@ import { createContext, useState, useEffect } from 'react';
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  // Start med tom kurv for at undgå hydration fejl
+  // Start med tom kurv for at undgå hydration fejl, da localStorage kun findes i browseren, men next.js forsøger at generere HTML på serveren (SSR)
   const [cart, setCart] = useState({ items: [] });
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // 1. Hent data
+  // 1. Henter data fra localStorage
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const storedCart = localStorage.getItem('cart');
       if (storedCart) {
         try {
           const parsedCart = JSON.parse(storedCart);
-          // Vi beder linteren ignorere advarslen her, da vi ved, vi kun kører dette ved mount
+          // Vi ignorerer advarslen, da vi bevidst kun ønsker at synkronisere browserens localStorage med vores state én gang efter initial render.
           // eslint-disable-next-line
           setCart(parsedCart);
         } catch (error) {
@@ -27,14 +27,15 @@ export function CartProvider({ children }) {
     }
   }, []); // Vi ignorerer dependency array advarslen her
 
-  // 2. Gem data
+  // 2. Gem data til localStorage
   useEffect(() => {
-    // Gem kun hvis vi er færdige med at indlæse
+    // Gem kun i state, hvis vi er færdige med at indlæse
     if (isLoaded) {
       localStorage.setItem('cart', JSON.stringify(cart));
     }
   }, [cart, isLoaded]);
 
+  // Opdaterer lagerstatus for en specifik vare i kurven. Bruges til at synkronisere kurven med realtidsdata (SSE), så brugeren ikke kan tilføje flere varer, end der rent faktisk er på lager.
   function updateItemStock(productId, newStock) {
     setCart((prev) => ({
       items: prev.items.map((item) =>

@@ -12,8 +12,12 @@ export function getFilteredProducts(products, filterType) {
         .slice(0, 4);
 
     case 'De Grønne':
-      // Filtrer på farve
+      // Filtrer på farven grøn
       return cleanProducts.filter((p) => p.properties.color === 'Grøn').slice(0, 4);
+
+    case 'De Blå':
+      // Filtrer på farven blå
+      return cleanProducts.filter((p) => p.properties.color === 'Blå').slice(0, 4);
 
     default:
       return cleanProducts.slice(0, 4);

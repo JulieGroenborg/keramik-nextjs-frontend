@@ -2,7 +2,7 @@ export async function umbracoFetch(path) {
   const fixedPath = path.startsWith('/') ? path : `/${path}`;
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_UMBRACO_URL}${fixedPath}`, {
-    cache: 'force-cache', // Denne linje gør den SSG, kan ændres til 'no-store' for SSR
+    cache: 'force-cache', // Denne linje får siden til at opføre sig som SSG, da den cacher data. Kan ændres til 'no-store' for SSR,
   });
 
   // Gammel kode (læste error som en tekststreng, den værdi kunne getPage ikke bruge):

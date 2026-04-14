@@ -82,6 +82,8 @@ function renderBlocks(blocks, { isFrontpage, products = [] } = {}) {
           variant = 'variantNyeste';
         } else if (filterType === 'De Grønne') {
           variant = 'variantGreen';
+        } else if (filterType === 'De Blå') {
+          variant = 'variantBlue';
         }
 
         return (

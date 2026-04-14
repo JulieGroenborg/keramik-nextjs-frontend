@@ -54,6 +54,7 @@
   object-fit: contain;
   margin-bottom: var(--size-24);
   display: block;
+  width: 90px;
 }
 
 .brandParagraph {
@@ -138,6 +139,10 @@
 
   .middleColumn {
     align-items: flex-start;
+  }
+
+  .logo {
+    width: unset;
   }
 }
 @media (min-width: 1200px) {
