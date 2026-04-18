@@ -2,7 +2,6 @@ import HeroSektion from '@/components/HeroSektion';
 import OmMig from '@/components/OmMig';
 import ImageTextCTA from '@/components/ImageTextCTA';
 import TestimonialsSection from '@/components/Testimonials';
-import Newsletter from '@/components/Newsletter';
 import KvaliteterOgVaerdier from '@/components/KvaliteterOgVaerdier';
 import Contact from '@/components/Contact';
 import ProductSection from '@/components/ProductSection';
@@ -39,9 +38,6 @@ function renderBlocks(blocks, { isFrontpage, products = [] } = {}) {
     if (!block) return null;
 
     switch (block.contentType) {
-      case 'newsletter':
-        return <Newsletter key={block.id} content={block.properties} />;
-
       case 'valueSection':
         if (isFrontpage) {
           // Frontpage version af valueSection
