@@ -18,17 +18,20 @@ export default function CheckoutButton(props) {
 
     // Og ellers, vil knappen blive brug til checkout: send cart data til backenden og create a Stripe Checkout session
     try {
-      const response = await fetch('http://localhost:51857/stripe-api/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        // Send kun de data, som backenden har brug for (aldrig stol på frontend prices)
-        body: JSON.stringify(
-          cart.items.map((item) => ({
-            id: item.productId,
-            quantity: item.quantity,
-          }))
-        ),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_UMBRACO_BASE_URL}/stripe-api/create-checkout-session`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          // Send kun de data, som backenden har brug for (aldrig stol på frontend prices)
+          body: JSON.stringify(
+            cart.items.map((item) => ({
+              id: item.productId,
+              quantity: item.quantity,
+            }))
+          ),
+        }
+      );
       const data = await response.json();
 
       if (response.ok) {

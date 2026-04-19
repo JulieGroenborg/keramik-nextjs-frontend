@@ -21,7 +21,7 @@ export default function SuccessContent() {
     const verifyOrder = async () => {
       try {
         const res = await fetch(
-          `http://localhost:51857/stripe-api/verify-session?sessionId=${sessionId}`
+          `${process.env.NEXT_PUBLIC_UMBRACO_BASE_URL}/stripe-api/verify-session?sessionId=${sessionId}`
         );
 
         if (!res.ok) throw new Error('Kunne ikke verificere ordren');
