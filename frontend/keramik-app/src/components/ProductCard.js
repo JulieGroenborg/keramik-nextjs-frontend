@@ -4,13 +4,16 @@ import AddToBasket from '@/components/AddToBasket';
 import styles from '../css/components/ProductCard.module.css'; // Import af CSS modulet
 
 export default function ProductCard({ product }) {
+  // Tjek lagertallet (vi bruger 0 som fallback hvis feltet mangler)
+  const isOutOfStock = (product.properties.stockQuantity ?? 0) <= 0;
+
   // Sikrer korrekt billede URL (håndterer hvis billedet mangler)
   const imageUrl = product.properties.image?.[0]?.url
     ? `${process.env.NEXT_PUBLIC_UMBRACO_BASE_URL}${product.properties.image[0].url}`
     : null;
 
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${isOutOfStock ? styles.outOfStock : ''}`}>
       <Link href={product.route.path} className={styles.link}>
         {/* Billede container */}
         <div className={styles.imageContainer}>

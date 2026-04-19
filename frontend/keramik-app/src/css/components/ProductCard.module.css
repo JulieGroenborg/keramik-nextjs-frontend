@@ -8,6 +8,12 @@
   margin: auto auto; /* Centrerer kortet horisontalt inde i hvert fragment*/
 }
 
+/* Gør hele kortet en smule gennemsigtigt og fjern farvemætning */
+.outOfStock {
+  opacity: 0.4;
+  pointer-events: auto; /* Lad linket virke, så man stadig kan læse om produktet */
+}
+
 .link {
   text-decoration: none;
 }
