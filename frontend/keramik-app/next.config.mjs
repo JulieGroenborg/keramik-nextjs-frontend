@@ -13,7 +13,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'jgebackend-h3bdb9g0hraufsgv.swedencentral-01.azurewebsites.net',
+        hostname: 'keramik-umbraco-backend-production.up.railway.app',
         pathname: '/media/**',
       },
     ],
