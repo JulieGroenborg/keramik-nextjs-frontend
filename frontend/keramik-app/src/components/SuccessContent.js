@@ -3,6 +3,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CartContext } from '@/lib/context/CartContext';
+import styles from '../css/components/SuccessContent.module.css';
 
 export default function SuccessContent() {
   // --- Tilstandshåndtering og URL-parametre ---
@@ -59,7 +60,7 @@ export default function SuccessContent() {
   // --- Visning under indlæsning (Loading state) ---
   if (status === 'loading' || status === 'pending') {
     return (
-      <section>
+      <section className={`${styles.section}`}>
         <h1>Verificerer din bestilling...</h1>
         <p>Vi sikrer os lige, at alt er på lager. Vent venligst et øjeblik.</p>
       </section>
@@ -69,8 +70,10 @@ export default function SuccessContent() {
   // --- Visning ved oversalg (Refunded state) ---
   if (status === 'refunded') {
     return (
-      <section>
-        <h1>Beklager! Varen er desværre udsolgt 😔</h1>
+      <section className={`${styles.section}`}>
+        <h1>
+          Beklager! <br></br>Varen er desværre udsolgt
+        </h1>
         <p>En anden kunde nåede at købe den sidste vare lige før dig.</p>
         <p>
           <strong>Pengene er refunderet:</strong> da vi ikke kan levere varen, er beløbet sendt
@@ -95,8 +98,8 @@ export default function SuccessContent() {
 
   // --- Visning ved gennemført køb (Success state) ---
   return (
-    <section>
-      <h1>Tak for din bestilling 🎉</h1>
+    <section className={`${styles.section}`}>
+      <h1>Tak for din bestilling!</h1>
       <p>Vi har modtaget din betaling. En bekræftelse er sendt til din mail.</p>
       <p>Vi går i gang med at pakke din ordre med det samme!</p>
     </section>
