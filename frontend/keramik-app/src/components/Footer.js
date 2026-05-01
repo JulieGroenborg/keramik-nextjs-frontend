@@ -32,7 +32,11 @@ export default function Footer() {
 
           <h3 className={styles.socialHeading}>Følg mig</h3>
           <div className={styles.socialIcons}>
-            <a href="#" className={styles.iconCircle} aria-label="Instagram">
+            <a
+              href="https://www.instagram.com/madebyjge/"
+              className={styles.iconCircle}
+              aria-label="Instagram"
+            >
               <Image src="/instagram.webp" alt="Instagram" width={18} height={18} />
             </a>
           </div>
